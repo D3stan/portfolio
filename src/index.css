@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========= FONTS ========= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@600;700&family=Bebas+Neue&display=swap');
+
+/* ========= THEME TOKENS (CSS Variables) ========= */
+/* Default: Swiss/Neutral */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --border: #111111;
+  --card: #ffffff;
+  --accent: #ffd600;
+  --muted: #757575;
+
+  --shadow-weak: rgba(0,0,0,0.12);
+  --shadow-strong: rgba(0,0,0,0.18);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+/* Brutalist (Dark) */
+[data-theme="brutalist-dark"] {
+  --bg: #0a0a0a;
+  --fg: #f5f5f5;
+  --border: #000000;
+  --card: #111111;
+  --accent: #ffd600;
+  --muted: #aaaaaa;
+
+  --shadow-weak: rgba(0,0,0,0.5);
+  --shadow-strong: rgba(0,0,0,0.6);
+}
+
+/* Noir */
+[data-theme="noir"] {
+  --bg: #0b0e14;
+  --fg: #e6edf3;
+  --border: #1f2328;
+  --card: #111826;
+  --accent: #8b5cf6;
+  --muted: #9aa6b2;
+
+  --shadow-weak: rgba(16,20,27,0.45);
+  --shadow-strong: rgba(16,20,27,0.6);
+}
+
+/* Ghibli Pastel */
+[data-theme="ghibli"] {
+  --bg: #fbf6ee;
+  --fg: #2b2b2b;
+  --border: #2b2b2b;
+  --card: #fffaf1;
+  --accent: #5aa382;
+  --muted: #6b7280;
+
+  --shadow-weak: rgba(43,43,43,0.12);
+  --shadow-strong: rgba(43,43,43,0.18);
+}
+
+/* ========= BASE ========= */
+html, body, #root {
+  /* keep the canvas transparent for your art; resume sets its own bg */
+  @apply min-h-screen m-0 p-0 text-fg;
+  background: transparent;
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-extrabold uppercase tracking-tight;
+}
+
+/* ========= BRUTALIST ELEMENTS (theme-aware) ========= */
+.box-brutal {
+  @apply border-2 border-border bg-card transition;
+  box-shadow: 6px 6px 0 var(--shadow-weak);
+}
+.box-brutal:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--shadow-strong);
+}
+
+/* Skill card */
+.skill-card {
+  @apply border-2 border-border bg-card px-6 py-8 min-w-[210px] md:min-w-[240px]
+         flex flex-col items-center justify-center text-center transition;
+  box-shadow: 6px 6px 0 var(--shadow-weak);
+}
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--shadow-strong);
+}
+
+/* Buttons (utility helpers) */
+.btn-brutal {
+  @apply inline-flex items-center gap-2 border-2 border-border px-4 py-2 bg-card transition;
+  box-shadow: 4px 4px 0 var(--shadow-weak);
+}
+.btn-brutal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--shadow-strong);
+}
+.btn-accent { @apply bg-accent text-fg; }
+
+/* ========= MARQUEE ========= */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-box {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee-x 36s linear infinite;
+}
+
+/* ========= ACCESSIBILITY ========= */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation-duration: 0.01ms; animation-iteration-count: 1; }
+  .box-brutal, .box-brutal:hover,
+  .skill-card, .skill-card:hover {
+    transform: none;
+    box-shadow: 6px 6px 0 var(--shadow-weak);
+  }
+}
+
+/* Display font if you want to use it for the name */
+.name-display {
+  font-family: "Bebas Neue", var(--font-display);
+  letter-spacing: 0.5px;
+}
+
+/* Blinking caret for role line (if you use it anywhere) */
+@keyframes caretBlink {
+  0%, 45% { box-shadow: inset -2px 0 0 var(--fg); }
+  50%,100% { box-shadow: inset -2px 0 0 transparent; }
+}
+.animate-caret { padding-right: 6px; animation: caretBlink 1s steps(1) infinite; }
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+.animate-blink { display: inline-block; width: 1ch; animation: blink 1s step-start infinite; }
+
+@keyframes bc-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.batcat-bob { animation: bc-bob 2.6s ease-in-out infinite; }
+
+/* Subtle accessible focus */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ========= RESUME PRINT STYLES ========= */
+@media print {
+  /* Hide everything except resume content when printing */
+  body * { visibility: hidden; }
+
+  .resume-content,
+  .resume-content * {
+    visibility: visible;
+  }
+
+  .resume-content {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important; /* force white paper */
+    color: #000000 !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    padding: 0.5in !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure proper page breaks */
+  .resume-content > div { page-break-inside: avoid; }
+
+  /* Hide interactive elements when printing */
+  button, .fixed, .sticky { display: none !important; }
+
+  /* Optimise colours for printing */
+  .bg-blue-50 { background-color: #f8f9ff !important; }
+  .text-blue-600, .text-blue-800 { color: #1e40af !important; }
+  .border-blue-600 { border-color: #1e40af !important; }
+
+  /* Tighter spacing for print */
+  .space-y-1 > * + * { margin-top: 0.1rem !important; }
+  .space-y-3 > * + * { margin-top: 0.3rem !important; }
+  .mb-5 { margin-bottom: 0.8rem !important; }
+
+  /* Keep links readable without URLs printed after */
+  a[href]::after { content: none !important; }
+  a { color: #1e40af !important; text-decoration: underline !important; }
+}

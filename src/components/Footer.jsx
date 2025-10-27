@@ -1,0 +1,45 @@
+import { useEffect, useState } from "react";
+import BatCatMark from "./BatCatMark";
+
+export default function Footer() {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const ts = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(now);
+
+  return (
+   
+    <footer className="relative mt-16" role="contentinfo">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mb-2 h-1 bg-black/80" />
+      </div>
+
+      <div className="mx-auto max-w-6xl my-3 px-4 py-2 border-2 border-black bg-yellow-400 shadow-[6px_6px_0_#00000040] flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 font-mono text-sm font-bold">
+          <BatCatMark size={22} />
+          <span>
+            © {new Date().getFullYear()} Made by Manoj Adhikari — Brutalist /
+            Swiss UI with yellow accent.
+          </span>
+        </div>
+        <div className="font-mono text-sm">{ts}</div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 pb-6">
+        <p className="text-[12px] font-mono opacity-60">
+          BatCat mark inspired by Mark Horn.
+        </p>
+      </div>
+    </footer>
+  );
+}
