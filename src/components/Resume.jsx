@@ -9,9 +9,14 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-// Configuration - Update these with your information
-const RESUME_URL = "/Resume.pdf";
-const DOWNLOAD_NAME = "Resume.pdf";
+// ============================================
+// CONFIGURATION - UPDATE THESE WITH YOUR INFO
+// ============================================
+// 1. Place your resume PDF in the /public folder
+// 2. Update the filename below (must match the file in /public)
+// 3. The download name is what users will see when downloading
+const RESUME_URL = "/YourName-Resume.pdf"; // Change to match your PDF filename in /public folder
+const DOWNLOAD_NAME = "YourName-Resume.pdf"; // Change to your preferred download filename
 
 export default function Resume({ onClose }) {
   const resumeRef = useRef(null);
@@ -96,6 +101,11 @@ export default function Resume({ onClose }) {
         `}</style>
 
         {/* Resume Content (UI only; download uses the static PDF) */}
+        {/* 
+          NOTE: This is a VISUAL TEMPLATE ONLY. Update this content with your own information.
+          The actual downloaded PDF comes from /public/YourName-Resume.pdf
+          This HTML version is just for preview in the modal.
+        */}
         <div
           ref={resumeRef}
           className="resume-content max-h-[80vh] overflow-y-auto bg-white"
@@ -108,27 +118,28 @@ export default function Resume({ onClose }) {
         >
           <div className="p-8">
             {/* Header */}
+            {/* TODO: Update this section with your personal information */}
             <div className="text-center mb-6 border-b-2 border-blue-600 pb-4">
               <h1 className="text-4xl font-bold text-blue-800 mb-1 tracking-tight">
-                Manoj Adhikari
+                Your Full Name
               </h1>
               <div className="text-lg text-gray-600 font-medium mb-3">
-                MERN Full Stack Developer
+                Your Job Title / Specialization
               </div>
               <div className="flex justify-center flex-wrap gap-5 text-sm">
                 <span className="flex items-center gap-2">
                   <FaMapMarkerAlt className="text-blue-600" />
-                  Sydney, NSW, Australia
+                  Your City, State, Country
                 </span>
                 <a
-                  href="mailto:manojadhikari57@gmail.com"
+                  href="mailto:your.email@example.com"
                   className="flex items-center gap-2 text-blue-600 hover:underline"
                 >
                   <FaEnvelope />
-                  manojadhikari57@gmail.com
+                  your.email@example.com
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/manojadh57/"
+                  href="https://www.linkedin.com/in/your-profile/"
                   className="flex items-center gap-2 text-blue-600 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -137,7 +148,7 @@ export default function Resume({ onClose }) {
                   LinkedIn
                 </a>
                 <a
-                  href="https://github.com/manojadh57"
+                  href="https://github.com/yourusername"
                   className="flex items-center gap-2 text-blue-600 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -146,7 +157,7 @@ export default function Resume({ onClose }) {
                   GitHub
                 </a>
                 <a
-                  href="https://manojportfolioo.vercel.app/"
+                  href="https://yourportfolio.com/"
                   className="flex items-center gap-2 text-blue-600 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"

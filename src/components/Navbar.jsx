@@ -65,7 +65,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center border-2 border-black bg-white p-2 shadow-[3px_3px_0_#000] active:translate-y-[2px]"
+            className="md:hidden inline-flex items-center justify-center border-2 border-black bg-white p-3 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_#000] active:translate-y-[2px] transition-transform"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -78,9 +78,12 @@ export default function Navbar() {
         {/* Mobile panel */}
         <div
           id="mobile-menu"
-          className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
-            open ? "max-h-[420px]" : "max-h-0"
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
           }`}
+          style={{
+            overflow: open ? "visible" : "hidden"
+          }}
         >
           <div className="pt-3 border-t-2 border-black mt-3">
             <ul className="grid grid-cols-2 gap-2">
@@ -89,7 +92,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={closeMenu}
-                    className="block text-center px-3 py-2 border-2 border-black bg-white text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] hover:bg-yellow-300 active:translate-y-[1px]"
+                    className="block text-center px-3 py-3 min-h-[44px] border-2 border-black bg-white text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] hover:bg-yellow-300 active:translate-y-[1px] transition-all"
                   >
                     {l.label}
                   </a>

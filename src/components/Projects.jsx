@@ -7,78 +7,10 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { FEATURED_PROJECTS, SMALL_PROJECTS } from "../data/projects";
 
-// Featured Projects
-const FEATURED_PROJECTS = [
-  {
-    id: 1,
-    title: "E-Commerce Website",
-    subtitle: "Customer Shopping Platform",
-    blurb:
-      "Full-featured online shopping platform with user authentication, product catalog, shopping cart, and secure Stripe payment integration.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
-    image: "/client.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/ecommerce-admin-FE",
-    demo: "http://ecommerce-client-fe-global-bucket.s3-website-ap-southeast-2.amazonaws.com/",
-  },
-  {
-    id: 2,
-    title: "Admin CMS Dashboard",
-    subtitle: "E-commerce Management System",
-    blurb:
-      "Comprehensive admin dashboard for managing products, orders, customers, inventory, and sales analytics with intuitive interface.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "Admin Panel"],
-    image: "/admin.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/ecommerce-admin-FE",
-    demo: "http://ecommerce-global-bucket.s3-website-ap-southeast-2.amazonaws.com/",
-  },
-];
-
-// Smaller Projects
-const SMALL_PROJECTS = [
-  {
-    id: 3,
-    title: "Weather Forecast",
-    blurb: "Real-time weather with 5-day forecast",
-    tech: ["React", "Weather API", "Geolocation"],
-    image: "/weather.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/Weather-Forecast",
-    demo: "https://weather-forecast-five-teal.vercel.app",
-  },
-  {
-    id: 4,
-    title: "Currency Converter",
-    blurb: "Live exchange rates converter",
-    tech: ["React", "Exchange Rate API", "Local Storage"],
-    image: "/currency.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/CURRENCY-CONVERTER",
-    demo: "https://currency-converter-nine-vert.vercel.app/",
-  },
-  {
-    id: 5,
-    title: "Movie Finder",
-    blurb: "Movie search with watchlist",
-    tech: ["React", "OMDb API", "Tailwind"],
-    image: "/movie.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/movie-finder",
-    demo: "https://movie-finder-umber-nine.vercel.app/",
-  },
-  {
-    id: 6,
-    title: "React Calculator",
-    blurb: "Interactive calculator app",
-    tech: ["React", "JavaScript", "CSS3"],
-    image: "/calculator.png",
-    video: null, // Video temporarily disabled until hosted properly
-    repo: "https://github.com/manojadh57/REACTcalculator",
-    demo: "https://reactcalculator-livid.vercel.app",
-  },
-];
+// Featured Projects and Small Projects are now imported from /src/data/projects.js
+// Update that file to customize your projects
 
 function TechStack({ tech }) {
   return (
