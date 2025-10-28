@@ -18,7 +18,7 @@ const FEATURED_PROJECTS = [
       "Full-featured online shopping platform with user authentication, product catalog, shopping cart, and secure Stripe payment integration.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
     image: "/client.png",
-    video: "https://your-ecommerce-demo.vercel.app/videos/ecommerce-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/ecommerce-admin-FE",
     demo: "http://ecommerce-client-fe-global-bucket.s3-website-ap-southeast-2.amazonaws.com/",
   },
@@ -30,7 +30,7 @@ const FEATURED_PROJECTS = [
       "Comprehensive admin dashboard for managing products, orders, customers, inventory, and sales analytics with intuitive interface.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "Admin Panel"],
     image: "/admin.png",
-    video: "https://your-admin-cms.vercel.app/videos/admin-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/ecommerce-admin-FE",
     demo: "http://ecommerce-global-bucket.s3-website-ap-southeast-2.amazonaws.com/",
   },
@@ -44,8 +44,7 @@ const SMALL_PROJECTS = [
     blurb: "Real-time weather with 5-day forecast",
     tech: ["React", "Weather API", "Geolocation"],
     image: "/weather.png",
-    video:
-      "https://weather-forecast-five-teal.vercel.app/videos/weather-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/Weather-Forecast",
     demo: "https://weather-forecast-five-teal.vercel.app",
   },
@@ -55,8 +54,7 @@ const SMALL_PROJECTS = [
     blurb: "Live exchange rates converter",
     tech: ["React", "Exchange Rate API", "Local Storage"],
     image: "/currency.png",
-    video:
-      "https://currency-converter-nine-vert.vercel.app/videos/currency-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/CURRENCY-CONVERTER",
     demo: "https://currency-converter-nine-vert.vercel.app/",
   },
@@ -66,7 +64,7 @@ const SMALL_PROJECTS = [
     blurb: "Movie search with watchlist",
     tech: ["React", "OMDb API", "Tailwind"],
     image: "/movie.png",
-    video: "https://your-movie-app.vercel.app/videos/movie-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/movie-finder",
     demo: "https://movie-finder-umber-nine.vercel.app/",
   },
@@ -76,8 +74,7 @@ const SMALL_PROJECTS = [
     blurb: "Interactive calculator app",
     tech: ["React", "JavaScript", "CSS3"],
     image: "/calculator.png",
-    video:
-      "https://reactcalculator-livid.vercel.app/videos/calculator-demo.mp4",
+    video: null, // Video temporarily disabled until hosted properly
     repo: "https://github.com/manojadh57/REACTcalculator",
     demo: "https://reactcalculator-livid.vercel.app",
   },
@@ -120,6 +117,7 @@ function ActionButton({ href, children, variant = "primary", icon: Icon }) {
 
 function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
   const videoRef = useRef(null);
+  const [hasVideoError, setHasVideoError] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -130,6 +128,29 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
       v.pause();
     }
   }, [isPlaying]);
+
+  // If no video or video failed, show image only
+  if (!src || hasVideoError) {
+    return (
+      <div className={`relative ${className}`}>
+        <img
+          src={poster}
+          alt="Project preview"
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src =
+              "data:image/svg+xml;utf8," +
+              encodeURIComponent(
+                `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>
+                   <rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>
+                   <text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>
+                 </svg>`
+              );
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={`relative group ${className}`}>
@@ -142,33 +163,12 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
         preload="none"
         className="w-full h-full object-cover"
         onError={(e) => {
-          // hide video, show the next-sibling image fallback
-          e.currentTarget.style.display = "none";
-          if (e.currentTarget.nextSibling) {
-            e.currentTarget.nextSibling.style.display = "block";
-          }
+          console.warn('Video failed to load:', src);
+          setHasVideoError(true);
         }}
       >
         <source src={src} type="video/mp4" />
       </video>
-
-      {/* Image fallback (or poster placeholder) */}
-      <img
-        src={poster}
-        alt="Project preview"
-        className="w-full h-full object-cover"
-        style={{ display: "none" }}
-        onError={(e) => {
-          e.currentTarget.src =
-            "data:image/svg+xml;utf8," +
-            encodeURIComponent(
-              `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>
-                 <rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>
-                 <text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>
-               </svg>`
-            );
-        }}
-      />
 
       {/* Hover controls */}
       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

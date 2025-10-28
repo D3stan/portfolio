@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
-export default function CoolBackground() {
+export default memo(function CoolBackground() {
   const canvasRef = useRef(null);
   const animationRef = useRef(0);
 
@@ -8,7 +8,10 @@ export default function CoolBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d", { alpha: true });
+    const ctx = canvas.getContext("2d", { 
+      alpha: true,
+      desynchronized: true,
+    });
 
     // ---------- Sizing / Hi-DPI ----------
     let vw = window.innerWidth;
@@ -33,6 +36,12 @@ export default function CoolBackground() {
     const prefersReduced =
       typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    
+    // Detect device capabilities for performance optimization
+    const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isLowEnd = navigator.hardwareConcurrency <= 4;
+    const shouldSimplify = isMobile || isLowEnd;
+    
     let time = 0;
 
     // ---------- Palette ----------
@@ -59,13 +68,15 @@ export default function CoolBackground() {
       return set[index % set.length];
     };
 
-    // Screen-scaled density
-    const scaleFactor = Math.sqrt((vw * vh) / (1280 * 720));
+    // Screen-scaled density with mobile optimization
+    const scaleFactor = shouldSimplify 
+      ? Math.sqrt((vw * vh) / (1280 * 720)) * 0.5
+      : Math.sqrt((vw * vh) / (1280 * 720));
     const ease = (n) => Math.max(1, Math.round(n * scaleFactor));
 
     // ---------- Existing Background Dots (minimal) ----------
     const backgroundDots = [];
-    const dotCount = prefersReduced ? 50 : ease(150);
+    const dotCount = prefersReduced ? 50 : shouldSimplify ? ease(75) : ease(150);
     for (let i = 0; i < dotCount; i++) {
       backgroundDots.push({
         x: Math.random() * vw,
@@ -85,7 +96,7 @@ export default function CoolBackground() {
       "grass_tree",
       "bottlebrush",
     ];
-    const plantCount = prefersReduced ? 8 : ease(16);
+    const plantCount = prefersReduced ? 8 : shouldSimplify ? ease(8) : ease(16);
     for (let i = 0; i < plantCount; i++) {
       plants.push({
         x: Math.random() * vw,
@@ -805,7 +816,17 @@ export default function CoolBackground() {
     };
 
     // ================== ANIMATION ==================
-    const animate = () => {
+    let lastFrame = 0;
+    const frameDelay = shouldSimplify ? 1000 / 30 : 1000 / 60;
+    
+    const animate = (timestamp) => {
+      // Throttle animation on mobile (30fps instead of 60fps)
+      if (shouldSimplify && timestamp - lastFrame < frameDelay) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrame = timestamp;
+      
       time += 1;
 
       // Light background + optional wash for extra airiness
@@ -906,7 +927,8 @@ export default function CoolBackground() {
       className="fixed inset-0 -z-10 pointer-events-none"
       style={{
         background: "linear-gradient(to bottom, #FEFEFE 0%, #F0F0F0 100%)",
+        willChange: "auto",
       }}
     />
   );
-}
+});
