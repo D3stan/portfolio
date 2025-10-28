@@ -926,7 +926,7 @@ export default memo(function CoolBackground() {
       ref={canvasRef}
       className="fixed inset-0 -z-10 pointer-events-none"
       style={{
-        background: "linear-gradient(to bottom, #FEFEFE 0%, #F0F0F0 100%)",
+        background: "var(--bg)",
         willChange: "auto",
       }}
     />

@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50" aria-label="Main navigation">
-      <div className="bg-white border-2 border-black shadow-[6px_6px_0_#FFD600] px-4 py-3 w-[min(1100px,92vw)] rounded-none">
+      <div className="bg-card border-2 border-border shadow-[6px_6px_0_var(--accent)] px-4 py-3 w-[min(1100px,92vw)] rounded-none">
         <div className="flex items-center justify-between gap-4">
           {/* Logo + Name */}
           <a
@@ -36,10 +36,10 @@ export default function Navbar() {
             className="flex items-center gap-2 select-none"
             onClick={closeMenu}
           >
-            <div className="border-2 border-black bg-white rounded-full p-1 shadow-[3px_3px_0_#000] hover:-translate-y-[2px] transition">
+            <div className="border-2 border-border bg-card rounded-full p-1 shadow-[3px_3px_0_#000] hover:-translate-y-[2px] transition">
               <BatCatLogo size={32} />
             </div>
-            <h1 className="text-xl font-extrabold tracking-tight">
+            <h1 className="text-xl font-extrabold tracking-tight text-fg">
               MANOJ<span className="ml-1">.</span>
             </h1>
           </a>
@@ -50,7 +50,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="inline-flex items-center justify-center px-3 py-2 border-2 border-black bg-white text-sm font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] transition hover:-translate-y-0.5 hover:bg-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+                  className="inline-flex items-center justify-center px-3 py-2 border-2 border-border bg-card text-sm font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] transition hover:-translate-y-0.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {l.label}
                 </a>
@@ -69,7 +69,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               type="button"
-              className="inline-flex items-center justify-center border-2 border-black bg-white p-3 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_#000] active:translate-y-[2px] transition-transform"
+              className="inline-flex items-center justify-center border-2 border-border bg-card p-3 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_#000] active:translate-y-[2px] transition-transform"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -90,14 +90,14 @@ export default function Navbar() {
             overflow: open ? "visible" : "hidden"
           }}
         >
-          <div className="pt-3 border-t-2 border-black mt-3">
+          <div className="pt-3 border-t-2 border-border mt-3">
             <ul className="grid grid-cols-2 gap-2">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={closeMenu}
-                    className="block text-center px-3 py-3 min-h-[44px] border-2 border-black bg-white text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] hover:bg-yellow-300 active:translate-y-[1px] transition-all"
+                    className="block text-center px-3 py-3 min-h-[44px] border-2 border-border bg-card text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_#000] hover:bg-accent active:translate-y-[1px] transition-all"
                   >
                     {l.label}
                   </a>

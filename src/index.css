@@ -68,9 +68,10 @@
 
 /* ========= BASE ========= */
 html, body, #root {
-  /* keep the canvas transparent for your art; resume sets its own bg */
+  /* Use CSS variables for backgrounds to enable theme switching */
   @apply min-h-screen m-0 p-0 text-fg;
-  background: transparent;
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
   /* Prevent horizontal scroll */
