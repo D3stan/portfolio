@@ -9,8 +9,9 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-const RESUME_URL = "/Manoj Adhikari_Resume.pdf";
-const DOWNLOAD_NAME = "Manoj Adhikari_Resume.pdf";
+// Configuration - Update these with your information
+const RESUME_URL = "/Resume.pdf";
+const DOWNLOAD_NAME = "Resume.pdf";
 
 export default function Resume({ onClose }) {
   const resumeRef = useRef(null);

@@ -26,7 +26,7 @@ export default function Navbar() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50" aria-label="Main navigation">
       <div className="bg-white border-2 border-black shadow-[6px_6px_0_#FFD600] px-4 py-3 w-[min(1100px,92vw)] rounded-none">
         <div className="flex items-center justify-between gap-4">
           {/* Logo + Name */}

@@ -136,6 +136,7 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
         <img
           src={poster}
           alt="Project preview"
+          loading="lazy"
           className="w-full h-full object-cover"
           onError={(e) => {
             e.currentTarget.src =
