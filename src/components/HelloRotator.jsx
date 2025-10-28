@@ -1,5 +1,6 @@
 // HelloRotator.jsx
 import { useEffect, useMemo, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 
 /**

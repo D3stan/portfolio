@@ -74,10 +74,10 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
             e.currentTarget.src =
               "data:image/svg+xml;utf8," +
               encodeURIComponent(
-                `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>
-                   <rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>
-                   <text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>
-                 </svg>`
+                "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>" +
+                "<rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>" +
+                "<text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>" +
+                "</svg>"
               );
           }}
         />
@@ -95,7 +95,7 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
         playsInline
         preload="none"
         className="w-full h-full object-cover"
-        onError={(e) => {
+        onError={() => {
           console.warn('Video failed to load:', src);
           setHasVideoError(true);
         }}

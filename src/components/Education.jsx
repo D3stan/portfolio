@@ -1,4 +1,5 @@
 import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -6,7 +7,7 @@ const education = [
   {
     school: "Australian Institute of Higher Education",
     degree: "Bachelor's in Computer & Information Systems Security / Assurance",
-    period: "Feb 2019 – Oct 2022",
+    period: "Feb 2019 - Oct 2022",
     badge: "AIH",
     address: "Level 11, 545 Kent St, Sydney NSW 2000, Australia",
     url: "https://aih.nsw.edu.au",
@@ -16,7 +17,7 @@ const education = [
   {
     school: "Kingsford International Institute",
     degree: "Diploma of Information Technology",
-    period: "Feb 2018 – Feb 2019",
+    period: "Feb 2018 - Feb 2019",
     badge: "KII",
     address: "Kingsford, Sydney NSW, Australia",
     url: "https://kii.edu.au",
