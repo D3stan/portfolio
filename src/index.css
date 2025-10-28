@@ -6,13 +6,17 @@
 @tailwind utilities;
 
 /* ========= THEME TOKENS (CSS Variables) ========= */
+/* 
+  To change the main accent color globally, edit src/constants/colors.js
+  See COLOR_CUSTOMIZATION_GUIDE.md for detailed instructions
+*/
 /* Default: Swiss/Neutral */
 :root {
   --bg: #ffffff;
   --fg: #111111;
   --border: #111111;
   --card: #ffffff;
-  --accent: #ffd600;
+  --accent: #ffd600; /* Main accent color - change in src/constants/colors.js */
   --muted: #757575;
 
   --shadow-weak: rgba(0,0,0,0.12);

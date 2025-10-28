@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import SocialButtons from "./SocialButtons";
 import BatCatLogo from "./BatCatLogo";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "#about", label: "About" },
@@ -57,22 +58,26 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop socials */}
-          <div className="hidden md:block">
+          {/* Desktop socials + theme toggle */}
+          <div className="hidden md:flex items-center gap-3">
             <SocialButtons />
+            <ThemeToggle />
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center border-2 border-black bg-white p-3 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_#000] active:translate-y-[2px] transition-transform"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((s) => !s)}
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="inline-flex items-center justify-center border-2 border-black bg-white p-3 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_#000] active:translate-y-[2px] transition-transform"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((s) => !s)}
+            >
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile panel */}
