@@ -18,7 +18,7 @@ function TechStack({ tech }) {
       {tech.map((t, idx) => (
         <span
           key={idx}
-          className="inline-block border border-black px-2 py-0.5 text-xs font-mono bg-yellow-200 shadow-[2px_2px_0_rgba(0,0,0,0.6)]"
+          className="inline-block border border-border px-2 py-0.5 text-xs font-mono bg-accent bg-opacity-40 shadow-[2px_2px_0_var(--shadow-weak)]"
         >
           {t}
         </span>
@@ -29,10 +29,10 @@ function TechStack({ tech }) {
 
 function ActionButton({ href, children, variant = "primary", icon: Icon }) {
   const base =
-    "inline-flex items-center gap-1 border-2 border-black font-semibold px-3 py-1.5 text-sm transition-all shadow-[3px_3px_0_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0_rgba(0,0,0,0.8)] hover:-translate-x-0.5 hover:-translate-y-0.5";
+    "inline-flex items-center gap-1 border-2 border-border font-semibold px-3 py-1.5 text-sm transition-all shadow-[3px_3px_0_var(--shadow-strong)] hover:shadow-[4px_4px_0_var(--shadow-strong)] hover:-translate-x-0.5 hover:-translate-y-0.5";
   const variants = {
-    primary: "bg-yellow-300 hover:bg-yellow-400",
-    secondary: "bg-white hover:bg-gray-50",
+    primary: "bg-accent hover:opacity-90",
+    secondary: "bg-card hover:opacity-90",
   };
   return (
     <a
@@ -124,8 +124,8 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
 // Small Project Card
 function SmallProjectCard({ project, isPlaying, onPlayPause }) {
   return (
-    <div className="border-2 border-black bg-white shadow-[4px_4px_0_rgba(0,0,0,0.8)] w-72 flex-shrink-0">
-      <div className="relative aspect-video border-b-2 border-black">
+    <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0">
+      <div className="relative aspect-video border-b-2 border-border">
         <VideoPlayer
           src={project.video}
           poster={project.image}
@@ -137,7 +137,7 @@ function SmallProjectCard({ project, isPlaying, onPlayPause }) {
 
       <div className="p-4">
         <h4 className="font-extrabold mb-1 text-base">{project.title}</h4>
-        <p className="text-xs text-gray-600 mb-3">{project.blurb}</p>
+        <p className="text-xs text-muted mb-3">{project.blurb}</p>
 
         <div className="mb-3">
           <TechStack tech={project.tech} />
@@ -180,10 +180,10 @@ function SmallProjectsSlider({ projects }) {
   };
 
   return (
-    <div className="border-2 border-black bg-white/90 backdrop-blur-sm p-4 shadow-[4px_4px_0_rgba(0,0,0,0.8)]">
+    <div className="border-2 border-border bg-card backdrop-blur-sm p-4 shadow-[4px_4px_0_var(--shadow-strong)]">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-bold">Other Projects</h3>
-        <span className="font-mono text-xs text-gray-600">
+        <span className="font-mono text-xs text-muted">
           {currentIndex + 1} of {projects.length}
         </span>
       </div>
@@ -207,7 +207,7 @@ function SmallProjectsSlider({ projects }) {
       <div className="flex justify-between items-center">
         <button
           onClick={prevSlide}
-          className="flex items-center gap-1 border-2 border-black bg-white px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_rgba(0,0,0,0.8)] hover:-translate-y-0.5 transition-all"
+          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
           aria-label="Previous"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -223,8 +223,8 @@ function SmallProjectsSlider({ projects }) {
                 setPlayingVideo(null);
               }}
               aria-label={`Go to slide ${index + 1}`}
-              className={`w-2 h-2 border border-black ${
-                index === currentIndex ? "bg-yellow-400" : "bg-white"
+              className={`w-2 h-2 border border-border ${
+                index === currentIndex ? "bg-accent" : "bg-card"
               }`}
             />
           ))}
@@ -232,7 +232,7 @@ function SmallProjectsSlider({ projects }) {
 
         <button
           onClick={nextSlide}
-          className="flex items-center gap-1 border-2 border-black bg-white px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_rgba(0,0,0,0.8)] hover:-translate-y-0.5 transition-all"
+          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
           aria-label="Next"
         >
           Next
@@ -255,7 +255,7 @@ export default function Projects() {
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-block border-2 border-black bg-white px-6 py-2 shadow-[6px_6px_0_rgba(0,0,0,0.7)]">
+          <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[6px_6px_0_var(--shadow-strong)]">
             <h2 className="text-2xl font-extrabold tracking-wide">PROJECTS</h2>
           </div>
         </div>
@@ -265,10 +265,10 @@ export default function Projects() {
           {FEATURED_PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="border-2 border-black bg-white shadow-[6px_6px_0_rgba(0,0,0,0.8)]"
+              className="border-2 border-border bg-card shadow-[6px_6px_0_var(--shadow-strong)]"
             >
               {/* Video */}
-              <div className="relative aspect-video border-b-2 border-black">
+              <div className="relative aspect-video border-b-2 border-border">
                 <VideoPlayer
                   src={project.video}
                   poster={project.image}
@@ -284,7 +284,7 @@ export default function Projects() {
                 <p className="text-teal-700 font-semibold mb-3 text-sm">
                   {project.subtitle}
                 </p>
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                <p className="text-muted text-sm leading-relaxed mb-4">
                   {project.blurb}
                 </p>
 
@@ -320,13 +320,13 @@ export default function Projects() {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="inline-block border-2 border-black bg-yellow-300 px-6 py-3 shadow-[4px_4px_0_rgba(0,0,0,0.8)]">
+          <div className="inline-block border-2 border-border bg-accent px-6 py-3 shadow-[4px_4px_0_var(--shadow-strong)]">
             <p className="font-semibold mb-2">More projects on GitHub</p>
             <a
               href="https://github.com/manojadh57"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors text-sm"
+              className="inline-flex items-center gap-2 bg-fg text-bg px-4 py-2 font-bold hover:opacity-90 transition-colors text-sm"
             >
               <Github className="w-4 h-4" />
               View All

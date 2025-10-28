@@ -88,15 +88,15 @@ export default function Contact() {
         <div className="flex justify-center mb-12">
           <h2
             className="uppercase font-extrabold tracking-tight
-                       border-2 border-black bg-white text-black
-                       px-6 py-2 shadow-[6px_6px_0_rgba(0,0,0,0.18)]"
+                       border-2 border-border bg-card text-fg
+                       px-6 py-2 shadow-[6px_6px_0_var(--shadow-weak)]"
           >
             Contact
           </h2>
         </div>
 
         {/* Card */}
-        <div className="border-2 border-black bg-white text-black shadow-[8px_8px_0_rgba(0,0,0,0.18)] p-6">
+        <div className="border-2 border-border bg-card text-fg shadow-[8px_8px_0_var(--shadow-weak)] p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Left: quick info / socials */}
             <div className="md:col-span-1 space-y-4">
@@ -119,7 +119,7 @@ export default function Contact() {
                   href="https://github.com/manojadh57"
                   target="_blank"
                   rel="noreferrer"
-                  className="border-2 border-black bg-white p-2 shadow-[4px_4px_0_rgba(0,0,0,0.18)]"
+                  className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
                   aria-label="GitHub"
                 >
                   <FiGithub />
@@ -128,7 +128,7 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/manojadh57/"
                   target="_blank"
                   rel="noreferrer"
-                  className="border-2 border-black bg-white p-2 shadow-[4px_4px_0_rgba(0,0,0,0.18)]"
+                  className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
                   aria-label="LinkedIn"
                 >
                   <FiLinkedin />
@@ -165,7 +165,7 @@ export default function Contact() {
                     type="text"
                     value={formState.name}
                     onChange={handleChange}
-                    className={`w-full border-2 ${errors.name ? 'border-red-600' : 'border-black'} px-3 py-2 bg-white focus:outline-none focus:border-blue-600`}
+                    className={`w-full border-2 ${errors.name ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
                     placeholder="Your name"
                   />
                   {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
@@ -181,7 +181,7 @@ export default function Contact() {
                     type="email"
                     value={formState.email}
                     onChange={handleChange}
-                    className={`w-full border-2 ${errors.email ? 'border-red-600' : 'border-black'} px-3 py-2 bg-white focus:outline-none focus:border-blue-600`}
+                    className={`w-full border-2 ${errors.email ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
                     placeholder="you@example.com"
                   />
                   {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
@@ -197,7 +197,7 @@ export default function Contact() {
                     type="text"
                     value={formState.subject}
                     onChange={handleChange}
-                    className={`w-full border-2 ${errors.subject ? 'border-red-600' : 'border-black'} px-3 py-2 bg-white focus:outline-none focus:border-blue-600`}
+                    className={`w-full border-2 ${errors.subject ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
                     placeholder="What's this about?"
                   />
                   {errors.subject && <p className="text-xs text-red-600 mt-1">{errors.subject}</p>}
@@ -213,7 +213,7 @@ export default function Contact() {
                     rows="6"
                     value={formState.message}
                     onChange={handleChange}
-                    className={`w-full border-2 ${errors.message ? 'border-red-600' : 'border-black'} px-3 py-2 bg-white focus:outline-none focus:border-blue-600`}
+                    className={`w-full border-2 ${errors.message ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
                     placeholder="Tell me a bit more…"
                   />
                   {errors.message && <p className="text-xs text-red-600 mt-1">{errors.message}</p>}
@@ -223,7 +223,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="border-2 border-black bg-yellow-300 px-6 py-3 font-extrabold uppercase shadow-[6px_6px_0_rgba(0,0,0,0.18)] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                    className="border-2 border-border bg-accent px-6 py-3 font-extrabold uppercase shadow-[6px_6px_0_var(--shadow-weak)] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>

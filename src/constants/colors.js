@@ -45,7 +45,7 @@ export const THEME_COLORS = {
   'brutalist-dark': {
     bg: '#0a0a0a',
     fg: '#f5f5f5',
-    border: '#000000',
+    border: '#333333',
     card: '#111111',
     accent: COLORS.mainAccent, // Uses main accent
     muted: '#aaaaaa',

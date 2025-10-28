@@ -21,10 +21,10 @@ export default function Footer() {
    
     <footer className="relative mt-16" role="contentinfo">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-2 h-1 bg-black/80" />
+        <div className="mb-2 h-1 bg-border" />
       </div>
 
-      <div className="mx-auto max-w-6xl my-3 px-4 py-2 border-2 border-black bg-yellow-400 shadow-[6px_6px_0_#00000040] flex flex-wrap items-center justify-between gap-3">
+      <div className="mx-auto max-w-6xl my-3 px-4 py-2 border-2 border-border bg-accent shadow-[6px_6px_0_var(--shadow-weak)] flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 font-mono text-sm font-bold">
           <BatCatMark size={22} />
           <span>
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 pb-6">
-        <p className="text-[12px] font-mono opacity-60">
+        <p className="text-[12px] font-mono text-muted">
           BatCat mark inspired by Mark Horn.
         </p>
       </div>

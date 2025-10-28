@@ -2,8 +2,8 @@ import { Github, Linkedin } from "lucide-react";
 
 export default function SocialButtons() {
   const base =
-    "border-2 border-black p-2 flex items-center justify-center transition transform hover:-translate-y-1";
-  const hover = "hover:bg-yellow-400";
+    "border-2 border-border p-2 flex items-center justify-center transition transform hover:-translate-y-1";
+  const hover = "hover:bg-accent";
 
   return (
     <div className="flex gap-3">

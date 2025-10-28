@@ -65,7 +65,7 @@ export default function Resume({ onClose }) {
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-y-auto">
       <div className="relative w-full max-w-5xl bg-white border-2 border-black shadow-[8px_8px_0_rgba(0,0,0,0.3)]">
         {/* Header Controls */}
-        <div className="sticky top-0 z-10 bg-yellow-300 border-b-2 border-black p-3 flex justify-between items-center print:hidden">
+        <div className="sticky top-0 z-10 bg-accent border-b-2 border-black p-3 flex justify-between items-center print:hidden">
           <h2 className="font-extrabold text-lg">RESUME</h2>
           <div className="flex gap-2">
             <button

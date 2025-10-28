@@ -52,7 +52,7 @@ export default function About() {
 
   // Square-edge card (same style as buttons but with no rounded corners)
   const card =
-    "bg-white border-2 border-black shadow-[6px_6px_0_#000] rounded-none";
+    "bg-card border-2 border-border shadow-[6px_6px_0_var(--shadow-strong)] rounded-none";
 
   const openResume = (e) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function About() {
               </div>
 
               {/* Availability pill (square) */}
-              <div className="mt-3 inline-flex items-center gap-2 rounded-none border-2 border-black bg-green-200 px-3 py-2 shadow-[4px_4px_0_#000]">
+              <div className="mt-3 inline-flex items-center gap-2 rounded-none border-2 border-border bg-green-200 px-3 py-2 shadow-[4px_4px_0_var(--shadow-strong)]">
                 <span className="relative inline-block h-2.5 w-2.5">
                   <span className="absolute inset-0 rounded-full bg-green-600" />
                 </span>
@@ -111,36 +111,36 @@ export default function About() {
                 A dedicated{" "}
                 <strong className="font-extrabold">Full-Stack Developer</strong>{" "}
                 skilled in crafting web applications using
-                <span className="font-semibold bg-yellow-200 px-1 ml-1">
+                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
                   JavaScript
                 </span>
                 ,
-                <span className="font-semibold bg-yellow-200 px-1 ml-1">
+                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
                   React.js
                 </span>
                 ,
-                <span className="font-semibold bg-yellow-200 px-1 ml-1">
+                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
                   Node.js
                 </span>
                 , and
-                <span className="font-semibold bg-yellow-200 px-1 ml-1">
+                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
                   Express
                 </span>
                 , complemented by proficiency in modern libraries and tooling. I
                 value
-                <span className="font-semibold underline decoration-4 decoration-yellow-300 underline-offset-2 ml-1">
+                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
                   clean architecture
                 </span>
                 ,
-                <span className="font-semibold underline decoration-4 decoration-yellow-300 underline-offset-2 ml-1">
+                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
                   accessible UI
                 </span>
                 ,
-                <span className="font-semibold underline decoration-4 decoration-yellow-300 underline-offset-2 ml-1">
+                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
                   strong API design
                 </span>
                 , and
-                <span className="font-semibold underline decoration-4 decoration-yellow-300 underline-offset-2 ml-1">
+                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
                   measurable performance
                 </span>
                 .
@@ -150,19 +150,19 @@ export default function About() {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <button
                   onClick={openResume}
-                  className="inline-flex items-center gap-2 border-2 border-black bg-yellow-300 px-4 py-2 font-semibold shadow-[6px_6px_0_#000] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
+                  className="inline-flex items-center gap-2 border-2 border-border bg-accent px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                 >
                   <FileText className="h-4 w-4" /> Resume
                 </button>
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-semibold shadow-[6px_6px_0_#000] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
+                  className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                 >
                   <ArrowRight className="h-4 w-4" /> View Projects
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-2 font-semibold shadow-[6px_6px_0_#000] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
+                  className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                 >
                   <Mail className="h-4 w-4" /> Email
                 </a>

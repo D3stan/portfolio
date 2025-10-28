@@ -43,7 +43,7 @@ export default function Education() {
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Heading */}
         <div className="flex justify-center mb-12">
-          <h2 className="uppercase font-extrabold tracking-tight border-2 border-black bg-white text-black px-6 py-2 shadow-[6px_6px_0_#000]">
+          <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[6px_6px_0_var(--shadow-strong)]">
             Education
           </h2>
         </div>
@@ -56,21 +56,21 @@ export default function Education() {
             return (
               <div
                 key={idx}
-                className="border-2 border-black bg-white text-black shadow-[8px_8px_0_rgba(0,0,0,0.18)]"
+                className="border-2 border-border bg-card text-fg shadow-[8px_8px_0_var(--shadow-weak)]"
               >
                 {/* Header: responsive stack on mobile */}
                 <button
                   type="button"
                   onClick={() => isAIH && setOpenAIH((v) => !v)}
                   className={[
-                    "w-full text-left border-b-2 border-black",
+                    "w-full text-left border-b-2 border-border",
                     "p-4 md:p-5",
                   ].join(" ")}
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-4">
                     {/* Left group */}
                     <div className="flex items-start gap-3 md:gap-4 flex-1 min-w-0">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-black overflow-hidden flex items-center justify-center bg-white shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-border overflow-hidden flex items-center justify-center bg-card shrink-0">
                         {edu.logo ? (
                           <img
                             src={edu.logo}
@@ -138,7 +138,7 @@ export default function Education() {
                         className="overflow-hidden"
                       >
                         <div className="p-4 md:p-5">
-                          <div className="border-2 border-black bg-white p-3 shadow-[6px_6px_0_#000]">
+                          <div className="border-2 border-border bg-card p-3 shadow-[6px_6px_0_var(--shadow-strong)]">
                             <img
                               src={cand[srcIdx]}
                               onError={handleImgError}
@@ -146,7 +146,7 @@ export default function Education() {
                               className="w-full max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain"
                               loading="lazy"
                             />
-                            <p className="mt-2 text-xs text-gray-700">
+                            <p className="mt-2 text-xs text-muted">
                               graduation day 2022, Sydney CBD
                             </p>
                           </div>
