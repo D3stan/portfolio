@@ -206,12 +206,12 @@ export default function Experience() {
                         {job.period}
                       </div>
                       <span
-                        className={`border-2 border-border bg-card p-1 shadow-[4px_4px_0_var(--shadow-strong)] transition-transform ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
+                        className="border-2 border-border bg-card p-1 shadow-[4px_4px_0_var(--shadow-strong)]"
                         aria-hidden="true"
                       >
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronDown className={`h-4 w-4 transition-transform ${
+                          isOpen ? "rotate-180" : ""
+                        }`} />
                       </span>
                     </div>
                   </div>

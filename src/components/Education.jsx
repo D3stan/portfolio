@@ -124,12 +124,12 @@ export default function Education() {
                       </div>
                       {edu.details && (
                         <span
-                          className={`border-2 border-black bg-white p-1 shadow-[4px_4px_0_#000] transition-transform ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
+                          className="border-2 border-border bg-card p-1 shadow-[4px_4px_0_var(--shadow-strong)]"
                           aria-hidden="true"
                         >
-                          <ChevronDown className="h-4 w-4" />
+                          <ChevronDown className={`h-4 w-4 transition-transform ${
+                            isOpen ? "rotate-180" : ""
+                          }`} />
                         </span>
                       )}
                     </div>

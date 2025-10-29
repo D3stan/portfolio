@@ -88,7 +88,7 @@ export const SITE_CONFIG = {
     title: "Alessandro Porcheddu | Software Developer & System Administrator",
     description: "Computer Science and Engineering student with expertise in full-stack development, system administration, embedded systems, and PLC programming. Skilled in Python, Java, JavaScript, React, Node.js, and Laravel.",
     keywords: ["Software Developer", "System Administrator", "Full-Stack Developer", "React", "Node.js", "Python", "Java", "Laravel", "PLC Programming", "Embedded Systems", "Computer Science", "Engineering"],
-    siteUrl: "https://yourportfolio.com", // TODO: Update with your deployed portfolio URL
+    siteUrl: "https://0xpuddu.it", // TODO: Update with your deployed portfolio URL
     image: "/images/portfolio-preview.png",
   },
   
