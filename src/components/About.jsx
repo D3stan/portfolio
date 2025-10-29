@@ -79,7 +79,7 @@ export default function About() {
               </div>
 
               {/* Availability pill (square) */}
-              <div className="mt-3 inline-flex items-center gap-2 rounded-none border-2 border-border bg-green-200 px-3 py-2 shadow-[4px_4px_0_var(--shadow-strong)]">
+              <div className="mt-3 inline-flex items-center gap-2 rounded-none border-2 border-border px-3 py-2 shadow-[4px_4px_0_var(--shadow-strong)]" style={{ backgroundColor: 'var(--accent)'}}>
                 <span className="relative inline-block h-2.5 w-2.5">
                   <span className="absolute inset-0 rounded-full bg-green-600" />
                 </span>

@@ -7,16 +7,17 @@
 
 /* ========= THEME TOKENS (CSS Variables) ========= */
 /* 
-  To change the main accent color globally, edit src/constants/colors.js
-  See COLOR_CUSTOMIZATION_GUIDE.md for detailed instructions
+  IMPORTANT: These default values are OVERRIDDEN by src/constants/colors.js
+  The theme system dynamically applies colors from colors.js on app load.
+  To change colors, edit src/constants/colors.js - NOT this file!
 */
-/* Default: Swiss/Neutral */
+/* Default: Swiss/Neutral - These are fallback values only */
 :root {
   --bg: #ffffff;
   --fg: #111111;
   --border: #111111;
   --card: #ffffff;
-  --accent: #4ecdc4; /* Main accent color - change in src/constants/colors.js */
+  --accent: #4ecdc4; /* This will be replaced by mainAccent from colors.js */
   --muted: #757575;
 
   --shadow-weak: rgba(0,0,0,0.12);
@@ -27,39 +28,39 @@
   --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
-/* Brutalist (Dark) */
+/* Brutalist (Dark) - Fallback only, dynamically overridden */
 [data-theme="brutalist-dark"] {
   --bg: #0a0a0a;
   --fg: #f5f5f5;
   --border: #000000;
   --card: #111111;
-  --accent: #4ecdc4;
+  --accent: #4ecdc4; /* Will be replaced by mainAccent from colors.js */
   --muted: #aaaaaa;
 
   --shadow-weak: rgba(0,0,0,0.5);
   --shadow-strong: rgba(0,0,0,0.6);
 }
 
-/* Noir */
+/* Noir - Fallback only, uses specific accent */
 [data-theme="noir"] {
   --bg: #0b0e14;
   --fg: #e6edf3;
   --border: #1f2328;
   --card: #111826;
-  --accent: #8b5cf6;
+  --accent: #8b5cf6; /* Noir theme has its own accent */
   --muted: #9aa6b2;
 
   --shadow-weak: rgba(16,20,27,0.45);
   --shadow-strong: rgba(16,20,27,0.6);
 }
 
-/* Ghibli Pastel */
+/* Ghibli Pastel - Fallback only, uses specific accent */
 [data-theme="ghibli"] {
   --bg: #fbf6ee;
   --fg: #2b2b2b;
   --border: #2b2b2b;
   --card: #fffaf1;
-  --accent: #5aa382;
+  --accent: #5aa382; /* Ghibli theme has its own accent */
   --muted: #6b7280;
 
   --shadow-weak: rgba(43,43,43,0.12);
@@ -257,7 +258,7 @@ textarea:focus-visible {
   
   /* Improve tap highlight on mobile - uses main accent color with transparency */
   button, a {
-    -webkit-tap-highlight-color: rgba(78, 205, 196, 0.3);
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 30%, transparent);
   }
   
   /* Prevent text selection on buttons for better UX */

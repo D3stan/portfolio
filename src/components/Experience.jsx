@@ -52,7 +52,7 @@ function Emph({ text }) {
 function Bullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
-      <Diamond className="mt-1 h-4 w-4 shrink-0 text-blue-600" />
+      <Diamond className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
       <span>
         <Emph text={children} />
       </span>
@@ -63,7 +63,7 @@ function Bullet({ children }) {
 function ImpactBullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
-      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-green-600" />
+      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
       <span>
         <Emph text={children} />
       </span>
@@ -239,7 +239,7 @@ export default function Experience() {
                     >
                       <div className="p-4 md:p-5">
                         {/* Main bullets */}
-                        <div className="pl-3 md:pl-4 border-l-4 border-red-500">
+                        <div className="pl-3 md:pl-4 border-l-4" style={{ borderColor: 'var(--accent)' }}>
                           <ul className="list-none mt-2 space-y-2">
                             {job.bullets.map((b, idx) => (
                               <Bullet key={idx}>{b}</Bullet>
@@ -251,7 +251,7 @@ export default function Experience() {
                         {job.impactBullets?.length ? (
                           <div className="mt-5">
                             <div className="inline-flex items-center gap-2 rounded-md border-2 border-border bg-card px-3 py-1 shadow-[4px_4px_0_var(--shadow-strong)]">
-                              <CheckCircle2 className="h-4 w-4 text-green-700" />
+                              <CheckCircle2 className="h-4 w-4" style={{ color: 'var(--accent)' }} />
                               <span className="text-sm font-extrabold">
                                 {job.impactTitle || "Impact"}
                               </span>

@@ -9,15 +9,21 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CoolBackground from "./components/CoolBackground"; // New background
 import PageLoader from "./components/PageLoader";
+import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const { applyTheme } = useTheme();
 
   useEffect(() => {
+    // Initialize theme colors from colors.js on mount
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+    
     // Simulate loading time for critical resources
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [applyTheme]);
 
   if (isLoading) {
     return <PageLoader />;

@@ -119,8 +119,8 @@ export default function Resume({ onClose }) {
           <div className="p-8">
             {/* Header */}
             {/* TODO: Update this section with your personal information */}
-            <div className="text-center mb-6 border-b-2 border-blue-600 pb-4">
-              <h1 className="text-4xl font-bold text-blue-800 mb-1 tracking-tight">
+            <div className="text-center mb-6 pb-4" style={{ borderBottom: '2px solid var(--accent)' }}>
+              <h1 className="text-4xl font-bold mb-1 tracking-tight" style={{ color: 'var(--accent)' }}>
                 Your Full Name
               </h1>
               <div className="text-lg text-gray-600 font-medium mb-3">
@@ -128,19 +128,21 @@ export default function Resume({ onClose }) {
               </div>
               <div className="flex justify-center flex-wrap gap-5 text-sm">
                 <span className="flex items-center gap-2">
-                  <FaMapMarkerAlt className="text-blue-600" />
+                  <FaMapMarkerAlt style={{ color: 'var(--accent)' }} />
                   Your City, State, Country
                 </span>
                 <a
                   href="mailto:your.email@example.com"
-                  className="flex items-center gap-2 text-blue-600 hover:underline"
+                  className="flex items-center gap-2 hover:underline"
+                  style={{ color: 'var(--accent)' }}
                 >
                   <FaEnvelope />
                   your.email@example.com
                 </a>
                 <a
                   href="https://www.linkedin.com/in/your-profile/"
-                  className="flex items-center gap-2 text-blue-600 hover:underline"
+                  className="flex items-center gap-2 hover:underline"
+                  style={{ color: 'var(--accent)' }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -149,7 +151,8 @@ export default function Resume({ onClose }) {
                 </a>
                 <a
                   href="https://github.com/yourusername"
-                  className="flex items-center gap-2 text-blue-600 hover:underline"
+                  className="flex items-center gap-2 hover:underline"
+                  style={{ color: 'var(--accent)' }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -158,7 +161,8 @@ export default function Resume({ onClose }) {
                 </a>
                 <a
                   href="https://yourportfolio.com/"
-                  className="flex items-center gap-2 text-blue-600 hover:underline"
+                  className="flex items-center gap-2 hover:underline"
+                  style={{ color: 'var(--accent)' }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -170,7 +174,7 @@ export default function Resume({ onClose }) {
 
             {/* Professional Summary */}
             <div className="mb-5">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 Professional Summary
               </h2>
               <p className="text-justify leading-relaxed text-gray-600">
@@ -194,7 +198,7 @@ export default function Resume({ onClose }) {
 
             {/* Work Experience */}
             <div className="mb-5">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 Work Experience
               </h2>
 
@@ -218,7 +222,7 @@ export default function Resume({ onClose }) {
 
                 <ul className="list-none ml-0 space-y-1">
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Developed scalable job-portal application to enhance student
@@ -226,7 +230,7 @@ export default function Resume({ onClose }) {
                     readiness.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Engineered responsive UIs with React.js, Redux, React
@@ -234,35 +238,35 @@ export default function Resume({ onClose }) {
                     experiences.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Designed backend services with Node.js/Express.js; optimized
                     authentication and database management for high performance.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Implemented interactive dashboards using Chart.js & Recharts
                     for real-time analytics and reporting.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Led API architecture & security with JWT auth and role-based
                     access control (RBAC).
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Collaborated in Agile squads using ClickUp, Figma, and
                     GitHub for planning, reviews, and version control.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Automated CI/CD with GitHub Actions to improve deployment
@@ -271,8 +275,8 @@ export default function Resume({ onClose }) {
                 </ul>
 
                 {/* Impact */}
-                <div className="mt-3 p-3 bg-blue-50 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-1">
+                <div className="mt-3 p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
                     Impact
                   </div>
                   <ul className="list-none ml-0 space-y-1">
@@ -314,21 +318,21 @@ export default function Resume({ onClose }) {
                 </div>
                 <ul className="list-none ml-0 space-y-1">
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Developed backend architecture for a cognitive-skills quiz
                     app using Node.js, Express.js & MongoDB.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Designed RESTful APIs and ensured seamless communication
                     between frontend & backend.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Collaborated in a 4-intern team to gather client
@@ -356,28 +360,28 @@ export default function Resume({ onClose }) {
                 </div>
                 <ul className="list-none ml-0 space-y-1">
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Designed and built a booking platform with integrated
                     payments to streamline operations.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Refactored & optimized legacy codebases to improve
                     maintainability and reduce downtime.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Ensured code quality with Jest; collaborated efficiently
                     using Git/GitHub.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Translated business requirements into scalable, functional
@@ -405,28 +409,28 @@ export default function Resume({ onClose }) {
                 </div>
                 <ul className="list-none ml-0 space-y-1">
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Managed store operations and cross-functional teams to
                     ensure smooth daily workflows.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Introduced process improvements with SOPs and real-time
                     tracking, reducing errors and boosting efficiency.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Used data dashboards to monitor orders, stock, and feedback;
                     improved accuracy and service speed.
                   </li>
                   <li className="relative pl-4 text-xs leading-relaxed text-gray-700">
-                    <span className="absolute left-0 text-blue-600 font-bold">
+                    <span className="absolute left-0 font-bold" style={{ color: 'var(--accent)' }}>
                       ▪
                     </span>
                     Built leadership, problem-solving, and
@@ -478,20 +482,20 @@ export default function Resume({ onClose }) {
 
             {/* Technical Skills */}
             <div className="mb-5 avoid-break">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 Technical Skills
               </h2>
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     Programming Languages
                   </div>
                   <div className="text-xs text-gray-600">
                     HTML, CSS, JavaScript (ES6+), Python, R, C++
                   </div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     Front-End Development
                   </div>
                   <div className="text-xs text-gray-600">
@@ -499,8 +503,8 @@ export default function Resume({ onClose }) {
                     Accessible UI Design
                   </div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     Back-End Development
                   </div>
                   <div className="text-xs text-gray-600">
@@ -508,8 +512,8 @@ export default function Resume({ onClose }) {
                     RBAC), MVC Architecture
                   </div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     Databases
                   </div>
                   <div className="text-xs text-gray-600">
@@ -517,8 +521,8 @@ export default function Resume({ onClose }) {
                     non-relational DBs
                   </div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     DevOps & Cloud
                   </div>
                   <div className="text-xs text-gray-600">
@@ -526,8 +530,8 @@ export default function Resume({ onClose }) {
                     Actions)
                   </div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
-                  <div className="text-xs font-semibold text-blue-800 mb-2">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
+                  <div className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     Version Control & Tools
                   </div>
                   <div className="text-xs text-gray-600">
@@ -540,11 +544,11 @@ export default function Resume({ onClose }) {
 
             {/* Key Projects */}
             <div className="mb-5 avoid-break">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 Key Projects
               </h2>
               <div className="space-y-4">
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-sm font-semibold text-gray-800">
                       B@M TechStore — Full-Stack eCommerce Platform
@@ -552,7 +556,8 @@ export default function Resume({ onClose }) {
                     <div className="flex gap-3">
                       <a
                         href="http://ecommerce-client-fe-global-bucket.s3-website-ap-southeast-2.amazonaws.com/"
-                        className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                        className="text-xs hover:underline flex items-center gap-1"
+                        style={{ color: 'var(--accent)' }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -561,7 +566,8 @@ export default function Resume({ onClose }) {
                       </a>
                       <a
                         href="https://github.com/manojadh57"
-                        className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                        className="text-xs hover:underline flex items-center gap-1"
+                        style={{ color: 'var(--accent)' }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -579,7 +585,7 @@ export default function Resume({ onClose }) {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-600">
+                <div className="p-3 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)', borderLeft: '4px solid var(--accent)' }}>
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-sm font-semibold text-gray-800">
                       Admin CMS — eCommerce Management Dashboard
@@ -587,7 +593,8 @@ export default function Resume({ onClose }) {
                     <div className="flex gap-3">
                       <a
                         href="http://ecommerce-global-bucket.s3-website-ap-southeast-2.amazonaws.com/"
-                        className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                        className="text-xs hover:underline flex items-center gap-1"
+                        style={{ color: 'var(--accent)' }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -596,7 +603,8 @@ export default function Resume({ onClose }) {
                       </a>
                       <a
                         href="https://github.com/manojadh57"
-                        className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                        className="text-xs hover:underline flex items-center gap-1"
+                        style={{ color: 'var(--accent)' }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -617,12 +625,12 @@ export default function Resume({ onClose }) {
 
             {/* Soft Skills */}
             <div className="mb-5 avoid-break">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 Soft Skills
               </h2>
               <div className="grid grid-cols-2 gap-2">
-                <div className="bg-blue-50 p-2 rounded">
-                  <div className="text-xs font-semibold text-blue-800 mb-1">
+                <div className="p-2 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
+                  <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
                     Teamwork
                   </div>
                   <div className="text-xs text-gray-700">
@@ -630,8 +638,8 @@ export default function Resume({ onClose }) {
                     projects on time
                   </div>
                 </div>
-                <div className="bg-blue-50 p-2 rounded">
-                  <div className="text-xs font-semibold text-blue-800 mb-1">
+                <div className="p-2 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
+                  <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
                     Critical Thinking
                   </div>
                   <div className="text-xs text-gray-700">
@@ -639,16 +647,16 @@ export default function Resume({ onClose }) {
                     effective solutions
                   </div>
                 </div>
-                <div className="bg-blue-50 p-2 rounded">
-                  <div className="text-xs font-semibold text-blue-800 mb-1">
+                <div className="p-2 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
+                  <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
                     Communication
                   </div>
                   <div className="text-xs text-gray-700">
                     Clearly convey complex technical information to stakeholders
                   </div>
                 </div>
-                <div className="bg-blue-50 p-2 rounded">
-                  <div className="text-xs font-semibold text-blue-800 mb-1">
+                <div className="p-2 rounded" style={{ backgroundColor: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
+                  <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
                     Continuous Learning
                   </div>
                   <div className="text-xs text-gray-700">
@@ -661,7 +669,7 @@ export default function Resume({ onClose }) {
 
             {/* References */}
             <div className="mb-5 avoid-break">
-              <h2 className="text-lg font-bold text-blue-800 mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide">
+              <h2 className="text-lg font-bold mb-3 pb-1 border-b border-gray-300 uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
                 References
               </h2>
               <p className="text-xs text-gray-600">Available upon request.</p>
@@ -672,3 +680,4 @@ export default function Resume({ onClose }) {
     </div>
   );
 }
+

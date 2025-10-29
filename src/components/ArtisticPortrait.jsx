@@ -2,7 +2,17 @@ import { useEffect, useRef, useState } from "react";
 
 // Glitch effect data
 const GLITCH_CHARS = "▓▒░█▄▀■▪▫";
-const PIXEL_COLORS = ["#4ecdc4", "#111111", "#757575", "#FFFFFF"]; // Uses main accent color
+
+// Get colors from CSS variables (will be called at runtime)
+const getPixelColors = () => {
+  const style = getComputedStyle(document.documentElement);
+  return [
+    style.getPropertyValue('--accent').trim(),
+    style.getPropertyValue('--fg').trim(),
+    style.getPropertyValue('--muted').trim(),
+    style.getPropertyValue('--bg').trim(),
+  ];
+};
 
 // Matrix-style binary and code characters
 const MATRIX_CHARS = [
@@ -100,6 +110,11 @@ function MatrixCodeRain({ containerRef }) {
     const ctx = canvas.getContext("2d");
     let rect = container.getBoundingClientRect();
 
+    // Get accent color from CSS variable
+    const style = getComputedStyle(document.documentElement);
+    const accentColor = style.getPropertyValue('--accent').trim();
+    const fgColor = style.getPropertyValue('--fg').trim();
+
     const updateCanvas = () => {
       rect = container.getBoundingClientRect();
       canvas.width = rect.width;
@@ -152,11 +167,30 @@ function MatrixCodeRain({ containerRef }) {
               // Head character - bright white
               ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`;
             } else if (k < 3) {
-              // First few characters - bright green
-              ctx.fillStyle = `rgba(100, 255, 100, ${brightness * 0.9})`;
+              // First few characters - use accent color
+              // Parse accent color to RGB
+              const hexToRgb = (hex) => {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                  r: parseInt(result[1], 16),
+                  g: parseInt(result[2], 16),
+                  b: parseInt(result[3], 16)
+                } : { r: 100, g: 255, b: 100 };
+              };
+              const rgb = hexToRgb(accentColor);
+              ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${brightness * 0.9})`;
             } else {
-              // Trail - darker green
-              ctx.fillStyle = `rgba(0, 255, 65, ${brightness * 0.7})`;
+              // Trail - use accent color with lower opacity
+              const hexToRgb = (hex) => {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                  r: parseInt(result[1], 16),
+                  g: parseInt(result[2], 16),
+                  b: parseInt(result[3], 16)
+                } : { r: 0, g: 255, b: 65 };
+              };
+              const rgb = hexToRgb(accentColor);
+              ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${brightness * 0.7})`;
             }
 
             // Change characters occasionally for animation
@@ -259,15 +293,16 @@ function FloatingName({ isActive }) {
       {namePositions.map((pos) => (
         <div
           key={pos.id}
-          className="absolute text-green-400 font-mono font-bold text-lg"
+          className="absolute font-mono font-bold text-lg"
           style={{
             left: `${pos.x}%`,
             top: `${pos.y}%`,
             opacity: pos.opacity,
+            color: 'var(--accent)',
             transform: `skew(${pos.glitchIntensity * 10 - 5}deg) scale(${
               0.8 + pos.glitchIntensity * 0.4
             })`,
-            textShadow: `0 0 ${pos.glitchIntensity * 10}px #00ff41`,
+            textShadow: `0 0 ${pos.glitchIntensity * 10}px var(--accent)`,
             filter: `blur(${pos.glitchIntensity * 2}px)`,
             animation: isActive
               ? `glitch-float-${pos.id} 0.5s linear infinite`
@@ -305,6 +340,7 @@ function GlitchOverlay({ isActive, intensity = 5 }) {
     if (!isActive) return;
 
     const interval = setInterval(() => {
+      const PIXEL_COLORS = getPixelColors();
       const newGlitchData = Array.from({ length: intensity }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
@@ -314,7 +350,7 @@ function GlitchOverlay({ isActive, intensity = 5 }) {
         char: GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)],
         color:
           Math.random() < 0.7
-            ? "#00ff41"
+            ? 'var(--accent)'
             : PIXEL_COLORS[Math.floor(Math.random() * PIXEL_COLORS.length)],
         opacity: Math.random() * 0.8 + 0.2,
       }));
@@ -372,6 +408,7 @@ function PixelTrail({ mousePosition, containerRef }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const PIXEL_COLORS = getPixelColors();
     const rect = containerRef.current.getBoundingClientRect();
     const relativeX = mousePosition.x - rect.left;
     const relativeY = mousePosition.y - rect.top;
@@ -392,7 +429,7 @@ function PixelTrail({ mousePosition, containerRef }) {
       size: Math.random() * 8 + 4,
       color:
         Math.random() < 0.7
-          ? "#00ff41"
+          ? 'var(--accent)'
           : PIXEL_COLORS[Math.floor(Math.random() * PIXEL_COLORS.length)],
       life: 1,
     };
@@ -417,13 +454,14 @@ function PixelTrail({ mousePosition, containerRef }) {
       {trail.map((pixel) => (
         <div
           key={pixel.id}
-          className="absolute border border-green-400"
+          className="absolute border"
           style={{
             left: pixel.x - pixel.size / 2,
             top: pixel.y - pixel.size / 2,
             width: pixel.size,
             height: pixel.size,
             backgroundColor: pixel.color,
+            borderColor: 'var(--accent)',
             opacity: pixel.life * 0.7,
             transform: `scale(${pixel.life})`,
             boxShadow: `0 0 ${pixel.life * 10}px ${pixel.color}`,
@@ -440,7 +478,7 @@ function ScanLines() {
       className="absolute inset-0 pointer-events-none opacity-10"
       style={{
         backgroundImage:
-          "linear-gradient(transparent 50%, rgba(0,255,65,0.1) 50%)",
+          "linear-gradient(transparent 50%, color-mix(in srgb, var(--accent) 10%, transparent) 50%)",
         backgroundSize: "100% 4px",
         animation: "scanlines 2s linear infinite",
       }}
@@ -488,10 +526,11 @@ export default function ArtisticPortrait({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full max-w-md mx-auto aspect-square overflow-hidden border-2 border-black bg-black shadow-[8px_8px_0_var(--shadow-weak)] ${className}`}
+      className={`relative w-full max-w-md mx-auto aspect-square overflow-hidden border-2 border-border shadow-[8px_8px_0_var(--shadow-weak)] ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
+        backgroundColor: 'var(--bg)',
         filter: isGlitching ? "contrast(1.2) saturate(1.5)" : "none",
         transition: "filter 0.1s ease",
       }}
@@ -539,21 +578,24 @@ export default function ArtisticPortrait({
       {enableScanlines && <ScanLines />}
 
       {/* Corner Brackets (Matrix-themed) */}
-      <div className="absolute top-2 left-2 w-6 h-6 border-l-4 border-t-4 border-green-400" />
-      <div className="absolute top-2 right-2 w-6 h-6 border-r-4 border-t-4 border-green-400" />
-      <div className="absolute bottom-2 left-2 w-6 h-6 border-l-4 border-b-4 border-green-400" />
-      <div className="absolute bottom-2 right-2 w-6 h-6 border-r-4 border-b-4 border-green-400" />
+      <div className="absolute top-2 left-2 w-6 h-6 border-l-4 border-t-4" style={{ borderColor: 'var(--accent)' }} />
+      <div className="absolute top-2 right-2 w-6 h-6 border-r-4 border-t-4" style={{ borderColor: 'var(--accent)' }} />
+      <div className="absolute bottom-2 left-2 w-6 h-6 border-l-4 border-b-4" style={{ borderColor: 'var(--accent)' }} />
+      <div className="absolute bottom-2 right-2 w-6 h-6 border-r-4 border-b-4" style={{ borderColor: 'var(--accent)' }} />
 
       {/* Status Indicator - Matrix themed */}
-      <div className="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-black border-2 border-green-400 text-green-400 text-xs font-mono font-bold">
+      <div className="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 border-2 text-xs font-mono font-bold" style={{ backgroundColor: 'var(--bg)', borderColor: 'var(--accent)', color: 'var(--accent)' }}>
         <div
-          className={`w-2 h-2 ${
-            isGlitching
-              ? "bg-red-500 shadow-[0_0_6px_#ff0000]"
-              : isHovered
-              ? "bg-green-400 shadow-[0_0_6px_#00ff41]"
-              : "bg-green-700 shadow-[0_0_4px_#00ff41]"
-          } border border-green-400`}
+          className={`w-2 h-2 border`}
+          style={{
+            backgroundColor: isGlitching ? 'var(--muted)' : isHovered ? 'var(--accent)' : 'color-mix(in srgb, var(--accent) 70%, transparent)',
+            borderColor: 'var(--accent)',
+            boxShadow: isGlitching 
+              ? '0 0 6px var(--muted)' 
+              : isHovered 
+                ? '0 0 6px var(--accent)' 
+                : '0 0 4px var(--accent)'
+          }}
         />
         {isGlitching ? "BREACH" : isHovered ? "ONLINE" : "MATRIX"}
       </div>
