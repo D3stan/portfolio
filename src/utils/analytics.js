@@ -59,8 +59,6 @@ export function initSentry() {
     });
   });
   */
-  
-  console.log('ℹ️ Sentry is not configured. See utils/analytics.js for setup instructions.');
 }
 
 /**

@@ -7,17 +7,19 @@
 
 /* ========= THEME TOKENS (CSS Variables) ========= */
 /* 
-  IMPORTANT: These default values are OVERRIDDEN by src/constants/colors.js
-  The theme system dynamically applies colors from colors.js on app load.
-  To change colors, edit src/constants/colors.js - NOT this file!
+  IMPORTANT: These are FALLBACK VALUES ONLY!
+  The actual theme colors are dynamically applied from src/constants/colors.js
+  when the app loads. To change colors, edit colors.js - NOT this file!
+  
+  The values below are only used during initial page load before JavaScript runs.
 */
-/* Default: Swiss/Neutral - These are fallback values only */
+/* Default: Swiss/Neutral - Fallback values */
 :root {
   --bg: #ffffff;
   --fg: #111111;
   --border: #111111;
   --card: #ffffff;
-  --accent: #4ecdc4; /* This will be replaced by mainAccent from colors.js */
+  --accent: #4ecdc4; /* Fallback - will be replaced by mainAccent from colors.js */
   --muted: #757575;
 
   --shadow-weak: rgba(0,0,0,0.12);
@@ -34,7 +36,7 @@
   --fg: #f5f5f5;
   --border: #000000;
   --card: #111111;
-  --accent: #4ecdc4; /* Will be replaced by mainAccent from colors.js */
+  --accent: #4ecdc4; /* Fallback - will be replaced by mainAccent from colors.js */
   --muted: #aaaaaa;
 
   --shadow-weak: rgba(0,0,0,0.5);

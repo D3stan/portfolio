@@ -66,20 +66,26 @@ const MATRIX_CHARS = [
 
 // Name characters for glitch effect
 const NAME_CHARS = [
-  "M",
+  "A",
+  "L",
+  "E",
+  "S",
+  "S",
   "A",
   "N",
-  "O",
-  "J",
-  " ",
-  "A",
   "D",
-  "H",
-  "I",
-  "K",
-  "A",
   "R",
-  "I",
+  "O",
+  " ",
+  "P",
+  "O",
+  "R",
+  "C",
+  "H",
+  "E",
+  "D",
+  "D",
+  "U",
 ];
 
 function useMousePosition() {
@@ -544,8 +550,8 @@ export default function ArtisticPortrait({
       {/* Portrait Image - Keep original colors */}
       <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
         <img
-          src="/images/profile/manoj-portrait.svg"
-          alt="Manoj Adhikari - Artistic Portrait"
+          src="/images/profile/portrait.svg"
+          alt="Alessandro Porcheddu - Artistic Portrait"
           className="w-full h-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
           style={{
             filter: isHovered

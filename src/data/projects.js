@@ -28,7 +28,7 @@ export const FEATURED_PROJECTS = [
     image: "/motorcycle-ecommerce.png", // TODO: Add your project image to /public folder
     video: null,
     repo: "https://github.com/D3stan/motorcycle-parts", // TODO: Update with actual repo URL if public
-    demo: null, // TODO: Add live demo URL if deployed
+    demo: "https://rsp-industries.com", // TODO: Add live demo URL if deployed
   },
 ];
 
