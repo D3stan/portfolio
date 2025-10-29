@@ -282,12 +282,10 @@ export default function Projects() {
               {/* Content */}
               <div className="p-5">
                 <h4 className="text-lg font-extrabold mb-1">{project.title}</h4>
-                <p className="text-teal-700 font-semibold mb-3 text-sm">
+                <p className="text-teal-700 dark:text-teal-400 font-semibold mb-3 text-sm">
                   {project.subtitle}
                 </p>
-                <p className="text-muted text-sm leading-relaxed mb-4">
-                  {project.blurb}
-                </p>
+                <p className="text-muted text-sm leading-relaxed mb-4">{project.blurb}</p>
 
                 <div className="mb-4">
                   <TechStack tech={project.tech} />

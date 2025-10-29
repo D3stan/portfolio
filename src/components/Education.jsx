@@ -1,8 +1,62 @@
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Diamond } from "lucide-react";
 import { SITE_CONFIG } from "../constants/config";
+
+/* 🔎 Keywords to emphasize inline */
+const HIGHLIGHTS = [
+  "Python",
+  "Java",
+  "C",
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Algorithms",
+  "Data Structures",
+  "Object-Oriented Programming",
+  "Linear Algebra",
+  "Machine Learning",
+  "Programming",
+  "GPA",
+  "E-Powertrain",
+  "Electronics",
+  "MotoStudent",
+  "PLC",
+  "HMI",
+  "Omron",
+  "Robotics",
+  "Smart Project Trophy",
+];
+
+function Emph({ text }) {
+  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(`(${HIGHLIGHTS.map(esc).join("|")})`, "g");
+  return (
+    <>
+      {text.split(re).map((part, i) =>
+        HIGHLIGHTS.includes(part) ? (
+          <strong key={i} className="font-semibold" style={{ color: 'var(--accent)' }}>
+            {part}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
+function Bullet({ children }) {
+  return (
+    <li className="flex gap-2 leading-relaxed text-[15px]">
+      <Diamond className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
+      <span>
+        <Emph text={children} />
+      </span>
+    </li>
+  );
+}
 
 const education = [
   {
@@ -108,10 +162,10 @@ export default function Education() {
                           {edu.school}
                         </a>
 
-                        <div className="font-mono font-semibold text-teal-700 mt-0.5">
+                        <div className="font-mono font-semibold text-teal-700 dark:text-teal-400 mt-0.5">
                           {edu.degree}
                         </div>
-                        <div className="text-xs mt-1 text-gray-700">
+                        <div className="text-xs mt-1 text-muted">
                           {edu.address}
                         </div>
                       </div>
@@ -148,11 +202,13 @@ export default function Education() {
                         className="overflow-hidden"
                       >
                         <div className="p-4 md:p-5">
-                          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
-                            {edu.details.map((detail, i) => (
-                              <li key={i}>{detail}</li>
-                            ))}
-                          </ul>
+                          <div className="pl-3 md:pl-4 border-l-4" style={{ borderColor: 'var(--accent)' }}>
+                            <ul className="list-none mt-2 space-y-2">
+                              {edu.details.map((detail, i) => (
+                                <Bullet key={i}>{detail}</Bullet>
+                              ))}
+                            </ul>
+                          </div>
 
                           {/* Optional photo for graduation */}
                           {edu.hasDropdownPhoto && (

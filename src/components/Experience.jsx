@@ -189,7 +189,7 @@ export default function Experience() {
                         <div className="text-lg sm:text-xl font-extrabold leading-tight break-words">
                           {job.company}
                         </div>
-                        <div className="font-mono text-teal-700 font-semibold mt-0.5">
+                        <div className="font-mono text-teal-700 dark:text-teal-400 font-semibold mt-0.5">
                           {job.role}
                         </div>
                         {job.sub && (
