@@ -24,7 +24,7 @@ export const FEATURED_PROJECTS = [
     subtitle: "Full-Stack E-commerce Website",
     blurb:
       "Built a full-stack e-commerce platform using Laravel 12, React 19, and Inertia.js. Implemented secure payment processing with Stripe via Laravel Cashier. Designed responsive mobile UI with reusable components using the shadcn React library. Developed an admin dashboard for product, order, and customer management with analytics and reporting tools. Ensured robust security with mandatory email and webhook signature validation.",
-    tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Laravel Cashier", "Shadcn"],
+    tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Shadcn"],
     image: "/motorcycle-ecommerce.png", // TODO: Add your project image to /public folder
     video: null,
     repo: "https://github.com/D3stan/motorcycle-parts", // TODO: Update with actual repo URL if public

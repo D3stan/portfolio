@@ -5,37 +5,7 @@ import { ChevronDown, CheckCircle2, Diamond } from "lucide-react";
 import { SITE_CONFIG } from "../constants/config";
 
 /* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = [
-  "Python",
-  "Java",
-  "C",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Laravel",
-  "PLC",
-  "HMI",
-  "Domain Controller",
-  "Windows",
-  "VMware",
-  "Proxmox",
-  "Active Directory",
-  "EDMS",
-  "WebSocket",
-  "Serial",
-  "OBD-II",
-  "MVC",
-  "Stripe",
-  "Laravel Cashier",
-  "Inertia.js",
-  "ESP32",
-  "KiCad",
-  "Fusion360",
-  "OTA",
-  "Erasmus+",
-  "Omron",
-  "Robotics",
-];
+const HIGHLIGHTS = SITE_CONFIG.experience.highlights;
 
 function Emph({ text }) {
   const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -77,58 +47,8 @@ function ImpactBullet({ children }) {
   );
 }
 
-/* ✅ Jobs (synced with your resume) */
-const JOBS = [
-  {
-    company: "Enaip",
-    badge: "EN",
-    logo: "", // TODO: Add logo if available
-    role: "System Administrator Intern",
-    period: "Sept. 2024 – present",
-    sub: "Cesena, Italy",
-    bullets: [
-      "Assisted in configuring and maintaining Windows Domain Controller, ensuring reliable system performance and uptime.",
-      "Documented system configurations, network layouts, and maintenance procedures for internal use.",
-      "Worked with virtualization tools such as VMware and Proxmox to create and test server environments.",
-    ],
-  },
-  {
-    company: "Cables",
-    badge: "CA",
-    logo: "", // TODO: Add logo if available
-    role: "Automation Technician",
-    period: "Jun. 2023 – Sept. 2023",
-    sub: "Cesena, Italy",
-    bullets: [
-      "Assisted in assembling electrical control panels for industrial automation systems, following detailed wiring diagrams and specifications.",
-      "Helped troubleshoot basic PLC input/output issues and performed routine checks on control system hardware.",
-    ],
-  },
-  {
-    company: "Italmetal sp. z o. o.",
-    badge: "IT",
-    logo: "", // TODO: Add logo if available
-    role: "IT Assistant",
-    period: "Jun. 2022 – Jul. 2022",
-    sub: "Wrocław, Poland",
-    bullets: [
-      "Completed the Erasmus+ 'Trainee for Industry 4.0 Plus' internship program, gaining practical experience in industrial environments.",
-      "Assisted with the digitization of paper records by transferring them to solid-state storage systems.",
-      "Participated in basic electrical work including the installation of sockets and lighting.",
-    ],
-  },
-  {
-    company: "University Motorsport Team (MotoStudent Project)",
-    badge: "MS",
-    logo: "", // TODO: Add logo if available (you have motostudent images in /public)
-    role: "E-Powertrain and Electronics Department Member",
-    period: "Sept. 2023 – Jul. 2026", // Estimated based on graduation
-    sub: "University of Bologna, Italy",
-    bullets: [
-      "Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
-    ],
-  },
-];
+/* ✅ Jobs from config */
+const JOBS = SITE_CONFIG.experience.jobs;
 
 export default function Experience() {
   const [open, setOpen] = useState(() => new Set([0]));

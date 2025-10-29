@@ -5,29 +5,7 @@ import { ChevronDown, Diamond } from "lucide-react";
 import { SITE_CONFIG } from "../constants/config";
 
 /* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = [
-  "Python",
-  "Java",
-  "C",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Algorithms",
-  "Data Structures",
-  "Object-Oriented Programming",
-  "Linear Algebra",
-  "Machine Learning",
-  "Programming",
-  "GPA",
-  "E-Powertrain",
-  "Electronics",
-  "MotoStudent",
-  "PLC",
-  "HMI",
-  "Omron",
-  "Robotics",
-  "Smart Project Trophy",
-];
+const HIGHLIGHTS = SITE_CONFIG.education.highlights;
 
 function Emph({ text }) {
   const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -58,37 +36,8 @@ function Bullet({ children }) {
   );
 }
 
-const education = [
-  {
-    school: "University of Bologna",
-    degree: "B.Sc. in Computer Science and Engineering",
-    period: "Sept. 2023 - Jul. 2026", // Expected graduation
-    badge: "UNIBO",
-    address: "Cesena, Italy",
-    url: "https://www.unibo.it",
-    logo: "", // TODO: Add University of Bologna logo to /public folder
-    details: [
-      "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
-      "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
-    ],
-    hasDropdownPhoto: false, // TODO: Set to true if you want to add a graduation/campus photo
-  },
-  {
-    school: "I.T.T. Montani",
-    degree: "High School Diploma",
-    period: "Sept. 2018 - Jun. 2023",
-    badge: "ITT",
-    address: "Fermo, Italy",
-    url: "https://www.istitutomontani.edu.it", // TODO: Verify URL
-    logo: "", // TODO: Add school logo if available
-    details: [
-      "Designed and implemented automation systems involving PLC and HMI programming.",
-      "Participated in the Omron Smart Project Trophy 2023 competition.",
-      "Earned a Omron Robotics Operation and Programming Certificate.",
-    ],
-    hasDropdownPhoto: false,
-  },
-];
+/* ✅ Education from config */
+const education = SITE_CONFIG.education.schools;
 
 export default function Education() {
   const [openIndex, setOpenIndex] = useState(-1);

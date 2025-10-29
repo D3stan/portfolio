@@ -75,12 +75,9 @@ export default function Navbar() {
         {/* Mobile panel */}
         <div
           id="mobile-menu"
-          className={`md:hidden transition-all duration-300 ease-in-out ${
-            open ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            open ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
-          style={{
-            overflow: open ? "visible" : "hidden"
-          }}
         >
           <div className="pt-3 border-t-2 border-border mt-3">
             <ul className="grid grid-cols-2 gap-2">
@@ -89,7 +86,7 @@ export default function Navbar() {
                   <a
                     href={`#${l.id}`}
                     onClick={closeMenu}
-                    className="block text-center px-3 py-3 min-h-[44px] border-2 border-border bg-card text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_var(--shadow-strong)] hover:bg-accent active:translate-y-[1px] transition-all"
+                    className="block text-center px-3 py-2.5 min-h-[44px] border-2 border-border bg-card text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_var(--shadow-strong)] hover:bg-accent active:translate-y-[1px] transition-all"
                   >
                     {l.label}
                   </a>
@@ -98,7 +95,7 @@ export default function Navbar() {
             </ul>
 
             {/* Mobile socials */}
-            <div className="mt-3 flex justify-center">
+            <div className="mt-3 pb-1 flex justify-center">
               <SocialButtons />
             </div>
           </div>

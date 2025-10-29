@@ -74,13 +74,142 @@ export const SITE_CONFIG = {
   
   // Experience
   experience: {
-    title: "EXPERIENCE"
+    title: "EXPERIENCE",
+    jobs: [
+      {
+        company: "University Motorsport Team (MotoStudent Project)",
+        badge: "MS",
+        logo: "", // TODO: Add logo if available (you have motostudent images in /public)
+        role: "E-Powertrain and Electronics Department Member",
+        period: "Oct. 2025 - Present",
+        sub: "University of Bologna, Italy",
+        bullets: [
+          "Member of the E-Powertrain and Electronics Department of the university's motorsport team, contributing to the development of an electric motorcycle.",
+        ],
+      },
+      {
+        company: "Enaip",
+        badge: "EN",
+        logo: "", // TODO: Add logo if available
+        role: "System Administrator Intern",
+        period: "Sept. 2025 - present",
+        sub: "Cesena, Italy",
+        bullets: [
+          "Assisted in configuring and maintaining Windows Domain Controller, ensuring reliable system performance and uptime.",
+          "Documented system configurations, network layouts, and maintenance procedures for internal use.",
+          "Worked with virtualization tools such as VMware and Proxmox to create and test server environments.",
+        ],
+      },
+      {
+        company: "Cables",
+        badge: "CA",
+        logo: "", // TODO: Add logo if available
+        role: "Automation Technician",
+        period: "Jun. 2023 - Sept. 2023",
+        sub: "Cesena, Italy",
+        bullets: [
+          "Assisted in assembling electrical control panels for industrial automation systems, following detailed wiring diagrams and specifications.",
+          "Helped troubleshoot basic PLC input/output issues and performed routine checks on control system hardware.",
+        ],
+      },
+      {
+        company: "Italmetal sp. z o. o.",
+        badge: "IT",
+        logo: "", // TODO: Add logo if available
+        role: "IT Assistant",
+        period: "Jun. 2022 - Jul. 2022",
+        sub: "Wrocław, Poland",
+        bullets: [
+          "Completed the Erasmus+ 'Trainee for Industry 4.0 Plus' internship program, gaining practical experience in industrial environments.",
+          "Assisted with the digitization of paper records by transferring them to solid-state storage systems.",
+          "Participated in basic electrical work including the installation of sockets and lighting.",
+        ],
+      },
+    ],
+    // Keywords to highlight in experience bullets
+    highlights: [
+      "Python",
+      "Java",
+      "C",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Laravel",
+      "PLC",
+      "HMI",
+      "Domain Controller",
+      "Windows",
+      "VMware",
+      "Proxmox",
+      "Active Directory",
+      "EDMS",
+      "WebSocket",
+      "Serial",
+      "OBD-II",
+      "MVC",
+      "Stripe",
+      "Inertia.js",
+      "ESP32",
+      "KiCad",
+      "Fusion360",
+      "OTA",
+      "Erasmus+",
+      "Omron",
+      "Robotics",
+    ],
   },
   
   // Education
   education: {
     title: "Education",
-    graduationCaption: "graduation day 2022, Sydney CBD"
+    schools: [
+      {
+        school: "University of Bologna",
+        degree: "B.Sc. in Computer Science and Engineering",
+        period: "Sept. 2023 - Jul. 2026", // Expected graduation
+        badge: "UNIBO",
+        address: "Cesena, Italy",
+        url: "https://www.unibo.it",
+        logo: "", // TODO: Add University of Bologna logo to /public folder
+        details: [
+          "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
+          "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
+        ],
+        hasDropdownPhoto: false, // TODO: Set to true if you want to add a graduation/campus photo
+      },
+      {
+        school: "I.T.T. Montani",
+        degree: "High School Diploma",
+        period: "Sept. 2018 - Jun. 2023",
+        badge: "ITT",
+        address: "Fermo, Italy",
+        url: "https://www.istitutomontani.edu.it", // TODO: Verify URL
+        logo: "", // TODO: Add school logo if available
+        details: [
+          "Designed and implemented automation systems involving PLC and HMI programming.",
+          "Participated in the Omron Smart Project Trophy 2023 competition.",
+          "Earned a Omron Robotics Operation and Programming Certificate.",
+        ],
+        hasDropdownPhoto: false,
+      },
+    ],
+    // Keywords to highlight in education details
+    highlights: [
+      "Python",
+      "Java",
+      "C",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "E-Powertrain",
+      "Electronics",
+      "MotoStudent",
+      "PLC",
+      "HMI",
+      "Omron",
+      "Robotics",
+      "Smart Project Trophy",
+    ],
   },
   
   // SEO & Meta Tags
