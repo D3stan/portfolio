@@ -32,7 +32,7 @@ export default function Navbar() {
               <BatCatLogo size={32} />
             </div>
             <h1 className="text-xl font-extrabold tracking-tight text-fg">
-              {SITE_CONFIG.shortName}<span className="ml-1">.</span>
+              {SITE_CONFIG.shortName}<span className="ml-1"></span>
             </h1>
           </a>
 
