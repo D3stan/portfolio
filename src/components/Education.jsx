@@ -92,8 +92,7 @@ export default function Education() {
                           href={edu.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-lg sm:text-xl font-extrabold leading-tight underline decoration-2 decoration-yellow-300 underline-offset-2 hover:opacity-90 break-words"
-                          onClick={(e) => e.stopPropagation()}
+                          className="block text-lg sm:text-xl font-extrabold leading-tight underline decoration-2 decoration-accent underline-offset-2 hover:opacity-90 break-words"                          onClick={(e) => e.stopPropagation()}
                         >
                           {edu.school}
                         </a>

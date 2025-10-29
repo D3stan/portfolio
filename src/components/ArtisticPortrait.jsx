@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Glitch effect data
 const GLITCH_CHARS = "▓▒░█▄▀■▪▫";
-const PIXEL_COLORS = ["#FFD600", "#111111", "#757575", "#FFFFFF"];
+const PIXEL_COLORS = ["#4ecdc4", "#111111", "#757575", "#FFFFFF"]; // Uses main accent color
 
 // Matrix-style binary and code characters
 const MATRIX_CHARS = [

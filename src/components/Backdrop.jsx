@@ -17,21 +17,49 @@ function styleFor(mode) {
   }
 
   if (mode === "sunray") {
+    // Get accent color from CSS variable
+    const accentColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--accent')
+      .trim();
+    
+    // Convert hex to rgba (simple parser for #RRGGBB format)
+    let rgba = 'rgba(78, 205, 196, 0.34)'; // fallback
+    if (accentColor.startsWith('#') && accentColor.length === 7) {
+      const r = parseInt(accentColor.slice(1, 3), 16);
+      const g = parseInt(accentColor.slice(3, 5), 16);
+      const b = parseInt(accentColor.slice(5, 7), 16);
+      rgba = `rgba(${r}, ${g}, ${b}, 0.34)`;
+    }
+    
     return {
       ...base,
       backgroundImage:
         // brighter center + clearer rays
-        "radial-gradient(circle at 50% 22%, rgba(255,214,0,0.34), transparent 46%)," +
+        `radial-gradient(circle at 50% 22%, ${rgba}, transparent 46%),` +
         "repeating-conic-gradient(from 0deg at 50% 22%, rgba(0,0,0,0.08) 0deg, rgba(0,0,0,0.08) 3deg, transparent 3deg, transparent 9deg)",
       backgroundBlendMode: "multiply",
     };
   }
 
   if (mode === "poster") {
+    // Get accent color from CSS variable
+    const accentColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--accent')
+      .trim();
+    
+    // Convert hex to rgba (simple parser for #RRGGBB format)
+    let rgba = 'rgba(78, 205, 196, 0.16)'; // fallback
+    if (accentColor.startsWith('#') && accentColor.length === 7) {
+      const r = parseInt(accentColor.slice(1, 3), 16);
+      const g = parseInt(accentColor.slice(3, 5), 16);
+      const b = parseInt(accentColor.slice(5, 7), 16);
+      rgba = `rgba(${r}, ${g}, ${b}, 0.16)`;
+    }
+    
     return {
       ...base,
       backgroundImage:
-        "repeating-linear-gradient(135deg, rgba(255,214,0,0.16) 0 12px, transparent 12px 28px)",
+        `repeating-linear-gradient(135deg, ${rgba} 0 12px, transparent 12px 28px)`,
     };
   }
 
@@ -114,8 +142,8 @@ export default function Backdrop({
               <button
                 key={m}
                 onClick={() => setMode(m)}
-                className={`text-xs px-2 py-0.5 border-2 border-black bg-white mr-1 mb-1 ${
-                  m === mode ? "bg-[#FFD600]" : ""
+                className={`text-xs px-2 py-0.5 border-2 border-black bg-white mr-1 mb-1 touch-manipulation ${
+                  m === mode ? "bg-accent" : ""
                 }`}
                 title={m}
               >
