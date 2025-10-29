@@ -1,4 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
+import { SITE_CONFIG } from "../constants/config";
 
 export default function SocialButtons() {
   const base =
@@ -8,7 +9,7 @@ export default function SocialButtons() {
   return (
     <div className="flex gap-3">
       <a
-        href="https://github.com/manojadh57"
+        href={SITE_CONFIG.social.github}
         target="_blank"
         rel="noreferrer"
         className={`${base} ${hover}`}
@@ -17,7 +18,7 @@ export default function SocialButtons() {
         <Github className="w-5 h-5" />
       </a>
       <a
-        href="https://www.linkedin.com/in/manojadh57/"
+        href={SITE_CONFIG.social.linkedin}
         target="_blank"
         rel="noreferrer"
         className={`${base} ${hover}`}

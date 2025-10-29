@@ -2,6 +2,7 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { SITE_CONFIG } from "../constants/config";
 
 const education = [
   {
@@ -44,7 +45,7 @@ export default function Education() {
         {/* Heading */}
         <div className="flex justify-center mb-12">
           <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl">
-            Education
+            {SITE_CONFIG.education.title}
           </h2>
         </div>
 
@@ -146,7 +147,7 @@ export default function Education() {
                               loading="lazy"
                             />
                             <p className="mt-2 text-xs text-muted">
-                              graduation day 2022, Sydney CBD
+                              {SITE_CONFIG.education.graduationCaption}
                             </p>
                           </div>
                         </div>

@@ -1,5 +1,6 @@
 // src/components/Skills.jsx
 import { skills } from "../data/skills.jsx";
+import { SITE_CONFIG } from "../constants/config";
 
 // Skills are now imported from /src/data/skills.jsx
 // Update that file to customize your skills
@@ -9,7 +10,7 @@ export default function Skills() {
     <section id="skills" className="py-12">
       <div className="mx-auto w-[min(1100px,94vw)] text-center">
         <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] rounded-none mb-8">
-          <h2 className="font-extrabold text-2xl tracking-wide">SKILLS</h2>
+          <h2 className="font-extrabold text-2xl tracking-wide">{SITE_CONFIG.skills.title}</h2>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
