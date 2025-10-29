@@ -39,10 +39,10 @@ export default function Education() {
     setSrcIdx((i) => (i < cand.length - 1 ? i + 1 : i));
 
   return (
-    <section id="education" className="relative py-24 text-white grid-bg">
+    <section id="education" className="relative py-16 sm:py-20 md:py-24 text-white grid-bg">
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Heading */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8 sm:mb-10 md:mb-12">
           <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl">
             Education
           </h2>

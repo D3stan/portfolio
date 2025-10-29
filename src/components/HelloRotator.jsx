@@ -132,7 +132,7 @@ export default function HelloRotator({
   return (
     <div className={`mb-4 ${className}`}>
       {/* MATCHES ABOUT BOX: single border, offset shadow, square corners */}
-      <div className="inline-flex max-w-full items-center gap-3 border-2 border-border bg-card px-3 py-2 shadow-[6px_6px_0_var(--shadow-strong)] rounded-none">
+      <div className="inline-flex max-w-full items-center gap-3 border-2 border-border bg-card px-3 py-2 shadow-[6px_6px_0_var(--shadow-strong)] rounded-none min-h-[3rem] sm:min-h-[2.5rem]">
         {/* Flag chip – same visual language (single border + small shadow), square */}
         <span
           className="inline-flex h-6 min-w-8 items-center justify-center border-2 border-border bg-accent px-1 leading-none shadow-[4px_4px_0_var(--shadow-strong)] rounded-none"
@@ -151,7 +151,7 @@ export default function HelloRotator({
             transition={{ duration: 0.25 }}
             dir={current.dir || "ltr"}
             style={current.style}
-            className="text-base sm:text-lg"
+            className="text-sm sm:text-base md:text-lg"
           >
             {current.text}
           </motion.div>

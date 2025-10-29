@@ -80,6 +80,18 @@ html, body, #root {
   max-width: 100vw;
 }
 
+/* Scroll offset for all sections to account for fixed navbar */
+/* ADJUST THESE VALUES to control spacing between navbar and section titles */
+section[id] {
+  scroll-margin-top: 90px;  /* Mobile: Adjust this value (higher = more space, lower = less space) */
+}
+
+@media (min-width: 768px) {
+  section[id] {
+    scroll-margin-top: 100px;  /* Desktop: Adjust this value (higher = more space, lower = less space) */
+  }
+}
+
 /* Ensure all elements respect viewport width */
 * {
   max-width: 100%;

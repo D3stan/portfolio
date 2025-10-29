@@ -82,10 +82,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 grid-bg text-white">
+    <section id="contact" className="relative py-16 sm:py-20 md:py-24 grid-bg text-white">
       <div className="mx-auto w-[min(900px,94vw)]">
         {/* Heading in a box */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8 sm:mb-10 md:mb-12">
           <h2
             className="uppercase font-extrabold tracking-tight
                        border-2 border-border bg-card text-fg

@@ -251,10 +251,10 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16">
+    <section id="projects" className="py-16 sm:py-20 md:py-24">
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
             <h2 className="text-2xl font-extrabold tracking-wide">PROJECTS</h2>
           </div>

@@ -67,7 +67,7 @@ export default function About() {
     <>
       <section
         id="about"
-        className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-32 sm:pt-36 pb-10 md:min-h-[80vh] scroll-mt-32"
+        className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 md:pb-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
           {/* LEFT: portrait + availability */}
