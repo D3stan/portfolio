@@ -35,7 +35,7 @@ export const SITE_CONFIG = {
   
   // Contact Form
   contact: {
-    formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // TODO: Create your own Formspree endpoint at formspree.io
+    formspreeEndpoint: "https://formspree.io/f/mjkpyjon", // TODO: Create your own Formspree endpoint at formspree.io
     title: "Contact",
     description: "Want to collaborate or just have a chat? Drop a message here.",
     directEmailPrompt: "or email me directly",
