@@ -18,22 +18,58 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-white p-4">
-          <div className="border-2 border-black bg-white shadow-[8px_8px_0_rgba(0,0,0,0.3)] p-8 max-w-md">
-            <h1 className="text-2xl font-extrabold mb-4">Oops! Something went wrong</h1>
-            <p className="mb-4 text-gray-700">
+        <div 
+          className="min-h-screen flex items-center justify-center p-4"
+          style={{ backgroundColor: 'var(--bg)' }}
+        >
+          <div 
+            className="border-2 p-8 max-w-md"
+            style={{ 
+              borderColor: 'var(--border)',
+              backgroundColor: 'var(--card)',
+              boxShadow: 'var(--shadow-strong)'
+            }}
+          >
+            <h1 
+              className="text-2xl font-extrabold mb-4"
+              style={{ color: 'var(--fg)' }}
+            >
+              Oops! Something went wrong
+            </h1>
+            <p 
+              className="mb-4"
+              style={{ color: 'var(--muted)' }}
+            >
               We're sorry, but something unexpected happened. Please try refreshing the page.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="border-2 border-black bg-yellow-300 px-6 py-2 font-semibold shadow-[4px_4px_0_#000] hover:-translate-y-0.5 transition-transform"
+              className="border-2 px-6 py-2 font-semibold hover:-translate-y-0.5 transition-transform"
+              style={{
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--accent)',
+                color: 'var(--fg)',
+                boxShadow: '4px 4px 0 var(--border)'
+              }}
             >
               Refresh Page
             </button>
             {import.meta.env.DEV && (
               <details className="mt-4">
-                <summary className="cursor-pointer font-mono text-xs">Error Details</summary>
-                <pre className="mt-2 text-xs overflow-auto bg-gray-100 p-2">
+                <summary 
+                  className="cursor-pointer font-mono text-xs"
+                  style={{ color: 'var(--fg)' }}
+                >
+                  Error Details
+                </summary>
+                <pre 
+                  className="mt-2 text-xs overflow-auto p-2 border"
+                  style={{ 
+                    backgroundColor: 'color-mix(in srgb, var(--muted) 10%, transparent)',
+                    color: 'var(--fg)',
+                    borderColor: 'var(--border)'
+                  }}
+                >
                   {this.state.error?.toString()}
                 </pre>
               </details>

@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Mail, ArrowRight, FileText } from "lucide-react";
 import ArtisticPortrait from "./ArtisticPortrait";
 import HelloRotator from "./HelloRotator";
-import Resume from "./Resume";
 import { SITE_CONFIG } from "../constants/config";
 
 function Typewriter({
@@ -48,20 +47,9 @@ function Typewriter({
 }
 
 export default function About() {
-  const [showResume, setShowResume] = useState(false);
-
   // Square-edge card (same style as buttons but with no rounded corners)
   const card =
     "bg-card border-2 border-border shadow-[6px_6px_0_var(--shadow-strong)] rounded-none";
-
-  const openResume = (e) => {
-    e.preventDefault();
-    setShowResume(true);
-  };
-
-  const closeResume = () => {
-    setShowResume(false);
-  };
 
   return (
     <>
@@ -113,12 +101,14 @@ export default function About() {
 
               {/* CTAs (already square) */}
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={openResume}
+                <a
+                  href="/documents/Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border-2 border-border bg-accent px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                 >
                   <FileText className="h-4 w-4" /> Resume
-                </button>
+                </a>
                 <a
                   href="#projects"
                   className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
@@ -136,9 +126,6 @@ export default function About() {
           </main>
         </div>
       </section>
-
-      {/* Resume Modal */}
-      {showResume && <Resume onClose={closeResume} />}
     </>
   );
 }

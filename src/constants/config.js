@@ -29,15 +29,15 @@ export const SITE_CONFIG = {
       status: "Available",
       location: "Italy · Remote/Hybrid"
     },
-    description: `Computer Science and Engineering student at the University of Bologna with hands-on experience in software development, system administration, and embedded systems. Skilled in Python, Java, C, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`,
-    highlights: ["Python", "Java", "C", "JavaScript", "React", "Node.js", "Laravel", "PLC Programming", "System Administration", "Embedded Systems", "OOP", "MVC", "EDMS"]
+    description: `Computer Science and Engineering student at the University of Bologna with hands-on experience in software development, system administration, and embedded systems. Skilled in Java, C / C++, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`,
+    highlights: ["Embedded Systems", "Java", "C / C++", "JavaScript", "React", "Node.js", "Laravel", "PLC Programming", "System Administration", "Embedded Systems", "OOP"]
   },
   
   // Contact Form
   contact: {
     formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // TODO: Create your own Formspree endpoint at formspree.io
     title: "Contact",
-    description: "Want to collaborate or hire me? Drop a message here — I'll reply ASAP.",
+    description: "Want to collaborate or just have a chat? Drop a message here.",
     directEmailPrompt: "or email me directly",
     emailSubject: "Hello%20Alessandro"
   },
@@ -45,12 +45,12 @@ export const SITE_CONFIG = {
   // Resume
   resume: {
     fileName: "/documents/Resume.pdf", // Must match the file in /public folder
-    downloadName: "ManojAdhikari-Resume.pdf", // The filename when downloaded
+    downloadName: "AlessandroPorcheddu-Resume.pdf", // The filename when downloaded
   },
   
   // Footer
   footer: {
-    copyright: "Made by Alessandro Porcheddu — Brutalist / Swiss UI with yellow accent.",
+    copyright: "Made by Alessandro Porcheddu — Brutalist / Swiss UI.",
     attribution: "BatCat mark inspired by Mark Horn."
   },
   
