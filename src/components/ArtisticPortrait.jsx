@@ -315,7 +315,7 @@ function FloatingName({ isActive }) {
         </div>
       ))}
 
-      <style jsx>{`
+      <style>{`
         ${namePositions
           .map(
             (pos) => `
@@ -384,7 +384,7 @@ function GlitchOverlay({ isActive, intensity = 5 }) {
         </div>
       ))}
 
-      <style jsx>{`
+      <style>{`
         ${glitchData
           .map(
             (glitch) => `
@@ -483,7 +483,7 @@ function ScanLines() {
         animation: "scanlines 2s linear infinite",
       }}
     >
-      <style jsx>{`
+      <style>{`
         @keyframes scanlines {
           0% {
             transform: translateY(0);
