@@ -6,28 +6,38 @@ import { SITE_CONFIG } from "../constants/config";
 
 const education = [
   {
-    school: "Australian Institute of Higher Education",
-    degree: "Bachelor's in Computer & Information Systems Security / Assurance",
-    period: "Feb 2019 - Oct 2022",
-    badge: "AIH",
-    address: "Level 11, 545 Kent St, Sydney NSW 2000, Australia",
-    url: "https://aih.nsw.edu.au",
-    logo: "/logos/aih.png", // file in /public/logos
-    hasDropdownPhoto: true,
+    school: "University of Bologna",
+    degree: "B.Sc. in Computer Science and Engineering",
+    period: "Sept. 2023 - Jul. 2026", // Expected graduation
+    badge: "UNIBO",
+    address: "Cesena, Italy",
+    url: "https://www.unibo.it",
+    logo: "", // TODO: Add University of Bologna logo to /public folder
+    details: [
+      "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
+      "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
+    ],
+    hasDropdownPhoto: false, // TODO: Set to true if you want to add a graduation/campus photo
   },
   {
-    school: "Kingsford International Institute",
-    degree: "Diploma of Information Technology",
-    period: "Feb 2018 - Feb 2019",
-    badge: "KII",
-    address: "Kingsford, Sydney NSW, Australia",
-    url: "https://kii.edu.au",
-    logo: "/logos/kii.png", // file in /public/logos
+    school: "I.T.T. Montani",
+    degree: "High School Diploma",
+    period: "Sept. 2018 - Jun. 2023",
+    badge: "ITT",
+    address: "Fermo, Italy",
+    url: "https://www.istitutomontani.edu.it", // TODO: Verify URL
+    logo: "", // TODO: Add school logo if available
+    details: [
+      "Designed and implemented automation systems involving PLC and HMI programming.",
+      "Participated in the Omron Smart Project Trophy 2023 competition.",
+      "Earned a Omron Robotics Operation and Programming Certificate.",
+    ],
+    hasDropdownPhoto: false,
   },
 ];
 
 export default function Education() {
-  const [openAIH, setOpenAIH] = useState(false);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   const cand = [
     "/images/profile/graduction.jpg",
@@ -51,8 +61,7 @@ export default function Education() {
 
         <div className="space-y-8">
           {education.map((edu, idx) => {
-            const isAIH = !!edu.hasDropdownPhoto;
-            const isOpen = isAIH ? openAIH : false;
+            const isOpen = openIndex === idx;
 
             return (
               <div
@@ -62,7 +71,7 @@ export default function Education() {
                 {/* Header: responsive stack on mobile */}
                 <button
                   type="button"
-                  onClick={() => isAIH && setOpenAIH((v) => !v)}
+                  onClick={() => setOpenIndex(isOpen ? -1 : idx)}
                   className={[
                     "w-full text-left border-b-2 border-border",
                     "p-4 md:p-5",
@@ -81,19 +90,20 @@ export default function Education() {
                             onClick={(e) => e.stopPropagation()}
                           />
                         ) : (
-                          <span className="font-extrabold uppercase">
+                          <span className="font-extrabold uppercase text-xs">
                             {edu.badge}
                           </span>
                         )}
                       </div>
 
                       <div className="min-w-0">
-                        {/* School link (don’t toggle when clicked) */}
+                        {/* School link (don't toggle when clicked) */}
                         <a
                           href={edu.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-lg sm:text-xl font-extrabold leading-tight underline decoration-2 decoration-accent underline-offset-2 hover:opacity-90 break-words"                          onClick={(e) => e.stopPropagation()}
+                          className="block text-lg sm:text-xl font-extrabold leading-tight underline decoration-2 decoration-accent underline-offset-2 hover:opacity-90 break-words"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {edu.school}
                         </a>
@@ -112,7 +122,7 @@ export default function Education() {
                       <div className="font-mono text-xs sm:text-sm">
                         {edu.period}
                       </div>
-                      {isAIH && (
+                      {edu.details && (
                         <span
                           className={`border-2 border-black bg-white p-1 shadow-[4px_4px_0_#000] transition-transform ${
                             isOpen ? "rotate-180" : ""
@@ -126,8 +136,8 @@ export default function Education() {
                   </div>
                 </button>
 
-                {/* Dropdown: AIH photo */}
-                {isAIH && (
+                {/* Dropdown: details */}
+                {edu.details && (
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
@@ -138,18 +148,27 @@ export default function Education() {
                         className="overflow-hidden"
                       >
                         <div className="p-4 md:p-5">
-                          <div className="border-2 border-border bg-card p-3 shadow-[6px_6px_0_var(--shadow-strong)]">
-                            <img
-                              src={cand[srcIdx]}
-                              onError={handleImgError}
-                              alt="AIH graduation ceremony"
-                              className="w-full max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain"
-                              loading="lazy"
-                            />
-                            <p className="mt-2 text-xs text-muted">
-                              {SITE_CONFIG.education.graduationCaption}
-                            </p>
-                          </div>
+                          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+                            {edu.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+
+                          {/* Optional photo for graduation */}
+                          {edu.hasDropdownPhoto && (
+                            <div className="mt-4 border-2 border-border bg-card p-3 shadow-[6px_6px_0_var(--shadow-strong)]">
+                              <img
+                                src={cand[srcIdx]}
+                                onError={handleImgError}
+                                alt="Graduation ceremony"
+                                className="w-full max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain"
+                                loading="lazy"
+                              />
+                              <p className="mt-2 text-xs text-muted">
+                                {SITE_CONFIG.education.graduationCaption}
+                              </p>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}

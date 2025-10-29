@@ -8,27 +8,27 @@
 export const FEATURED_PROJECTS = [
   {
     id: 1,
-    title: "Project Name 1",
-    subtitle: "Brief Project Description",
+    title: "JavaDyno",
+    subtitle: "Engine Dynamometer Management Software",
     blurb:
-      "Detailed description of your project, highlighting key features, technologies used, and the problem it solves. Keep it concise but informative.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Your", "Tech", "Stack"],
-    image: "/images/projects/featured/project1-image.png", // Place your image in /public/images/projects/featured folder
-    video: null, // Optional: Add video URL when available
-    repo: "https://github.com/yourusername/your-repo",
-    demo: "https://your-demo-url.vercel.app/",
+      "Developed an engine dynamometer management system (EDMS) with a group project team, overseeing complete data retrieval and graphical plotting. Implemented an MVC core structure for data exportation and session logging. Ensured OBD-II CAN bus compatibility for vehicle testing, enhancing real-world applicability. Integrated WebSocket and Serial connection support for versatile device communication.",
+    tech: ["Java", "MVC", "WebSocket", "Serial", "OBD-II", "CAN Bus"],
+    image: "/javadyno.png", // TODO: Add your project image to /public folder
+    video: null,
+    repo: "https://github.com/D3stan/javadyno", // TODO: Update with actual repo URL if public
+    demo: null, // Desktop application - no live demo
   },
   {
     id: 2,
-    title: "Project Name 2",
-    subtitle: "Brief Project Description",
+    title: "Motorcycle Parts E-commerce Platform",
+    subtitle: "Full-Stack E-commerce Website",
     blurb:
-      "Another project description showcasing your skills and accomplishments. Explain what makes this project unique and valuable.",
-    tech: ["React", "Your", "Tech", "Stack"],
-    image: "/images/projects/featured/project2-image.png",
+      "Built a full-stack e-commerce platform using Laravel 12, React 19, and Inertia.js. Implemented secure payment processing with Stripe via Laravel Cashier. Designed responsive mobile UI with reusable components using the shadcn React library. Developed an admin dashboard for product, order, and customer management with analytics and reporting tools. Ensured robust security with mandatory email and webhook signature validation.",
+    tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Laravel Cashier", "Shadcn"],
+    image: "/motorcycle-ecommerce.png", // TODO: Add your project image to /public folder
     video: null,
-    repo: "https://github.com/yourusername/your-repo-2",
-    demo: "https://your-demo-url-2.vercel.app/",
+    repo: "https://github.com/D3stan/motorcycle-parts", // TODO: Update with actual repo URL if public
+    demo: null, // TODO: Add live demo URL if deployed
   },
 ];
 
@@ -36,42 +36,29 @@ export const FEATURED_PROJECTS = [
 export const SMALL_PROJECTS = [
   {
     id: 3,
-    title: "Small Project 1",
-    blurb: "Brief description of this smaller project",
-    tech: ["React", "API", "Tech"],
-    image: "/images/projects/small/small-project1.png",
+    title: "Motorcycle Exhaust Valve Control Unit",
+    blurb: "Developed an electronic exhaust valve control unit based on ESP32. Created a browser app to control the device via WiFi through WebSocket communication. Designed a custom PCB using KiCad and a custom 3D printed enclosure using Fusion360. Implemented secure OTA updates through a custom remote server based on NodeJS.",
+    tech: ["ESP32", "WebSocket", "WiFi", "KiCad", "Fusion360", "Node.js", "OTA"],
+    image: "/exhaust-valve.png", // TODO: Add your project image to /public folder
     video: null,
-    repo: "https://github.com/yourusername/small-project-1",
-    demo: "https://your-small-demo-1.vercel.app",
+    repo: "https://github.com/D3stan/exhaust-valve-control", // TODO: Update with actual repo URL if public
+    demo: null,
   },
   {
     id: 4,
-    title: "Small Project 2",
-    blurb: "Brief description of another project",
-    tech: ["React", "Tech", "Stack"],
-    image: "/images/projects/small/small-project2.png",
+    title: "MotoStudent Electric Motorcycle",
+    blurb: "Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
+    tech: ["Embedded Systems", "Electronics", "E-Powertrain", "Motorsport"],
+    image: "/motostudent.png", // TODO: Add your project image to /public folder
     video: null,
-    repo: "https://github.com/yourusername/small-project-2",
-    demo: "https://your-small-demo-2.vercel.app/",
+    repo: null, // Team project - no public repo
+    demo: null,
   },
-  {
-    id: 5,
-    title: "Small Project 3",
-    blurb: "Another interesting project",
-    tech: ["React", "Your", "Tech"],
-    image: "/images/projects/small/small-project3.png",
-    video: null,
-    repo: "https://github.com/yourusername/small-project-3",
-    demo: "https://your-small-demo-3.vercel.app/",
-  },
-  {
-    id: 6,
-    title: "Small Project 4",
-    blurb: "One more project to showcase",
-    tech: ["React", "JavaScript", "CSS3"],
-    image: "/images/projects/small/small-project4.png",
-    video: null,
-    repo: "https://github.com/yourusername/small-project-4",
-    demo: "https://your-small-demo-4.vercel.app",
-  },
+  // TODO: Add more projects from your portfolio
+  // You can add GitHub repositories like:
+  // - Calculator app
+  // - Weather app
+  // - Movie database
+  // - Currency converter
+  // Or any other projects you want to showcase
 ];

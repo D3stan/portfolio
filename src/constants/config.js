@@ -5,40 +5,41 @@
 
 export const SITE_CONFIG = {
   // Personal Information
-  name: "Manoj Adhikari",
-  title: "Full-Stack Developer", 
-  shortName: "MANOJ", // Used in navbar
-  location: "Sydney, Australia",
-  locationFull: "Sydney, New South Wales, Australia",
-  email: "manojadhikari57@gmail.com",
+  name: "Alessandro Porcheddu",
+  title: "Software Developer & System Administrator", 
+  shortName: "ALESSANDRO", // Used in navbar
+  location: "Cesena, Italy",
+  locationFull: "Cesena, Italy",
+  email: "alessandroporcheddu000@gmail.com",
+  phone: "(+39) 3703371317",
   
   // Social Links
   social: {
-    github: "https://github.com/manojadh57",
-    linkedin: "https://www.linkedin.com/in/manojadh57/",
-    portfolio: "https://yourportfolio.com/",
-    twitter: "https://twitter.com/yourusername", // Optional
+    github: "https://github.com/D3stan",
+    linkedin: "https://www.linkedin.com/in/0xalessandro-porcheddu",
+    portfolio: "https://0xpuddu.it/",
+    twitter: "", // Optional
   },
   
   // About Section
   about: {
     greeting: "Hi, I'm",
-    roles: ["Full-Stack Developer", "React • Node.js", "Simple, Reliable"],
+    roles: ["Software Developer", "System Administrator", "Full-Stack Developer"],
     availability: {
       status: "Available",
-      location: "Australia · Remote/Hybrid"
+      location: "Italy · Remote/Hybrid"
     },
-    description: `A dedicated Full-Stack Developer skilled in crafting web applications using JavaScript, React.js, Node.js, and Express, complemented by proficiency in modern libraries and tooling. I value clean architecture, accessible UI, strong API design, and measurable performance.`,
-    highlights: ["JavaScript", "React.js", "Node.js", "Express", "clean architecture", "accessible UI", "strong API design", "measurable performance"]
+    description: `Computer Science and Engineering student at the University of Bologna with hands-on experience in software development, system administration, and embedded systems. Skilled in Python, Java, C, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`,
+    highlights: ["Python", "Java", "C", "JavaScript", "React", "Node.js", "Laravel", "PLC Programming", "System Administration", "Embedded Systems", "OOP", "MVC", "EDMS"]
   },
   
   // Contact Form
   contact: {
-    formspreeEndpoint: "https://formspree.io/f/mjkpyjon",
+    formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // TODO: Create your own Formspree endpoint at formspree.io
     title: "Contact",
     description: "Want to collaborate or hire me? Drop a message here — I'll reply ASAP.",
     directEmailPrompt: "or email me directly",
-    emailSubject: "Hello%20Manoj"
+    emailSubject: "Hello%20Alessandro"
   },
   
   // Resume
@@ -49,7 +50,7 @@ export const SITE_CONFIG = {
   
   // Footer
   footer: {
-    copyright: "Made by Manoj Adhikari — Brutalist / Swiss UI with yellow accent.",
+    copyright: "Made by Alessandro Porcheddu — Brutalist / Swiss UI with yellow accent.",
     attribution: "BatCat mark inspired by Mark Horn."
   },
   
@@ -84,10 +85,10 @@ export const SITE_CONFIG = {
   
   // SEO & Meta Tags
   seo: {
-    title: "Manoj Adhikari | Full-Stack Developer",
-    description: "Full-Stack Developer specializing in React, Node.js, and modern web technologies.",
-    keywords: ["Full-Stack Developer", "React", "Node.js", "JavaScript", "Web Developer"],
-    siteUrl: "https://yourportfolio.com",
+    title: "Alessandro Porcheddu | Software Developer & System Administrator",
+    description: "Computer Science and Engineering student with expertise in full-stack development, system administration, embedded systems, and PLC programming. Skilled in Python, Java, JavaScript, React, Node.js, and Laravel.",
+    keywords: ["Software Developer", "System Administrator", "Full-Stack Developer", "React", "Node.js", "Python", "Java", "Laravel", "PLC Programming", "Embedded Systems", "Computer Science", "Engineering"],
+    siteUrl: "https://yourportfolio.com", // TODO: Update with your deployed portfolio URL
     image: "/images/portfolio-preview.png",
   },
   
