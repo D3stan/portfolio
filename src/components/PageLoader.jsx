@@ -1,5 +1,4 @@
 export default function PageLoader() {
-  console.log('Rendering PageLoader with theme colors');
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: 'var(--bg)' }}>
       <div className="text-center">
