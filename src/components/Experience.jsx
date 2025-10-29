@@ -77,7 +77,7 @@ const JOBS = [
   {
     company: "REBB TECH PTY LTD",
     badge: "RT",
-    logo: "rebb.jpeg", // keep if you have the asset; else fallback to badge
+    logo: "/logos/rebb.jpeg", // keep if you have the asset; else fallback to badge
     role: "Full-stack Developer",
     period: "Jun 2024 – Aug 2025 · 1 yr 3 mos",
     sub: "Sydney, New South Wales, Australia · Hybrid",
@@ -100,7 +100,7 @@ const JOBS = [
   {
     company: "Evolution Hospitality Institute",
     badge: "EHI",
-    logo: "evolution.jpeg",
+    logo: "/logos/evolution.jpeg",
     role: "Back End Developer · Internship",
     period: "Nov 2023 – Feb 2024 · 4 mos",
     sub: "Sydney, New South Wales, Australia · On-site",

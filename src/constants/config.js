@@ -43,8 +43,8 @@ export const SITE_CONFIG = {
   
   // Resume
   resume: {
-    fileName: "/YourName-Resume.pdf", // Must match the file in /public folder
-    downloadName: "YourName-Resume.pdf", // The filename when downloaded
+    fileName: "/documents/Resume.pdf", // Must match the file in /public folder
+    downloadName: "ManojAdhikari-Resume.pdf", // The filename when downloaded
   },
   
   // Footer
@@ -88,7 +88,7 @@ export const SITE_CONFIG = {
     description: "Full-Stack Developer specializing in React, Node.js, and modern web technologies.",
     keywords: ["Full-Stack Developer", "React", "Node.js", "JavaScript", "Web Developer"],
     siteUrl: "https://yourportfolio.com",
-    image: "/portfolio-preview.png",
+    image: "/images/portfolio-preview.png",
   },
   
   // Accessibility

@@ -13,7 +13,7 @@ export const FEATURED_PROJECTS = [
     blurb:
       "Detailed description of your project, highlighting key features, technologies used, and the problem it solves. Keep it concise but informative.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Your", "Tech", "Stack"],
-    image: "/project1-image.png", // Place your image in /public folder
+    image: "/images/projects/featured/project1-image.png", // Place your image in /public/images/projects/featured folder
     video: null, // Optional: Add video URL when available
     repo: "https://github.com/yourusername/your-repo",
     demo: "https://your-demo-url.vercel.app/",
@@ -25,7 +25,7 @@ export const FEATURED_PROJECTS = [
     blurb:
       "Another project description showcasing your skills and accomplishments. Explain what makes this project unique and valuable.",
     tech: ["React", "Your", "Tech", "Stack"],
-    image: "/project2-image.png",
+    image: "/images/projects/featured/project2-image.png",
     video: null,
     repo: "https://github.com/yourusername/your-repo-2",
     demo: "https://your-demo-url-2.vercel.app/",
@@ -39,7 +39,7 @@ export const SMALL_PROJECTS = [
     title: "Small Project 1",
     blurb: "Brief description of this smaller project",
     tech: ["React", "API", "Tech"],
-    image: "/small-project1.png",
+    image: "/images/projects/small/small-project1.png",
     video: null,
     repo: "https://github.com/yourusername/small-project-1",
     demo: "https://your-small-demo-1.vercel.app",
@@ -49,7 +49,7 @@ export const SMALL_PROJECTS = [
     title: "Small Project 2",
     blurb: "Brief description of another project",
     tech: ["React", "Tech", "Stack"],
-    image: "/small-project2.png",
+    image: "/images/projects/small/small-project2.png",
     video: null,
     repo: "https://github.com/yourusername/small-project-2",
     demo: "https://your-small-demo-2.vercel.app/",
@@ -59,7 +59,7 @@ export const SMALL_PROJECTS = [
     title: "Small Project 3",
     blurb: "Another interesting project",
     tech: ["React", "Your", "Tech"],
-    image: "/small-project3.png",
+    image: "/images/projects/small/small-project3.png",
     video: null,
     repo: "https://github.com/yourusername/small-project-3",
     demo: "https://your-small-demo-3.vercel.app/",
@@ -69,7 +69,7 @@ export const SMALL_PROJECTS = [
     title: "Small Project 4",
     blurb: "One more project to showcase",
     tech: ["React", "JavaScript", "CSS3"],
-    image: "/small-project4.png",
+    image: "/images/projects/small/small-project4.png",
     video: null,
     repo: "https://github.com/yourusername/small-project-4",
     demo: "https://your-small-demo-4.vercel.app",

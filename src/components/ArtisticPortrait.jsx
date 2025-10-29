@@ -544,7 +544,7 @@ export default function ArtisticPortrait({
       {/* Portrait Image - Keep original colors */}
       <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
         <img
-          src="/manoj-portrait.svg"
+          src="/images/profile/manoj-portrait.svg"
           alt="Manoj Adhikari - Artistic Portrait"
           className="w-full h-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
           style={{

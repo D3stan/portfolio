@@ -12,7 +12,7 @@ const education = [
     badge: "AIH",
     address: "Level 11, 545 Kent St, Sydney NSW 2000, Australia",
     url: "https://aih.nsw.edu.au",
-    logo: "aih.png", // file in /public
+    logo: "/logos/aih.png", // file in /public/logos
     hasDropdownPhoto: true,
   },
   {
@@ -22,7 +22,7 @@ const education = [
     badge: "KII",
     address: "Kingsford, Sydney NSW, Australia",
     url: "https://kii.edu.au",
-    logo: "kii.png", // file in /public
+    logo: "/logos/kii.png", // file in /public/logos
   },
 ];
 
@@ -30,10 +30,10 @@ export default function Education() {
   const [openAIH, setOpenAIH] = useState(false);
 
   const cand = [
-    "/graduction.jpg",
-    "/graduction.jpeg",
-    "/graduction.png",
-    "/graduction.webp",
+    "/images/profile/graduction.jpg",
+    "/images/profile/graduction.jpeg",
+    "/images/profile/graduction.png",
+    "/images/profile/graduction.webp",
   ];
   const [srcIdx, setSrcIdx] = useState(0);
   const handleImgError = () =>
