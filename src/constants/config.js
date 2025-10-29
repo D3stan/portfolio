@@ -5,51 +5,96 @@
 
 export const SITE_CONFIG = {
   // Personal Information
-  name: "Your Full Name",
-  title: "Your Professional Title", // e.g., "Full-Stack Developer", "Software Engineer"
-  location: "Your City, Country",
-  email: "your.email@example.com",
+  name: "Manoj Adhikari",
+  title: "Full-Stack Developer", 
+  shortName: "MANOJ", // Used in navbar
+  location: "Sydney, Australia",
+  locationFull: "Sydney, New South Wales, Australia",
+  email: "manojadhikari57@gmail.com",
   
   // Social Links
   social: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://www.linkedin.com/in/your-profile/",
+    github: "https://github.com/manojadh57",
+    linkedin: "https://www.linkedin.com/in/manojadh57/",
     portfolio: "https://yourportfolio.com/",
     twitter: "https://twitter.com/yourusername", // Optional
   },
   
   // About Section
   about: {
-    greeting: "Hi, I'm", // Greeting prefix
-    tagline: "I build things for the web.", // Short tagline
-    description: [
-      "Your first paragraph about yourself and your experience.",
-      "Your second paragraph highlighting your skills and what you do.",
-      "Your third paragraph about your goals and what you're looking for.",
-    ],
+    greeting: "Hi, I'm",
+    roles: ["Full-Stack Developer", "React • Node.js", "Simple, Reliable"],
+    availability: {
+      status: "Available",
+      location: "Australia · Remote/Hybrid"
+    },
+    description: `A dedicated Full-Stack Developer skilled in crafting web applications using JavaScript, React.js, Node.js, and Express, complemented by proficiency in modern libraries and tooling. I value clean architecture, accessible UI, strong API design, and measurable performance.`,
+    highlights: ["JavaScript", "React.js", "Node.js", "Express", "clean architecture", "accessible UI", "strong API design", "measurable performance"]
   },
   
   // Contact Form
   contact: {
-    formspreeEndpoint: "https://formspree.io/f/your-form-id", // Get this from formspree.io
-    title: "Get In Touch",
-    description: "Have a project in mind or just want to connect? Feel free to reach out!",
+    formspreeEndpoint: "https://formspree.io/f/mjkpyjon",
+    title: "Contact",
+    description: "Want to collaborate or hire me? Drop a message here — I'll reply ASAP.",
+    directEmailPrompt: "or email me directly",
+    emailSubject: "Hello%20Manoj"
   },
   
   // Resume
   resume: {
-    fileName: "YourName-Resume.pdf", // Must match the file in /public folder
+    fileName: "/YourName-Resume.pdf", // Must match the file in /public folder
     downloadName: "YourName-Resume.pdf", // The filename when downloaded
+  },
+  
+  // Footer
+  footer: {
+    copyright: "Made by Manoj Adhikari — Brutalist / Swiss UI with yellow accent.",
+    attribution: "BatCat mark inspired by Mark Horn."
+  },
+  
+  // Projects
+  projects: {
+    title: "PROJECTS",
+    smallProjectsLabel: "Other Projects",
+    ctaText: "More projects on GitHub",
+    ctaButton: "View All",
+    buttons: {
+      liveDemo: "Live Demo",
+      demo: "Demo",
+      code: "Code"
+    }
+  },
+  
+  // Skills
+  skills: {
+    title: "SKILLS"
+  },
+  
+  // Experience
+  experience: {
+    title: "EXPERIENCE"
+  },
+  
+  // Education
+  education: {
+    title: "Education",
+    graduationCaption: "graduation day 2022, Sydney CBD"
   },
   
   // SEO & Meta Tags
   seo: {
-    title: "Your Name | Professional Title",
-    description: "Your professional description for search engines and social media previews.",
-    keywords: ["keyword1", "keyword2", "keyword3", "your skills"],
+    title: "Manoj Adhikari | Full-Stack Developer",
+    description: "Full-Stack Developer specializing in React, Node.js, and modern web technologies.",
+    keywords: ["Full-Stack Developer", "React", "Node.js", "JavaScript", "Web Developer"],
     siteUrl: "https://yourportfolio.com",
-    image: "/portfolio-preview.png", // Social media preview image in /public folder
+    image: "/portfolio-preview.png",
   },
+  
+  // Accessibility
+  accessibility: {
+    skipToMain: "Skip to main content"
+  }
 };
 
 // Navigation Links

@@ -3,14 +3,7 @@ import { Menu, X } from "lucide-react";
 import SocialButtons from "./SocialButtons";
 import BatCatLogo from "./BatCatLogo";
 import ThemeToggle from "./ThemeToggle";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#education", label: "Education" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
+import { NAV_LINKS, SITE_CONFIG } from "../constants/config";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -39,16 +32,16 @@ export default function Navbar() {
               <BatCatLogo size={32} />
             </div>
             <h1 className="text-xl font-extrabold tracking-tight text-fg">
-              MANOJ<span className="ml-1">.</span>
+              {SITE_CONFIG.shortName}<span className="ml-1">.</span>
             </h1>
           </a>
 
           {/* Desktop nav */}
           <ul className="hidden md:flex items-center gap-3">
-            {links.map((l) => (
-              <li key={l.href}>
+            {NAV_LINKS.map((l) => (
+              <li key={l.id}>
                 <a
-                  href={l.href}
+                  href={`#${l.id}`}
                   className="inline-flex items-center justify-center px-3 py-2 border-2 border-border bg-card text-sm font-extrabold uppercase tracking-wide shadow-[3px_3px_0_var(--shadow-strong)] transition hover:-translate-y-0.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {l.label}
@@ -91,10 +84,10 @@ export default function Navbar() {
         >
           <div className="pt-3 border-t-2 border-border mt-3">
             <ul className="grid grid-cols-2 gap-2">
-              {links.map((l) => (
-                <li key={l.href}>
+              {NAV_LINKS.map((l) => (
+                <li key={l.id}>
                   <a
-                    href={l.href}
+                    href={`#${l.id}`}
                     onClick={closeMenu}
                     className="block text-center px-3 py-3 min-h-[44px] border-2 border-border bg-card text-xs font-extrabold uppercase tracking-wide shadow-[3px_3px_0_var(--shadow-strong)] hover:bg-accent active:translate-y-[1px] transition-all"
                   >

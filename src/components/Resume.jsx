@@ -8,6 +8,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { SITE_CONFIG } from "../constants/config";
 
 // ============================================
 // CONFIGURATION - UPDATE THESE WITH YOUR INFO
@@ -15,8 +16,8 @@ import {
 // 1. Place your resume PDF in the /public folder
 // 2. Update the filename below (must match the file in /public)
 // 3. The download name is what users will see when downloading
-const RESUME_URL = "/YourName-Resume.pdf"; // Change to match your PDF filename in /public folder
-const DOWNLOAD_NAME = "YourName-Resume.pdf"; // Change to your preferred download filename
+const RESUME_URL = SITE_CONFIG.resume.fileName; 
+const DOWNLOAD_NAME = SITE_CONFIG.resume.downloadName;
 
 export default function Resume({ onClose }) {
   const resumeRef = useRef(null);

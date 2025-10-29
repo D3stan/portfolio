@@ -2,6 +2,7 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, CheckCircle2, Diamond } from "lucide-react";
+import { SITE_CONFIG } from "../constants/config";
 
 /* 🔎 Keywords to emphasize inline */
 const HIGHLIGHTS = [
@@ -155,7 +156,7 @@ export default function Experience() {
         <div className="w-full flex justify-center mb-8 sm:mb-10">
           <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
             <h2 className="text-2xl font-extrabold tracking-wide">
-              EXPERIENCE
+              {SITE_CONFIG.experience.title}
             </h2>
           </div>
         </div>

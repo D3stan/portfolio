@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BatCatMark from "./BatCatMark";
+import { SITE_CONFIG } from "../constants/config";
 
 export default function Footer() {
   const [now, setNow] = useState(new Date());
@@ -29,8 +30,7 @@ export default function Footer() {
         <div className="flex items-center gap-2 font-mono text-sm font-bold">
           <BatCatMark size={22} />
           <span>
-            © {new Date().getFullYear()} Made by Manoj Adhikari — Brutalist /
-            Swiss UI with yellow accent.
+            © {new Date().getFullYear()} {SITE_CONFIG.footer.copyright}
           </span>
         </div>
         <div className="font-mono text-sm">{ts}</div>
@@ -39,7 +39,7 @@ export default function Footer() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-6">
         <p className="text-[12px] font-mono text-muted">
-          BatCat mark inspired by Mark Horn.
+          {SITE_CONFIG.footer.attribution}
         </p>
       </div>
     </footer>

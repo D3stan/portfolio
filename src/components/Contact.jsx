@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiMail, FiMapPin, FiGithub, FiLinkedin } from "react-icons/fi";
+import { SITE_CONFIG } from "../constants/config";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -58,7 +59,7 @@ export default function Contact() {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch('https://formspree.io/f/mjkpyjon', {
+      const response = await fetch(SITE_CONFIG.contact.formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -91,7 +92,7 @@ export default function Contact() {
                        border-2 border-border bg-card text-fg
                        px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl"
           >
-            Contact
+            {SITE_CONFIG.contact.title}
           </h2>
         </div>
 
@@ -101,22 +102,21 @@ export default function Contact() {
             {/* Left: quick info / socials */}
             <div className="md:col-span-1 space-y-4">
               <p className="text-sm">
-                Want to collaborate or hire me? Drop a message here — I'll reply
-                ASAP.
+                {SITE_CONFIG.contact.description}
               </p>
 
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
-                  <FiMail /> <span>manojadhikari57@gmail.com</span>
+                  <FiMail /> <span>{SITE_CONFIG.email}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FiMapPin /> <span>Sydney, Australia</span>
+                  <FiMapPin /> <span>{SITE_CONFIG.location}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 pt-2">
                 <a
-                  href="https://github.com/manojadh57"
+                  href={SITE_CONFIG.social.github}
                   target="_blank"
                   rel="noreferrer"
                   className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
@@ -125,7 +125,7 @@ export default function Contact() {
                   <FiGithub />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/manojadh57/"
+                  href={SITE_CONFIG.social.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
@@ -229,10 +229,10 @@ export default function Contact() {
                   </button>
 
                   <a
-                    href="mailto:manojadhikari57@gmail.com?subject=Hello%20Manoj"
+                    href={`mailto:${SITE_CONFIG.email}?subject=${SITE_CONFIG.contact.emailSubject}`}
                     className="text-xs underline"
                   >
-                    or email me directly
+                    {SITE_CONFIG.contact.directEmailPrompt}
                   </a>
                 </div>
               </form>

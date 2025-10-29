@@ -4,6 +4,7 @@ import { Mail, ArrowRight, FileText } from "lucide-react";
 import ArtisticPortrait from "./ArtisticPortrait";
 import HelloRotator from "./HelloRotator";
 import Resume from "./Resume";
+import { SITE_CONFIG } from "../constants/config";
 
 function Typewriter({
   phrases,
@@ -48,7 +49,6 @@ function Typewriter({
 
 export default function About() {
   const [showResume, setShowResume] = useState(false);
-  const roles = ["Full-Stack Developer", "React • Node.js", "Simple, Reliable"];
 
   // Square-edge card (same style as buttons but with no rounded corners)
   const card =
@@ -84,7 +84,7 @@ export default function About() {
                   <span className="absolute inset-0 rounded-full bg-green-600" />
                 </span>
                 <span className="font-mono text-sm">
-                  <strong>Available</strong> — Australia · Remote/Hybrid
+                  <strong>{SITE_CONFIG.about.availability.status}</strong> — {SITE_CONFIG.about.availability.location}
                 </span>
               </div>
             </div>
@@ -94,56 +94,21 @@ export default function About() {
           <main className="md:col-span-7 space-y-4">
             {/* Card 1 — Name + subtitle */}
             <div className={`${card} p-5 sm:p-6`}>
-              <HelloRotator name="Manoj Adhikari" />
+              <HelloRotator name={SITE_CONFIG.name} />
 
               <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight font-mono leading-none mt-2">
-                Manoj Adhikari
+                {SITE_CONFIG.name}
               </h2>
 
               <p className="mt-2 text-xl font-mono">
-                <Typewriter phrases={roles} />
+                <Typewriter phrases={SITE_CONFIG.about.roles} />
               </p>
             </div>
 
             {/* Card 2 — Details / blurb */}
             <div className={`${card} p-5 sm:p-6`}>
               <p className="text-[1.05rem] leading-relaxed">
-                A dedicated{" "}
-                <strong className="font-extrabold">Full-Stack Developer</strong>{" "}
-                skilled in crafting web applications using
-                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
-                  JavaScript
-                </span>
-                ,
-                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
-                  React.js
-                </span>
-                ,
-                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
-                  Node.js
-                </span>
-                , and
-                <span className="font-semibold bg-accent bg-opacity-40 px-1 ml-1">
-                  Express
-                </span>
-                , complemented by proficiency in modern libraries and tooling. I
-                value
-                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
-                  clean architecture
-                </span>
-                ,
-                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
-                  accessible UI
-                </span>
-                ,
-                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
-                  strong API design
-                </span>
-                , and
-                <span className="font-semibold underline decoration-4 decoration-accent underline-offset-2 ml-1">
-                  measurable performance
-                </span>
-                .
+                {SITE_CONFIG.about.description}
               </p>
 
               {/* CTAs (already square) */}
