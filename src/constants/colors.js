@@ -11,7 +11,7 @@
 export const COLORS = {
   // ========== MAIN ACCENT COLOR ==========
   // Change this to update the primary color across the entire website
-  mainAccent: '#4ecdc4', // Default: Bright Yellow
+  mainAccent: '#c7ceea', // Default: Bright Yellow
   
   // Alternative accent colors you can try:
   // mainAccent: '#ff6b6b', // Red
