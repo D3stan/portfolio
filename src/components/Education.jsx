@@ -43,7 +43,7 @@ export default function Education() {
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Heading */}
         <div className="flex justify-center mb-12">
-          <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[6px_6px_0_var(--shadow-strong)]">
+          <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl">
             Education
           </h2>
         </div>

@@ -49,8 +49,8 @@ export const THEME_COLORS = {
     card: '#111111',
     accent: COLORS.mainAccent, // Uses main accent
     muted: '#aaaaaa',
-    shadowWeak: 'rgba(0,0,0,0.5)',
-    shadowStrong: 'rgba(0,0,0,0.6)',
+    shadowWeak: 'rgba(255,255,255,0.15)',
+    shadowStrong: 'rgba(255,255,255,0.25)',
   },
   
   noir: {

@@ -153,7 +153,7 @@ export default function Experience() {
       <div className="mx-auto w-[min(1100px,94vw)]">
         {/* Header */}
         <div className="w-full flex justify-center mb-10">
-          <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[6px_6px_0_var(--shadow-strong)]">
+          <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
             <h2 className="text-2xl font-extrabold tracking-wide">
               EXPERIENCE
             </h2>

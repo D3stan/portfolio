@@ -89,7 +89,7 @@ export default function Contact() {
           <h2
             className="uppercase font-extrabold tracking-tight
                        border-2 border-border bg-card text-fg
-                       px-6 py-2 shadow-[6px_6px_0_var(--shadow-weak)]"
+                       px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl"
           >
             Contact
           </h2>
