@@ -79,7 +79,7 @@ export const SITE_CONFIG = {
       {
         company: "University Motorsport Team (MotoStudent Project)",
         badge: "MS",
-        logo: "", // TODO: Add logo if available (you have motostudent images in /public)
+        logo: "/logos/unibo-motorsport.png", // TODO: Add logo if available (you have motostudent images in /public)
         role: "E-Powertrain and Electronics Department Member",
         period: "Oct. 2025 - Present",
         sub: "University of Bologna, Italy",
@@ -90,7 +90,7 @@ export const SITE_CONFIG = {
       {
         company: "Enaip",
         badge: "EN",
-        logo: "", // TODO: Add logo if available
+        logo: "/logos/enaip.png", // TODO: Add logo if available
         role: "System Administrator Intern",
         period: "Sept. 2025 - present",
         sub: "Cesena, Italy",
@@ -103,7 +103,7 @@ export const SITE_CONFIG = {
       {
         company: "Cables",
         badge: "CA",
-        logo: "", // TODO: Add logo if available
+        logo: "/logos/cables.png", // TODO: Add logo if available
         role: "Automation Technician",
         period: "Jun. 2023 - Sept. 2023",
         sub: "Cesena, Italy",
@@ -115,7 +115,7 @@ export const SITE_CONFIG = {
       {
         company: "Italmetal sp. z o. o.",
         badge: "IT",
-        logo: "", // TODO: Add logo if available
+        logo: "/logos/italmetal.png", // TODO: Add logo if available
         role: "IT Assistant",
         period: "Jun. 2022 - Jul. 2022",
         sub: "Wrocław, Poland",
@@ -170,7 +170,7 @@ export const SITE_CONFIG = {
         badge: "UNIBO",
         address: "Cesena, Italy",
         url: "https://www.unibo.it",
-        logo: "", // TODO: Add University of Bologna logo to /public folder
+        logo: "/logos/unibo.png", // TODO: Add University of Bologna logo to /public folder
         details: [
           "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
           "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
@@ -184,7 +184,7 @@ export const SITE_CONFIG = {
         badge: "ITT",
         address: "Fermo, Italy",
         url: "https://www.istitutomontani.edu.it", // TODO: Verify URL
-        logo: "", // TODO: Add school logo if available
+        logo: "/logos/montani.png", // TODO: Add school logo if available
         details: [
           "Designed and implemented automation systems involving PLC and HMI programming.",
           "Participated in the Omron Smart Project Trophy 2023 competition.",
