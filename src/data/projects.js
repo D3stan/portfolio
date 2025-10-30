@@ -13,10 +13,10 @@ export const FEATURED_PROJECTS = [
     blurb:
       "Developed an engine dynamometer management system (EDMS) with a group project team, overseeing complete data retrieval and graphical plotting. Implemented an MVC core structure for data exportation and session logging. Ensured OBD-II CAN bus compatibility for vehicle testing, enhancing real-world applicability. Integrated WebSocket and Serial connection support for versatile device communication.",
     tech: ["Java", "MVC", "WebSocket", "Serial", "OBD-II", "CAN Bus"],
-    image: "/javadyno.png", // TODO: Add your project image to /public folder
+    image: "/images/projects/featured/javadyno.png", // TODO: Add your project image to /public folder
     video: null,
-    repo: "https://github.com/D3stan/javadyno", // TODO: Update with actual repo URL if public
-    demo: null, // Desktop application - no live demo
+    repo: "https://github.com/MattechIT/OOP24-java-dyno", 
+    demo: "https://github.com/MattechIT/OOP24-java-dyno/releases/tag/0.0.4",
   },
   {
     id: 2,
@@ -42,16 +42,6 @@ export const SMALL_PROJECTS = [
     image: "/exhaust-valve.png", // TODO: Add your project image to /public folder
     video: null,
     repo: "https://github.com/D3stan/exhaust-valve-control", // TODO: Update with actual repo URL if public
-    demo: null,
-  },
-  {
-    id: 4,
-    title: "MotoStudent Electric Motorcycle",
-    blurb: "Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
-    tech: ["Embedded Systems", "Electronics", "E-Powertrain", "Motorsport"],
-    image: "/motostudent.png", // TODO: Add your project image to /public folder
-    video: null,
-    repo: null, // Team project - no public repo
     demo: null,
   },
   // TODO: Add more projects from your portfolio
