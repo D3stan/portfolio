@@ -17,6 +17,10 @@ export const FEATURED_PROJECTS = [
     video: null,
     repo: "https://github.com/MattechIT/OOP24-java-dyno", 
     demo: "https://github.com/MattechIT/OOP24-java-dyno/releases/tag/0.0.4",
+    buttons: {
+      demo: "Try It", // Custom text for demo button
+      code: "Code",   // Custom text for code button
+    },
   },
   {
     id: 2,
@@ -27,8 +31,12 @@ export const FEATURED_PROJECTS = [
     tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Shadcn"],
     image: "/images/projects/featured/motorcycle-ecommerce.png", // TODO: Add your project image to /public folder
     video: null,
-    repo: "https://github.com/D3stan/motorcycle-parts", // TODO: Update with actual repo URL if public
-    demo: "https://rsp-industries.com", // TODO: Add live demo URL if deployed
+    repo: null, // Set to null to hide the code button for public websites
+    demo: "https://rsp-industries.com",
+    buttons: {
+      demo: "Live Site", // Custom text for demo button
+      code: "Code",      // This won't show since repo is null
+    },
   },
 ];
 

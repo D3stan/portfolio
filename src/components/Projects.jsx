@@ -145,16 +145,20 @@ function SmallProjectCard({ project, isPlaying, onPlayPause }) {
         </div>
 
         <div className="flex gap-2">
-          <ActionButton
-            href={project.demo}
-            variant="primary"
-            icon={ExternalLink}
-          >
-            {SITE_CONFIG.projects.buttons.demo}
-          </ActionButton>
-          <ActionButton href={project.repo} variant="secondary" icon={Github}>
-            {SITE_CONFIG.projects.buttons.code}
-          </ActionButton>
+          {project.demo && (
+            <ActionButton
+              href={project.demo}
+              variant="primary"
+              icon={ExternalLink}
+            >
+              {project.buttons?.demo || SITE_CONFIG.projects.buttons.demo}
+            </ActionButton>
+          )}
+          {project.repo && (
+            <ActionButton href={project.repo} variant="secondary" icon={Github}>
+              {project.buttons?.code || SITE_CONFIG.projects.buttons.code}
+            </ActionButton>
+          )}
         </div>
       </div>
     </div>
@@ -292,20 +296,24 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-2">
-                  <ActionButton
-                    href={project.demo}
-                    variant="primary"
-                    icon={ExternalLink}
-                  >
-                    {SITE_CONFIG.projects.buttons.liveDemo}
-                  </ActionButton>
-                  <ActionButton
-                    href={project.repo}
-                    variant="secondary"
-                    icon={Github}
-                  >
-                    {SITE_CONFIG.projects.buttons.code}
-                  </ActionButton>
+                  {project.demo && (
+                    <ActionButton
+                      href={project.demo}
+                      variant="primary"
+                      icon={ExternalLink}
+                    >
+                      {project.buttons?.demo || SITE_CONFIG.projects.buttons.liveDemo}
+                    </ActionButton>
+                  )}
+                  {project.repo && (
+                    <ActionButton
+                      href={project.repo}
+                      variant="secondary"
+                      icon={Github}
+                    >
+                      {project.buttons?.code || SITE_CONFIG.projects.buttons.code}
+                    </ActionButton>
+                  )}
                 </div>
               </div>
             </div>
