@@ -589,7 +589,8 @@ export default function ArtisticPortrait({
       <div className="absolute bottom-2 left-2 w-6 h-6 border-l-4 border-b-4" style={{ borderColor: 'var(--accent)' }} />
       <div className="absolute bottom-2 right-2 w-6 h-6 border-r-4 border-b-4" style={{ borderColor: 'var(--accent)' }} />
 
-      {/* Status Indicator - Matrix themed */}
+      {/* 
+      {/ Status Indicator - Matrix themed /}
       <div className="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 border-2 text-xs font-mono font-bold" style={{ backgroundColor: 'var(--bg)', borderColor: 'var(--accent)', color: 'var(--accent)' }}>
         <div
           className={`w-2 h-2 border`}
@@ -603,8 +604,9 @@ export default function ArtisticPortrait({
                 : '0 0 4px var(--accent)'
           }}
         />
-        {isGlitching ? "BREACH" : isHovered ? "ONLINE" : "MATRIX"}
+        {isGlitching ? "BREACH" : "ONLINE"}
       </div>
+      */}
     </div>
   );
 }

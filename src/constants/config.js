@@ -6,9 +6,9 @@
 export const SITE_CONFIG = {
   // Personal Information
   name: "Alessandro Porcheddu",
-  title: "Software Developer & System Administrator", 
+  title: "Software Developer", 
   shortName: "ALESSANDRO", // Used in navbar
-  location: "Cesena, Italy",
+  location: "Italy",
   locationFull: "Cesena, Italy",
   email: "alessandroporcheddu000@gmail.com",
   phone: "(+39) 3703371317",
@@ -79,7 +79,7 @@ export const SITE_CONFIG = {
       {
         company: "University Motorsport Team (MotoStudent Project)",
         badge: "MS",
-        logo: "/logos/unibo-motorsport.png", // TODO: Add logo if available (you have motostudent images in /public)
+        logo: "/logos/unibo-motorsport.png",
         role: "E-Powertrain and Electronics Department Member",
         period: "Oct. 2025 - Present",
         sub: "University of Bologna, Italy",
@@ -90,7 +90,7 @@ export const SITE_CONFIG = {
       {
         company: "Enaip",
         badge: "EN",
-        logo: "/logos/enaip.png", // TODO: Add logo if available
+        logo: "/logos/enaip.png",
         role: "System Administrator Intern",
         period: "Sept. 2025 - present",
         sub: "Cesena, Italy",
@@ -103,7 +103,7 @@ export const SITE_CONFIG = {
       {
         company: "Cables",
         badge: "CA",
-        logo: "/logos/cables.png", // TODO: Add logo if available
+        logo: "/logos/cables.png",
         role: "Automation Technician",
         period: "Jun. 2023 - Sept. 2023",
         sub: "Cesena, Italy",
@@ -115,7 +115,7 @@ export const SITE_CONFIG = {
       {
         company: "Italmetal sp. z o. o.",
         badge: "IT",
-        logo: "/logos/italmetal.png", // TODO: Add logo if available
+        logo: "/logos/italmetal.png",
         role: "IT Assistant",
         period: "Jun. 2022 - Jul. 2022",
         sub: "Wrocław, Poland",
@@ -170,7 +170,7 @@ export const SITE_CONFIG = {
         badge: "UNIBO",
         address: "Cesena, Italy",
         url: "https://www.unibo.it",
-        logo: "/logos/unibo.png", // TODO: Add University of Bologna logo to /public folder
+        logo: "/logos/unibo.png",
         details: [
           "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
           "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
@@ -183,8 +183,8 @@ export const SITE_CONFIG = {
         period: "Sept. 2018 - Jun. 2023",
         badge: "ITT",
         address: "Fermo, Italy",
-        url: "https://www.istitutomontani.edu.it", // TODO: Verify URL
-        logo: "/logos/montani.png", // TODO: Add school logo if available
+        url: "https://www.istitutomontani.edu.it",
+        logo: "/logos/montani.png",
         details: [
           "Designed and implemented automation systems involving PLC and HMI programming.",
           "Participated in the Omron Smart Project Trophy 2023 competition.",
@@ -214,7 +214,7 @@ export const SITE_CONFIG = {
   
   // SEO & Meta Tags
   seo: {
-    title: "Alessandro Porcheddu | Software Developer & System Administrator",
+    title: "Alessandro Porcheddu | Software Developer",
     description: "Computer Science and Engineering student with expertise in full-stack development, system administration, embedded systems, and PLC programming. Skilled in Python, Java, JavaScript, React, Node.js, and Laravel.",
     keywords: ["Software Developer", "System Administrator", "Full-Stack Developer", "React", "Node.js", "Python", "Java", "Laravel", "PLC Programming", "Embedded Systems", "Computer Science", "Engineering"],
     siteUrl: "https://0xpuddu.it", 

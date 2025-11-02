@@ -7,11 +7,8 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { FEATURED_PROJECTS, SMALL_PROJECTS } from "../data/projects";
+import { FEATURED_PROJECTS, SMALL_PROJECTS } from "../constants/projects";
 import { SITE_CONFIG } from "../constants/config";
-
-// Featured Projects and Small Projects are now imported from /src/data/projects.js
-// Update that file to customize your projects
 
 function TechStack({ tech }) {
   return (
