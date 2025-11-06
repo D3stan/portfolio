@@ -2,7 +2,7 @@
 
 A stunning, fully customizable portfolio website template with a brutalist design aesthetic. Perfect for developers, designers, and creative professionals looking to showcase their work.
 
-![Portfolio Preview](./public/portfolio-preview.png)
+![Portfolio Preview](./public/images/profile/portfolio-preview.png)
 
 ## ✨ Features
 
