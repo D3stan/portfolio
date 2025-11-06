@@ -1,4 +1,4 @@
-export default function PageLoader() {
+export default function PageLoader({ text = 'Loading...' }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: 'var(--bg)' }}>
       <div className="text-center">
@@ -10,7 +10,7 @@ export default function PageLoader() {
             borderTopColor: 'var(--accent)'
           }}
         ></div>
-        <p className="mt-4 font-mono font-bold text-lg" style={{ color: 'var(--fg)' }}>Loading...</p>
+        <p className="mt-4 font-mono font-bold text-lg" style={{ color: 'var(--fg)' }}>{text}</p>
       </div>
     </div>
   );
