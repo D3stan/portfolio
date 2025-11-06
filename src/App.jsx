@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -11,7 +12,17 @@ import PageLoader from "./components/PageLoader";
 import { useTheme } from "./hooks/useTheme";
 import { SITE_CONFIG } from "./constants/config";
 
-export default function App() {
+// Component to handle external redirects
+const ExternalRedirect = ({ to, label }) => {
+  useEffect(() => {
+    window.location.href = to;
+  }, [to]);
+  
+  return <PageLoader text={`Redirecting to ${label}...`} />;
+};
+
+// Main home page component
+function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const { applyTheme } = useTheme();
 
@@ -52,5 +63,42 @@ export default function App() {
               <Footer />
             </main>
         </>
+    );
+}
+
+// Main App component with routing
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                {/* Main portfolio page */}
+                <Route path="/" element={<Home />} />
+
+                {/* External redirect routes from SITE_CONFIG */}
+                <Route 
+                  path="/linkedin" 
+                  element={<ExternalRedirect to={SITE_CONFIG.social.linkedin} label="LinkedIn" />} 
+                />
+                <Route 
+                  path="/github" 
+                  element={<ExternalRedirect to={SITE_CONFIG.social.github} label="GitHub" />} 
+                />
+                <Route 
+                  path="/resume" 
+                  element={<ExternalRedirect to={SITE_CONFIG.resume.fileName} label="Resume" />} 
+                />
+                <Route 
+                  path="/cv" 
+                  element={<ExternalRedirect to={SITE_CONFIG.resume.fileName} label="CV" />} 
+                />
+                <Route 
+                  path="/email" 
+                  element={<ExternalRedirect to={`mailto:${SITE_CONFIG.email}`} label="Email" />} 
+                />
+
+                {/* Catch-all route - redirect to home */}
+                <Route path="*" element={<Home />} />
+            </Routes>
+        </Router>
     );
 }
