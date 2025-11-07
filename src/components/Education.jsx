@@ -2,37 +2,14 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Diamond } from "lucide-react";
-import { TECH_KEYWORDS, SECTION_TITLE_EDUCATION } from "@/config";
+import { SECTION_TITLE_EDUCATION } from "@/config";
 import { SCHOOLS } from "@/config/data";
-
-/* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = TECH_KEYWORDS;
-
-function Emph({ text }) {
-  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const re = new RegExp(`(${HIGHLIGHTS.map(esc).join("|")})`, "g");
-  return (
-    <>
-      {text.split(re).map((part, i) =>
-        HIGHLIGHTS.includes(part) ? (
-          <strong key={i} className="font-semibold" style={{ color: 'var(--accent)' }}>
-            {part}
-          </strong>
-        ) : (
-          <span key={i}>{part}</span>
-        )
-      )}
-    </>
-  );
-}
 
 function Bullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
       <Diamond className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
-      <span>
-        <Emph text={children} />
-      </span>
+      <span>{children}</span>
     </li>
   );
 }
@@ -112,7 +89,7 @@ export default function Education() {
                           {edu.school}
                         </a>
 
-                        <div className="font-mono font-semibold text-teal-700 dark:text-teal-400 mt-0.5">
+                        <div className="font-mono font-semibold mt-0.5" style={{ color: 'var(--highlight)' }}>
                           {edu.degree}
                         </div>
                         <div className="text-xs mt-1 text-muted">

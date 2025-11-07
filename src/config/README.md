@@ -38,6 +38,7 @@ Contains color scheme for light and dark modes:
 1. **Update Personal Info**: Edit values in `index.js`
 2. **Add/Edit Projects**: Modify arrays in `data.jsx`
 3. **Change Colors**: Update color values in `theme.js`
+4. **Adjust Highlighting**: Edit the `highlight` color in `theme.js` to change the color of role/degree text throughout the site
 
 ## Importing
 
@@ -49,6 +50,18 @@ import { PROJECTS_FEATURED, SKILLS } from '@/config/data';
 import { THEME, applyTheme } from '@/config/theme';
 ```
 
-## Tech Stack Keywords
+## Theme Colors
 
-The `TECH_KEYWORDS` array in `index.js` is used to automatically highlight matching terms in your experience and education sections.
+The following CSS variables are available throughout the app and automatically update based on the selected theme (light/dark):
+
+- `--accent` - Main accent color (purple by default)
+- `--highlight` - Secondary highlight color for roles, degrees, subtitles (teal by default)
+- `--bg` - Background color
+- `--fg` - Foreground (text) color
+- `--border` - Border color
+- `--card` - Card background color
+- `--muted` - Muted text color
+- `--shadow-weak` - Light shadow
+- `--shadow-strong` - Strong shadow
+
+Use these in your components like: `style={{ color: 'var(--highlight)' }}`

@@ -21,6 +21,7 @@
   --card: #ffffff;
   --accent: #4ecdc4; /* Fallback - will be replaced by mainAccent from colors.js */
   --muted: #757575;
+  --highlight: #0d9488; /* teal-700 - for degree/role text */
 
   --shadow-weak: rgba(0,0,0,0.12);
   --shadow-strong: rgba(0,0,0,0.18);
@@ -38,6 +39,7 @@
   --card: #111111;
   --accent: #aa96da; /* Fallback - will be replaced by mainAccent from theme.js */
   --muted: #aaaaaa;
+  --highlight: #2dd4bf; /* teal-400 - for degree/role text */
 
   --shadow-weak: rgba(255,255,255,0.15);
   --shadow-strong: rgba(255,255,255,0.25);

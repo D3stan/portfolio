@@ -16,6 +16,7 @@ export const THEME = {
     border: "#111111",
     card: "#ffffff",
     muted: "#757575",
+    highlight: "#0d9488", // teal-700 - for degree/role text
     shadowWeak: "rgba(0,0,0,0.12)",
     shadowStrong: "rgba(0,0,0,0.18)",
   },
@@ -26,6 +27,7 @@ export const THEME = {
     border: "#333333",
     card: "#111111",
     muted: "#aaaaaa",
+    highlight: "#2dd4bf", // teal-400 - for degree/role text
     shadowWeak: "rgba(255,255,255,0.15)",
     shadowStrong: "rgba(255,255,255,0.25)",
   },
@@ -46,6 +48,7 @@ export function generateCSSVariables(mode = "light") {
     "--card": colors.card,
     "--accent": THEME.accent,
     "--muted": colors.muted,
+    "--highlight": colors.highlight,
     "--shadow-weak": colors.shadowWeak,
     "--shadow-strong": colors.shadowStrong,
   };

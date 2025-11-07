@@ -2,37 +2,14 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, CheckCircle2, Diamond } from "lucide-react";
-import { TECH_KEYWORDS, SECTION_TITLE_EXPERIENCE } from "@/config";
+import { SECTION_TITLE_EXPERIENCE } from "@/config";
 import { JOBS } from "@/config/data";
-
-/* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = TECH_KEYWORDS;
-
-function Emph({ text }) {
-  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const re = new RegExp(`(${HIGHLIGHTS.map(esc).join("|")})`, "g");
-  return (
-    <>
-      {text.split(re).map((part, i) =>
-        HIGHLIGHTS.includes(part) ? (
-          <strong key={i} className="font-semibold" style={{ color: 'var(--accent)' }}>
-            {part}
-          </strong>
-        ) : (
-          <span key={i}>{part}</span>
-        )
-      )}
-    </>
-  );
-}
 
 function Bullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
       <Diamond className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
-      <span>
-        <Emph text={children} />
-      </span>
+      <span>{children}</span>
     </li>
   );
 }
@@ -41,9 +18,7 @@ function ImpactBullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
       <CheckCircle2 className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
-      <span>
-        <Emph text={children} />
-      </span>
+      <span>{children}</span>
     </li>
   );
 }
@@ -51,13 +26,11 @@ function ImpactBullet({ children }) {
 /* ✅ Jobs from config - already imported from data.js */
 
 export default function Experience() {
-  const [open, setOpen] = useState(() => new Set([0]));
-  const toggle = (idx) =>
-    setOpen((prev) => {
-      const next = new Set(prev);
-      next.has(idx) ? next.delete(idx) : next.add(idx);
-      return next;
-    });
+  const [openIndex, setOpenIndex] = useState(-1);
+
+  const toggle = (idx) => {
+    setOpenIndex(openIndex === idx ? -1 : idx);
+  };
 
   return (
     <section id="experience" className="py-16 sm:py-20 md:py-24">
@@ -73,7 +46,7 @@ export default function Experience() {
 
         <div className="space-y-9">
           {JOBS.map((job, i) => {
-            const isOpen = open.has(i);
+            const isOpen = openIndex === i;
             const bodyId = `job-${i}-body`;
 
             return (
@@ -109,7 +82,7 @@ export default function Experience() {
                         <div className="text-lg sm:text-xl font-extrabold leading-tight break-words">
                           {job.company}
                         </div>
-                        <div className="font-mono text-teal-700 dark:text-teal-400 font-semibold mt-0.5">
+                        <div className="font-mono font-semibold mt-0.5" style={{ color: 'var(--highlight)' }}>
                           {job.role}
                         </div>
                         {job.sub && (

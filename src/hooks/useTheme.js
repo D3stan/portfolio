@@ -64,6 +64,7 @@ export function useTheme() {
       root.style.setProperty('--card', colors.card);
       root.style.setProperty('--accent', THEME.accent);
       root.style.setProperty('--muted', colors.muted);
+      root.style.setProperty('--highlight', colors.highlight);
       root.style.setProperty('--shadow-weak', colors.shadowWeak);
       root.style.setProperty('--shadow-strong', colors.shadowStrong);
     });
