@@ -71,7 +71,9 @@ async function injectMetaTags() {
     const FONTS_URL = extractValue('FONTS_URL');
     const META_KEYWORDS = extractArray('META_KEYWORDS');
 
-    const fullImageUrl = `${META_SITE_URL}${META_OG_IMAGE}`;
+    const fullImageUrl = /^https?:\/\//.test(META_OG_IMAGE)
+      ? META_OG_IMAGE
+      : `${META_SITE_URL}${META_OG_IMAGE}`;
     const keywords = META_KEYWORDS.join(', ');
 
     // Read index.html
