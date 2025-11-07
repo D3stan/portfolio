@@ -55,23 +55,27 @@ function Home() {
             {/* Skip to main content for screen readers */}
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-yellow-300 focus:border-2 focus:border-black focus:font-bold focus:shadow-[4px_4px_0_#000]"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-accent focus:text-fg focus:border-2 focus:border-border focus:font-extrabold focus:uppercase focus:shadow-[6px_6px_0_var(--shadow-strong)] focus:outline-none"
             >
               {ACCESSIBILITY_SKIP_TO_MAIN}
             </a>
 
-            <main id="main-content" className="relative z-10 min-h-screen font-mono text-fg">
+            <div className="relative z-10 min-h-screen font-mono text-fg">
               {/* New single cool background */}
               <CoolBackground />
 
               <Navbar />
-              <About />
-              <Education />
-              <Experience />
-              <Projects />
-              <Contact />
+              
+              <main id="main-content">
+                <About />
+                <Education />
+                <Experience />
+                <Projects />
+                <Contact />
+              </main>
+              
               <Footer />
-            </main>
+            </div>
         </>
     );
 }
