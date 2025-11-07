@@ -25,7 +25,21 @@ This script runs automatically as a `prebuild` hook before `npm run build`. The 
 
 Social media crawlers and search engines need to see meta tags in the initial HTML response. Since the portfolio is a React SPA, meta tags added via JavaScript won't be visible to these crawlers. This script ensures the static HTML file has all the necessary meta tags before deployment.
 
-### Usage:
+## restore-index.js
+
+Restores `index.html` to its original state after the build process completes.
+
+### What it does:
+
+- Runs as a `postbuild` hook after `npm run build`
+- Uses `git checkout index.html` to restore the original clean version
+- Ensures the source `index.html` stays clean while the built version has meta tags
+
+### Why it's needed:
+
+The injection script modifies `index.html` during the build. This script ensures the source file isn't left in a modified state, keeping the repository clean.
+
+## Usage:
 
 Manually run (for testing):
 ```bash
@@ -34,10 +48,14 @@ node scripts/inject-meta-tags.js
 
 Automatic execution:
 ```bash
-npm run build  # Automatically runs the script first via prebuild hook
+npm run build
+# This automatically runs:
+# 1. prebuild: inject-meta-tags.js
+# 2. build: vite build
+# 3. postbuild: restore-index.js
 ```
 
-### Configuration:
+## Configuration:
 
 All meta tag content is configured in `src/config/index.js`. Update that file to change:
 - Site title and description
