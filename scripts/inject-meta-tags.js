@@ -130,7 +130,7 @@ async function injectMetaTags() {
 
     console.log('✅ Meta tags injected successfully!');
     console.log(`   Title: ${META_TITLE}`);
-    console.log(`   Description: ${META_DESCRIPTION.substring(0, 60)}...`);
+    console.log(`   Description: ${META_DESCRIPTION.length > 60 ? META_DESCRIPTION.substring(0, 60) + '...' : META_DESCRIPTION}`);
     console.log(`   Image: ${fullImageUrl}`);
     
   } catch (error) {
