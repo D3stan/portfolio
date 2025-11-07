@@ -81,8 +81,11 @@ export default function Navbar() {
         >
           <div className="pt-3 border-t-2 border-border mt-3">
             <ul className="grid grid-cols-2 gap-2">
-              {NAV_LINKS.map((l) => (
-                <li key={l.id}>
+              {NAV_LINKS.map((l, index) => (
+                <li 
+                  key={l.id}
+                  className={NAV_LINKS.length % 2 !== 0 && index === NAV_LINKS.length - 1 ? "col-span-2" : ""}
+                >
                   <a
                     href={`#${l.id}`}
                     onClick={closeMenu}
