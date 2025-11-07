@@ -291,7 +291,7 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-5">
-                <h4 className="text-lg font-extrabold mb-1">{project.title}</h4>
+                <h3 className="text-lg font-extrabold mb-1">{project.title}</h3>
                 <p className="font-semibold mb-3 text-sm" style={{ color: 'var(--highlight)' }}>
                   {project.subtitle}
                 </p>

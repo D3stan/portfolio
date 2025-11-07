@@ -166,11 +166,12 @@ export default function Contact() {
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-1">
-                  <label className="block text-xs font-bold mb-1">
+                  <label htmlFor="contact-name" className="block text-xs font-bold mb-1">
                     Name <span className="text-red-600">*</span>
                   </label>
                   <input
                     required
+                    id="contact-name"
                     name="name"
                     type="text"
                     value={formState.name}
@@ -182,11 +183,12 @@ export default function Contact() {
                 </div>
 
                 <div className="md:col-span-1">
-                  <label className="block text-xs font-bold mb-1">
+                  <label htmlFor="contact-email" className="block text-xs font-bold mb-1">
                     Email <span className="text-red-600">*</span>
                   </label>
                   <input
                     required
+                    id="contact-email"
                     name="email"
                     type="email"
                     value={formState.email}
@@ -198,11 +200,12 @@ export default function Contact() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-bold mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-bold mb-1">
                     Subject <span className="text-red-600">*</span>
                   </label>
                   <input
                     required
+                    id="contact-subject"
                     name="subject"
                     type="text"
                     value={formState.subject}
@@ -214,11 +217,12 @@ export default function Contact() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-bold mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-bold mb-1">
                     Message <span className="text-red-600">*</span>
                   </label>
                   <textarea
                     required
+                    id="contact-message"
                     name="message"
                     rows="6"
                     value={formState.message}
