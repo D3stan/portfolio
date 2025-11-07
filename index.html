@@ -8,6 +8,27 @@
 
 	<title>Loading...</title>
 	
+	<!-- Theme detection script - must run before page renders to prevent flash -->
+	<script>
+		(function() {
+			// Detect system theme preference
+			const getSystemTheme = () => {
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			};
+			
+			// Get saved theme or fallback to system preference
+			const savedTheme = localStorage.getItem('theme');
+			const theme = savedTheme || getSystemTheme();
+			
+			// Apply theme attribute immediately
+			if (theme === 'dark') {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			}
+		})();
+	</script>
 </head>
 
 <body>
