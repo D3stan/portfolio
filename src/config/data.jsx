@@ -2,6 +2,9 @@
 // PORTFOLIO DATA
 // ============================================
 // Projects, jobs, schools, and skills data
+//
+// 💡 TIP: Highlight keywords using {{keyword}} syntax
+// Example: parseHighlight("Built with {{React}} and {{Node.js}}")
 
 import {
   FaHtml5,
@@ -22,6 +25,7 @@ import {
   SiCplusplus,
   SiFigma,
 } from "react-icons/si";
+import { parseHighlight } from "@/utils/TextHighlight";
 
 // ========== FEATURED PROJECTS ==========
 export const PROJECTS_FEATURED = [
@@ -92,7 +96,7 @@ export const JOBS = [
     period: "Oct. 2025 - Present",
     sub: "University of Bologna, Italy",
     bullets: [
-      "Member of the E-Powertrain and Electronics Department of the university's motorsport team, contributing to the development of an electric motorcycle.",
+      parseHighlight("Member of the {{E-Powertrain and Electronics}} Department of the university's motorsport team, contributing to the development of an electric motorcycle."),
     ],
   },
   {
@@ -103,9 +107,9 @@ export const JOBS = [
     period: "Sept. 2025 - present",
     sub: "Cesena, Italy",
     bullets: [
-      "Assisted in configuring and maintaining Windows Domain Controller, ensuring reliable system performance and uptime.",
+      parseHighlight("Assisted in configuring and maintaining {{Windows Domain Controller}}, ensuring reliable system performance and uptime."),
       "Documented system configurations, network layouts, and maintenance procedures for internal use.",
-      "Worked with virtualization tools such as VMware and Proxmox to create and test server environments.",
+      parseHighlight("Worked with virtualization tools such as {{VMware}} and {{Proxmox}} to create and test server environments."),
     ],
   },
   {
@@ -117,7 +121,7 @@ export const JOBS = [
     sub: "Cesena, Italy",
     bullets: [
       "Assisted in assembling electrical control panels for industrial automation systems, following detailed wiring diagrams and specifications.",
-      "Helped troubleshoot basic PLC input/output issues and performed routine checks on control system hardware.",
+      parseHighlight("Helped troubleshoot basic {{PLC}} input/output issues and performed routine checks on control system hardware."),
     ],
   },
   {
@@ -128,7 +132,7 @@ export const JOBS = [
     period: "Jun. 2022 - Jul. 2022",
     sub: "Wrocław, Poland",
     bullets: [
-      "Completed the Erasmus+ 'Trainee for Industry 4.0 Plus' internship program, gaining practical experience in industrial environments.",
+      parseHighlight("Completed the {{Erasmus+}} 'Trainee for Industry 4.0 Plus' internship program, gaining practical experience in industrial environments."),
       "Assisted with the digitization of paper records by transferring them to solid-state storage systems.",
       "Participated in basic electrical work including the installation of sockets and lighting.",
     ],
@@ -146,8 +150,8 @@ export const SCHOOLS = [
     url: "https://www.unibo.it",
     logo: "/logos/unibo.png",
     details: [
-      "Relevant Coursework: Algorithms & Data Structures (C), 4.0 GPA, Object-Oriented Programming (Java), 4.0 GPA, Linear Algebra for Machine Learning (Python), 4.0 GPA, Programming (C), 4.0 GPA",
-      "Extracurricular Activities: Member of the E-Powertrain and Electronics Department of the university's motorsport team (MotoStudent Project), contributing to the development of an electric motorcycle.",
+      parseHighlight("Relevant Coursework: Algorithms & Data Structures ({{C}}), Object-Oriented Programming ({{Java}}), Linear Algebra for Machine Learning ({{Python}}), Programming ({{C}})"),
+      parseHighlight("Extracurricular Activities: Member of the {{E-Powertrain and Electronics}} Department of the university's motorsport team ({{MotoStudent Project}}), contributing to the development of an electric motorcycle."),
     ],
     hasDropdownPhoto: false,
   },
@@ -160,9 +164,9 @@ export const SCHOOLS = [
     url: "https://www.istitutomontani.edu.it",
     logo: "/logos/montani.png",
     details: [
-      "Designed and implemented automation systems involving PLC and HMI programming.",
-      "Participated in the Omron Smart Project Trophy 2023 competition.",
-      "Earned a Omron Robotics Operation and Programming Certificate.",
+      parseHighlight("Designed and implemented automation systems involving {{PLC}} and {{HMI}} programming."),
+      parseHighlight("Participated in the {{Omron Smart Project Trophy 2023}} competition."),
+      parseHighlight("Earned a {{Omron Robotics Operation and Programming Certificate}}."),
     ],
     hasDropdownPhoto: false,
   },

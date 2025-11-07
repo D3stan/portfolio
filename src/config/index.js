@@ -28,19 +28,6 @@ export const ABOUT_ROLES = [
 export const ABOUT_STATUS = "Available";
 export const ABOUT_STATUS_LOCATION = "Italy · Remote/Hybrid";
 export const ABOUT_DESCRIPTION = `Computer Science and Engineering student at the University of Bologna with hands-on experience in software development, system administration, and embedded systems. Skilled in Java, C / C++, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`;
-export const ABOUT_HIGHLIGHTS = [
-  "Embedded Systems",
-  "Java",
-  "C / C++",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Laravel",
-  "PLC Programming",
-  "System Administration",
-  "Embedded Systems",
-  "OOP",
-];
 
 // ========== META / SEO ==========
 export const META_TITLE = "Alessandro Porcheddu | Software Developer";
@@ -84,42 +71,6 @@ export const CONTACT_EMAIL_SUBJECT = "Hello%20Alessandro";
 // ========== RESUME ==========
 export const RESUME_FILE = "/documents/Resume.pdf";
 export const RESUME_DOWNLOAD_NAME = "AlessandroPorcheddu-Resume.pdf";
-
-// ========== TECH KEYWORDS (for highlighting in experience/education) ==========
-export const TECH_KEYWORDS = [
-  "Python",
-  "Java",
-  "C",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Laravel",
-  "PLC",
-  "HMI",
-  "Domain Controller",
-  "Windows",
-  "VMware",
-  "Proxmox",
-  "Active Directory",
-  "EDMS",
-  "WebSocket",
-  "Serial",
-  "OBD-II",
-  "MVC",
-  "Stripe",
-  "Inertia.js",
-  "ESP32",
-  "KiCad",
-  "Fusion360",
-  "OTA",
-  "Erasmus+",
-  "Omron",
-  "Robotics",
-  "E-Powertrain",
-  "Electronics",
-  "MotoStudent",
-  "Smart Project Trophy",
-];
 
 // ========== NAVIGATION ==========
 export const NAV_LINKS = [

@@ -14,7 +14,6 @@ Contains personal information, metadata, and site settings:
 - Contact form settings
 - Resume settings
 - Footer text
-- Tech keywords for highlighting
 
 ### `data.jsx` - Content Data
 Contains arrays of content:
@@ -23,6 +22,8 @@ Contains arrays of content:
 - **JOBS** - Work experience entries
 - **SCHOOLS** - Education entries
 - **SKILLS** - Skills with icons and descriptions
+
+**Text Highlighting**: You can highlight specific keywords in job/education descriptions using the `<Highlight>` component. See "How to Highlight Text" section below.
 
 ### `theme.js` - Theme Configuration
 Contains color scheme for light and dark modes:
@@ -34,6 +35,39 @@ Contains color scheme for light and dark modes:
 **Theme Auto-Detection**: The theme automatically detects your system's color scheme preference (light/dark) on first visit. Once you manually toggle the theme, your preference is saved to localStorage. The app also listens for system theme changes and will auto-switch if you haven't set a manual preference.
 
 ## How to Customize
+
+### How to Highlight Text
+
+You can highlight specific keywords/phrases in your job descriptions and education details using the simple `{{keyword}}` syntax:
+
+```jsx
+import { parseHighlight } from "@/utils/TextHighlight";
+
+export const JOBS = [
+  {
+    company: "Example Company",
+    bullets: [
+      // With highlighting - just wrap keywords in {{}}
+      parseHighlight("Developed systems using {{React}} and {{Node.js}}"),
+      
+      // Plain text - no highlighting needed
+      "Regular description without any highlights",
+      
+      // Multiple highlights in one line
+      parseHighlight("Built {{microservices}} with {{Docker}} and {{Kubernetes}}"),
+    ],
+  },
+];
+```
+
+**Key Points:**
+- Wrap keywords in `{{` and `}}` to highlight them
+- Use `parseHighlight()` function for any text with `{{}}` markers
+- Plain strings without `{{}}` don't need `parseHighlight()`
+- Highlighted text appears in your theme's accent color
+- Much simpler than JSX - just regular strings!
+
+### Other Customization
 
 1. **Update Personal Info**: Edit values in `index.js`
 2. **Add/Edit Projects**: Modify arrays in `data.jsx`
