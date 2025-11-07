@@ -47,12 +47,17 @@ async function injectMetaTags() {
     };
 
     const extractArray = (key) => {
-      const match = configContent.match(new RegExp(`export const ${key}\\s*=\\s*\\[([^\\]]+)\\]`, 's'));
+      // Match the array literal, including brackets
+      const match = configContent.match(new RegExp(`export const ${key}\\s*=\\s*(\\[[^\\]]*\\])`, 's'));
       if (!match) return [];
-      return match[1]
-        .split(',')
-        .map(item => item.trim().replace(/^["']|["']$/g, ''))
-        .filter(item => item.length > 0);
+      try {
+        // Use eval in a limited scope to parse the array literal
+        // This assumes the array is a valid JS array literal
+        return eval(match[1]);
+      } catch (e) {
+        console.error(`Failed to parse array for key ${key}:`, e);
+        return [];
+      }
     };
 
     // Extract configuration values
