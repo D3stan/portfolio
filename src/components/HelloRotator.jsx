@@ -2,13 +2,13 @@
 import { useEffect, useMemo, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
-import { SITE_CONFIG } from "../constants/config";
+import { SITE_NAME } from "@/config";
 
 /**
  * Rotates "Hello, my name is …" across languages with a flag + 🙂.
  */
 export default function HelloRotator({
-  name = SITE_CONFIG.name,
+  name = SITE_NAME,
   interval = 2200,
   className = "",
 }) {

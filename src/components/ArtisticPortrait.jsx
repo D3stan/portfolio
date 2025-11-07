@@ -119,7 +119,7 @@ function MatrixCodeRain({ containerRef }) {
     // Get accent color from CSS variable
     const style = getComputedStyle(document.documentElement);
     const accentColor = style.getPropertyValue('--accent').trim();
-    const fgColor = style.getPropertyValue('--fg').trim();
+    // const fgColor = style.getPropertyValue('--fg').trim(); // Not currently used
 
     const updateCanvas = () => {
       rect = container.getBoundingClientRect();

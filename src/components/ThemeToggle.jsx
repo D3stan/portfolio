@@ -5,11 +5,11 @@ export default function ThemeToggle() {
   const { theme, changeTheme } = useTheme();
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'brutalist-dark' : 'light';
+    const newTheme = theme === 'light' ? 'dark' : 'light';
     changeTheme(newTheme);
   };
 
-  const isDark = theme === 'brutalist-dark';
+  const isDark = theme === 'dark';
 
   return (
     <button

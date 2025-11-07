@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { FiMail, FiMapPin, FiGithub, FiLinkedin } from "react-icons/fi";
-import { SITE_CONFIG } from "../constants/config";
+import {
+  CONTACT_FORMSPREE,
+  CONTACT_TITLE,
+  CONTACT_DESCRIPTION,
+  CONTACT_DIRECT_EMAIL_PROMPT,
+  CONTACT_EMAIL_SUBJECT,
+  SITE_EMAIL,
+  SITE_LOCATION,
+  SOCIAL_GITHUB,
+  SOCIAL_LINKEDIN,
+} from "@/config";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -59,7 +69,7 @@ export default function Contact() {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch(SITE_CONFIG.contact.formspreeEndpoint, {
+      const response = await fetch(CONTACT_FORMSPREE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -92,7 +102,7 @@ export default function Contact() {
                        border-2 border-border bg-card text-fg
                        px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl"
           >
-            {SITE_CONFIG.contact.title}
+            {CONTACT_TITLE}
           </h2>
         </div>
 
@@ -102,21 +112,21 @@ export default function Contact() {
             {/* Left: quick info / socials */}
             <div className="md:col-span-1 space-y-4">
               <p className="text-sm">
-                {SITE_CONFIG.contact.description}
+                {CONTACT_DESCRIPTION}
               </p>
 
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
-                  <FiMail /> <span>{SITE_CONFIG.email}</span>
+                  <FiMail /> <span>{SITE_EMAIL}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FiMapPin /> <span>{SITE_CONFIG.location}</span>
+                  <FiMapPin /> <span>{SITE_LOCATION}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 pt-2">
                 <a
-                  href={SITE_CONFIG.social.github}
+                  href={SOCIAL_GITHUB}
                   target="_blank"
                   rel="noreferrer"
                   className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
@@ -125,7 +135,7 @@ export default function Contact() {
                   <FiGithub />
                 </a>
                 <a
-                  href={SITE_CONFIG.social.linkedin}
+                  href={SOCIAL_LINKEDIN}
                   target="_blank"
                   rel="noreferrer"
                   className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
@@ -229,10 +239,10 @@ export default function Contact() {
                   </button>
 
                   <a
-                    href={`mailto:${SITE_CONFIG.email}?subject=${SITE_CONFIG.contact.emailSubject}`}
+                    href={`mailto:${SITE_EMAIL}?subject=${CONTACT_EMAIL_SUBJECT}`}
                     className="text-xs underline"
                   >
-                    {SITE_CONFIG.contact.directEmailPrompt}
+                    {CONTACT_DIRECT_EMAIL_PROMPT}
                   </a>
                 </div>
               </form>

@@ -9,8 +9,15 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CoolBackground from "./components/CoolBackground"; // New background
 import PageLoader from "./components/PageLoader";
+import MetaTags from "./components/MetaTags";
 import { useTheme } from "./hooks/useTheme";
-import { SITE_CONFIG } from "./constants/config";
+import {
+  ACCESSIBILITY_SKIP_TO_MAIN,
+  SOCIAL_LINKEDIN,
+  SOCIAL_GITHUB,
+  RESUME_FILE,
+  SITE_EMAIL,
+} from "@/config";
 
 // Component to handle external redirects
 const ExternalRedirect = ({ to, label }) => {
@@ -42,12 +49,15 @@ function Home() {
 
     return (
         <>
+            {/* Dynamic meta tags */}
+            <MetaTags />
+
             {/* Skip to main content for screen readers */}
             <a
               href="#main-content"
               className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-yellow-300 focus:border-2 focus:border-black focus:font-bold focus:shadow-[4px_4px_0_#000]"
             >
-              {SITE_CONFIG.accessibility.skipToMain}
+              {ACCESSIBILITY_SKIP_TO_MAIN}
             </a>
 
             <main id="main-content" className="relative z-10 min-h-screen font-mono text-fg">
@@ -74,26 +84,26 @@ export default function App() {
                 {/* Main portfolio page */}
                 <Route path="/" element={<Home />} />
 
-                {/* External redirect routes from SITE_CONFIG */}
+                {/* External redirect routes */}
                 <Route 
                   path="/linkedin" 
-                  element={<ExternalRedirect to={SITE_CONFIG.social.linkedin} label="LinkedIn" />} 
+                  element={<ExternalRedirect to={SOCIAL_LINKEDIN} label="LinkedIn" />} 
                 />
                 <Route 
                   path="/github" 
-                  element={<ExternalRedirect to={SITE_CONFIG.social.github} label="GitHub" />} 
+                  element={<ExternalRedirect to={SOCIAL_GITHUB} label="GitHub" />} 
                 />
                 <Route 
                   path="/resume" 
-                  element={<ExternalRedirect to={SITE_CONFIG.resume.fileName} label="Resume" />} 
+                  element={<ExternalRedirect to={RESUME_FILE} label="Resume" />} 
                 />
                 <Route 
                   path="/cv" 
-                  element={<ExternalRedirect to={SITE_CONFIG.resume.fileName} label="CV" />} 
+                  element={<ExternalRedirect to={RESUME_FILE} label="CV" />} 
                 />
                 <Route 
                   path="/email" 
-                  element={<ExternalRedirect to={`mailto:${SITE_CONFIG.email}`} label="Email" />} 
+                  element={<ExternalRedirect to={`mailto:${SITE_EMAIL}`} label="Email" />} 
                 />
 
                 {/* Catch-all route - redirect to home */}

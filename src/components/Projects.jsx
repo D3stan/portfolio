@@ -7,8 +7,17 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { FEATURED_PROJECTS, SMALL_PROJECTS } from "../constants/projects";
-import { SITE_CONFIG } from "../constants/config";
+import { PROJECTS_FEATURED, PROJECTS_SMALL } from "@/config/data";
+import {
+  SECTION_TITLE_PROJECTS,
+  PROJECTS_SMALL_LABEL,
+  PROJECTS_CTA_TEXT,
+  PROJECTS_CTA_BUTTON,
+  PROJECTS_BUTTON_DEMO,
+  PROJECTS_BUTTON_CODE,
+  PROJECTS_BUTTON_LIVE_DEMO,
+  SOCIAL_GITHUB,
+} from "@/config";
 
 function TechStack({ tech }) {
   return (
@@ -148,12 +157,12 @@ function SmallProjectCard({ project, isPlaying, onPlayPause }) {
               variant="primary"
               icon={ExternalLink}
             >
-              {project.buttons?.demo || SITE_CONFIG.projects.buttons.demo}
+              {project.buttons?.demo || PROJECTS_BUTTON_DEMO}
             </ActionButton>
           )}
           {project.repo && (
             <ActionButton href={project.repo} variant="secondary" icon={Github}>
-              {project.buttons?.code || SITE_CONFIG.projects.buttons.code}
+              {project.buttons?.code || PROJECTS_BUTTON_CODE}
             </ActionButton>
           )}
         </div>
@@ -184,7 +193,7 @@ function SmallProjectsSlider({ projects }) {
   return (
     <div className="border-2 border-border bg-card backdrop-blur-sm p-4 shadow-[4px_4px_0_var(--shadow-strong)]">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="font-bold">{SITE_CONFIG.projects.smallProjectsLabel}</h3>
+        <h3 className="font-bold">{PROJECTS_SMALL_LABEL}</h3>
         <span className="font-mono text-xs text-muted">
           {currentIndex + 1} of {projects.length}
         </span>
@@ -258,13 +267,13 @@ export default function Projects() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
-            <h2 className="text-2xl font-extrabold tracking-wide">{SITE_CONFIG.projects.title}</h2>
+            <h2 className="text-2xl font-extrabold tracking-wide">{SECTION_TITLE_PROJECTS}</h2>
           </div>
         </div>
 
         {/* Featured Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {FEATURED_PROJECTS.map((project) => (
+          {PROJECTS_FEATURED.map((project) => (
             <div
               key={project.id}
               className="border-2 border-border bg-card shadow-[6px_6px_0_var(--shadow-strong)]"
@@ -299,7 +308,7 @@ export default function Projects() {
                       variant="primary"
                       icon={ExternalLink}
                     >
-                      {project.buttons?.demo || SITE_CONFIG.projects.buttons.liveDemo}
+                      {project.buttons?.demo || PROJECTS_BUTTON_LIVE_DEMO}
                     </ActionButton>
                   )}
                   {project.repo && (
@@ -308,7 +317,7 @@ export default function Projects() {
                       variant="secondary"
                       icon={Github}
                     >
-                      {project.buttons?.code || SITE_CONFIG.projects.buttons.code}
+                      {project.buttons?.code || PROJECTS_BUTTON_CODE}
                     </ActionButton>
                   )}
                 </div>
@@ -319,21 +328,21 @@ export default function Projects() {
 
         {/* Small Projects Slider */}
         <div className="mb-12">
-          <SmallProjectsSlider projects={SMALL_PROJECTS} />
+          <SmallProjectsSlider projects={PROJECTS_SMALL} />
         </div>
 
         {/* Call to Action */}
         <div className="text-center">
           <div className="inline-block border-2 border-border bg-accent px-6 py-3 shadow-[4px_4px_0_var(--shadow-strong)]">
-            <p className="font-semibold mb-2">{SITE_CONFIG.projects.ctaText}</p>
+            <p className="font-semibold mb-2">{PROJECTS_CTA_TEXT}</p>
             <a
-              href={SITE_CONFIG.social.github}
+              href={SOCIAL_GITHUB}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-fg text-bg px-4 py-2 font-bold hover:opacity-90 transition-colors text-sm"
             >
               <Github className="w-4 h-4" />
-              {SITE_CONFIG.projects.ctaButton}
+              {PROJECTS_CTA_BUTTON}
             </a>
           </div>
         </div>

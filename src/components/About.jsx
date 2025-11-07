@@ -3,7 +3,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Mail, ArrowRight, FileText } from "lucide-react";
 import ArtisticPortrait from "./ArtisticPortrait";
 import HelloRotator from "./HelloRotator";
-import { SITE_CONFIG } from "../constants/config";
+import {
+  SITE_NAME,
+  ABOUT_ROLES,
+  ABOUT_STATUS,
+  ABOUT_STATUS_LOCATION,
+  ABOUT_DESCRIPTION,
+} from "@/config";
 
 function Typewriter({
   phrases,
@@ -72,7 +78,7 @@ export default function About() {
                   <span className="absolute inset-0 rounded-full bg-green-600" />
                 </span>
                 <span className="font-mono text-sm">
-                  <strong>{SITE_CONFIG.about.availability.status}</strong> — {SITE_CONFIG.about.availability.location}
+                  <strong>{ABOUT_STATUS}</strong> — {ABOUT_STATUS_LOCATION}
                 </span>
               </div>
             </div>
@@ -82,21 +88,21 @@ export default function About() {
           <main className="md:col-span-7 space-y-4">
             {/* Card 1 — Name + subtitle */}
             <div className={`${card} p-5 sm:p-6`}>
-              <HelloRotator name={SITE_CONFIG.name} />
+              <HelloRotator name={SITE_NAME} />
 
               <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight font-mono leading-none mt-2">
-                {SITE_CONFIG.name}
+                {SITE_NAME}
               </h2>
 
               <p className="mt-2 text-xl font-mono">
-                <Typewriter phrases={SITE_CONFIG.about.roles} />
+                <Typewriter phrases={ABOUT_ROLES} />
               </p>
             </div>
 
             {/* Card 2 — Details / blurb */}
             <div className={`${card} p-5 sm:p-6`}>
               <p className="text-[1.05rem] leading-relaxed">
-                {SITE_CONFIG.about.description}
+                {ABOUT_DESCRIPTION}
               </p>
 
               {/* CTAs (already square) */}

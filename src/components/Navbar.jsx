@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import SocialButtons from "./SocialButtons";
 import BatCatLogo from "./BatCatLogo";
 import ThemeToggle from "./ThemeToggle";
-import { NAV_LINKS, SITE_CONFIG } from "../constants/config";
+import { NAV_LINKS, SITE_SHORT_NAME } from "@/config";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function Navbar() {
               <BatCatLogo size={32} />
             </div>
             <h1 className="text-xl font-extrabold tracking-tight text-fg">
-              {SITE_CONFIG.shortName}<span className="ml-1"></span>
+              {SITE_SHORT_NAME}<span className="ml-1"></span>
             </h1>
           </a>
 

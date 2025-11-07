@@ -2,10 +2,11 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, CheckCircle2, Diamond } from "lucide-react";
-import { SITE_CONFIG } from "../constants/config";
+import { TECH_KEYWORDS, SECTION_TITLE_EXPERIENCE } from "@/config";
+import { JOBS } from "@/config/data";
 
 /* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = SITE_CONFIG.experience.highlights;
+const HIGHLIGHTS = TECH_KEYWORDS;
 
 function Emph({ text }) {
   const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -47,8 +48,7 @@ function ImpactBullet({ children }) {
   );
 }
 
-/* ✅ Jobs from config */
-const JOBS = SITE_CONFIG.experience.jobs;
+/* ✅ Jobs from config - already imported from data.js */
 
 export default function Experience() {
   const [open, setOpen] = useState(() => new Set([0]));
@@ -66,7 +66,7 @@ export default function Experience() {
         <div className="w-full flex justify-center mb-8 sm:mb-10">
           <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
             <h2 className="text-2xl font-extrabold tracking-wide">
-              {SITE_CONFIG.experience.title}
+              {SECTION_TITLE_EXPERIENCE}
             </h2>
           </div>
         </div>

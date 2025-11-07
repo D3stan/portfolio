@@ -30,17 +30,17 @@
   --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
-/* Brutalist (Dark) - Fallback only, dynamically overridden */
-[data-theme="brutalist-dark"] {
+/* Dark Mode - Fallback only, dynamically overridden */
+[data-theme="dark"] {
   --bg: #0a0a0a;
   --fg: #f5f5f5;
-  --border: #000000;
+  --border: #333333;
   --card: #111111;
-  --accent: #4ecdc4; /* Fallback - will be replaced by mainAccent from colors.js */
+  --accent: #aa96da; /* Fallback - will be replaced by mainAccent from theme.js */
   --muted: #aaaaaa;
 
-  --shadow-weak: rgba(0,0,0,0.5);
-  --shadow-strong: rgba(0,0,0,0.6);
+  --shadow-weak: rgba(255,255,255,0.15);
+  --shadow-strong: rgba(255,255,255,0.25);
 }
 
 /* Noir - Fallback only, uses specific accent */

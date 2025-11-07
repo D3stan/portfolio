@@ -2,10 +2,11 @@ import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Diamond } from "lucide-react";
-import { SITE_CONFIG } from "../constants/config";
+import { TECH_KEYWORDS, SECTION_TITLE_EDUCATION } from "@/config";
+import { SCHOOLS } from "@/config/data";
 
 /* 🔎 Keywords to emphasize inline */
-const HIGHLIGHTS = SITE_CONFIG.education.highlights;
+const HIGHLIGHTS = TECH_KEYWORDS;
 
 function Emph({ text }) {
   const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -37,7 +38,7 @@ function Bullet({ children }) {
 }
 
 /* ✅ Education from config */
-const education = SITE_CONFIG.education.schools;
+const education = SCHOOLS;
 
 export default function Education() {
   const [openIndex, setOpenIndex] = useState(-1);
@@ -58,7 +59,7 @@ export default function Education() {
         {/* Heading */}
         <div className="flex justify-center mb-8 sm:mb-10 md:mb-12">
           <h2 className="uppercase font-extrabold tracking-tight border-2 border-border bg-card text-fg px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl">
-            {SITE_CONFIG.education.title}
+            {SECTION_TITLE_EDUCATION}
           </h2>
         </div>
 
@@ -169,9 +170,6 @@ export default function Education() {
                                 className="w-full max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain"
                                 loading="lazy"
                               />
-                              <p className="mt-2 text-xs text-muted">
-                                {SITE_CONFIG.education.graduationCaption}
-                              </p>
                             </div>
                           )}
                         </div>
