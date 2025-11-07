@@ -13,7 +13,7 @@ try {
   console.log('🔄 Restoring original index.html...');
   execSync('git checkout index.html', { stdio: 'inherit' });
   console.log('✅ index.html restored to original state');
-} catch {
+} catch (error) {
   // If git checkout fails (e.g., no git repo), that's okay
-  console.log('ℹ️  Could not restore index.html (not in git repo or already clean)');
+  console.log('ℹ️  Could not restore index.html:', error.message);
 }
