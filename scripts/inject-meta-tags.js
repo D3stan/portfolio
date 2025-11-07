@@ -29,9 +29,19 @@ async function injectMetaTags() {
     const extractValue = (key) => {
       // Try to match values that may span multiple lines
       // Pattern: export const KEY = "value" or export const KEY =\n  "value"
-      const pattern = new RegExp(`export const ${key}\\s*=\\s*["'\`]([^"'\`]*(?:\\n[^"'\`]*)*)["'\`]`, 's');
+      // Updated regex to handle escaped quotes inside string values
+      const pattern = new RegExp(
+        `export const ${key}\\s*=\\s*(["'\`])((?:\\\\.|(?!\\1).)*?)\\1`,
+        's'
+      );
       const match = configContent.match(pattern);
-      if (match) return match[1].replace(/\n\s+/g, ' ').trim();
+      if (match) {
+        // Unescape escaped quotes and other escape sequences
+        let value = match[2].replace(/\n\s+/g, ' ').trim();
+        value = value.replace(/\\\\/g, '\\'); // Unescape backslashes
+        value = value.replace(/\\(["'`])/g, '$1'); // Unescape quotes
+        return value;
+      }
       
       return '';
     };
