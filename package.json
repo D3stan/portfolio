@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/inject-meta-tags.js",
     "build": "vite build",
+    "postbuild": "node scripts/restore-index.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

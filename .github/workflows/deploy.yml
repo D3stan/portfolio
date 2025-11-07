@@ -33,6 +33,7 @@ jobs:
 
       - name: Build
         run: npm run build
+        # Note: The prebuild script automatically injects meta tags from src/config/index.js into index.html
 
       - name: Copy index.html to 404.html (Fix for Routes)
         run: cp dist/index.html dist/404.html
