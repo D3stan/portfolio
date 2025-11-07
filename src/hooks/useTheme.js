@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { THEME } from '@/config/theme';
 
 /**
  * Custom hook for theme management
@@ -45,29 +46,26 @@ export function useTheme() {
   }, [theme]);
 
   const applyTheme = (themeName) => {
-    // Dynamically import theme to ensure we get the latest values
-    import('@/config/theme').then(({ THEME }) => {
-      const colors = THEME[themeName] || THEME.light;
-      const root = document.documentElement;
+    const colors = THEME[themeName] || THEME.light;
+    const root = document.documentElement;
 
-      // Apply theme attribute for CSS
-      if (themeName === 'light') {
-        root.removeAttribute('data-theme');
-      } else {
-        root.setAttribute('data-theme', themeName);
-      }
+    // Apply theme attribute for CSS
+    if (themeName === 'light') {
+      root.removeAttribute('data-theme');
+    } else {
+      root.setAttribute('data-theme', themeName);
+    }
 
-      // Apply CSS custom properties dynamically
-      root.style.setProperty('--bg', colors.bg);
-      root.style.setProperty('--fg', colors.fg);
-      root.style.setProperty('--border', colors.border);
-      root.style.setProperty('--card', colors.card);
-      root.style.setProperty('--accent', THEME.accent);
-      root.style.setProperty('--muted', colors.muted);
-      root.style.setProperty('--highlight', colors.highlight);
-      root.style.setProperty('--shadow-weak', colors.shadowWeak);
-      root.style.setProperty('--shadow-strong', colors.shadowStrong);
-    });
+    // Apply CSS custom properties dynamically
+    root.style.setProperty('--bg', colors.bg);
+    root.style.setProperty('--fg', colors.fg);
+    root.style.setProperty('--border', colors.border);
+    root.style.setProperty('--card', colors.card);
+    root.style.setProperty('--accent', THEME.accent);
+    root.style.setProperty('--muted', colors.muted);
+    root.style.setProperty('--highlight', colors.highlight);
+    root.style.setProperty('--shadow-weak', colors.shadowWeak);
+    root.style.setProperty('--shadow-strong', colors.shadowStrong);
   };
 
   const changeTheme = (newTheme) => {
