@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import {
   META_TITLE,
   META_DESCRIPTION,
@@ -14,15 +14,19 @@ import {
 
 /**
  * MetaTags Component
- * Dynamically manages all meta tags, title, and external resources
+ * Dynamically manages all meta tags, title, and external resources using React 19 built-in support
  */
 export default function MetaTags() {
   const fullImageUrl = `${META_SITE_URL}${META_OG_IMAGE}`;
 
+  // Set html lang attribute using useEffect
+  useEffect(() => {
+    document.documentElement.lang = META_LANGUAGE;
+  }, []);
+
   return (
-    <Helmet>
-      {/* Basic Meta Tags */}
-      <html lang={META_LANGUAGE} />
+    <>
+      {/* Basic Meta Tags - React 19 supports these natively */}
       <title>{META_TITLE}</title>
       <meta name="description" content={META_DESCRIPTION} />
       <meta name="keywords" content={META_KEYWORDS.join(", ")} />
@@ -60,6 +64,6 @@ export default function MetaTags() {
           gtag('config', '${ANALYTICS_GA_ID}');
         `}
       </script>
-    </Helmet>
+    </>
   );
 }
