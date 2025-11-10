@@ -47,27 +47,8 @@ export const PROJECTS_FEATURED = [
   },
   {
     id: 2,
-    title: "Motorcycle Parts E-commerce Platform",
-    subtitle: "Full-Stack E-commerce Website",
-    blurb:
-      "Built a full-stack e-commerce platform using Laravel 12, React 19, and Inertia.js. Implemented secure payment processing with Stripe via Laravel Cashier. Designed responsive mobile UI with reusable components using the shadcn React library. Developed an admin dashboard for product, order, and customer management with analytics and reporting tools. Ensured robust security with mandatory email and webhook signature validation.",
-    tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Shadcn"],
-    image: "/images/projects/featured/motorcycle-ecommerce.png",
-    video: null,
-    repo: null,
-    demo: "https://rsp-industries.com",
-    buttons: {
-      demo: "Live Site",
-      code: "Code",
-    },
-  },
-];
-
-// ========== SMALL PROJECTS ==========
-export const PROJECTS_SMALL = [
-  {
-    id: 3,
     title: "Motorcycle Exhaust Valve Control Unit",
+    subtitle: "ESP32 Electronic Control Unit",
     blurb:
       "Developed an electronic exhaust valve control unit based on ESP32. Created a browser app to control the device via WiFi through WebSocket communication. Designed a custom PCB using KiCad and a custom 3D printed enclosure using Fusion360. Implemented secure OTA updates through a custom remote server based on NodeJS.",
     tech: [
@@ -79,10 +60,29 @@ export const PROJECTS_SMALL = [
       "Node.js",
       "OTA",
     ],
-    image: "/images/projects/small/exhaust-valve.png",
+    image: "/images/projects/featured/exhaust-valve.png",
     video: null,
     repo: "https://github.com/D3stan/EV-Controller",
     demo: "https://d3stan.github.io/EV-Controller",
+    buttons: {
+      demo: "Live Demo",
+      code: "Code",
+    },
+  },
+];
+
+// ========== SMALL PROJECTS ==========
+export const PROJECTS_SMALL = [
+  {
+    id: 3,
+    title: "Motorcycle Parts E-commerce Platform",
+    blurb:
+      "Built a full-stack e-commerce platform using Laravel 12, React 19, and Inertia.js. Implemented secure payment processing with Stripe via Laravel Cashier. Designed responsive mobile UI with reusable components using the shadcn React library. Developed an admin dashboard for product, order, and customer management with analytics and reporting tools. Ensured robust security with mandatory email and webhook signature validation.",
+    tech: ["Laravel 12", "React 19", "Inertia.js", "Stripe", "Shadcn"],
+    image: "/images/projects/small/motorcycle-ecommerce.png",
+    video: null,
+    repo: null,
+    demo: "https://rsp-industries.com",
   },
 ];
 
