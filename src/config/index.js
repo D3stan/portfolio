@@ -24,6 +24,7 @@ export const ABOUT_ROLES = [
   "Software Developer",
   "System Administrator",
   "Full-Stack Developer",
+  "Embedded Systems Enthusiast",
 ];
 export const ABOUT_STATUS = "Available";
 export const ABOUT_STATUS_LOCATION = "Italy · Remote/Hybrid";
@@ -32,7 +33,7 @@ export const ABOUT_DESCRIPTION = `Computer Science and Engineering student at th
 // ========== META / SEO ==========
 export const META_TITLE = "Alessandro Porcheddu | Software Developer";
 export const META_DESCRIPTION =
-  "Computer Science and Engineering student with expertise in full-stack development, system administration, embedded systems, and PLC programming. Skilled in Python, Java, JavaScript, React, Node.js, and Laravel.";
+  "Computer Science and Engineering student with expertise in embedded systems, full-stack development, system administration, and PLC programming. Skilled in C/C++, Python, Java, JavaScript, React, Node.js, and Laravel.";
 export const META_KEYWORDS = [
   "Software Developer",
   "System Administrator",
@@ -95,7 +96,7 @@ export const FOOTER_LINKS_LEGAL = [
 
 // ========== FOOTER ==========
 export const FOOTER_COPYRIGHT =
-  "Made by Alessandro Porcheddu — Brutalist / Swiss UI.";
+  "Made by Alessandro Porcheddu - Brutalist / Swiss UI.";
 export const FOOTER_ATTRIBUTION = "BatCat mark inspired by Mark Horn.";
 
 // ========== SECTION TITLES ==========

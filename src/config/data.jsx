@@ -79,10 +79,10 @@ export const PROJECTS_SMALL = [
       "Node.js",
       "OTA",
     ],
-    image: "/exhaust-valve.png",
+    image: "/images/projects/small/exhaust-valve.png",
     video: null,
-    repo: "https://github.com/D3stan/exhaust-valve-control",
-    demo: null,
+    repo: "https://github.com/D3stan/EV-Controller",
+    demo: "https://d3stan.github.io/EV-Controller",
   },
 ];
 
