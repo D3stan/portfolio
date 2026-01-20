@@ -45,6 +45,21 @@
   --shadow-strong: rgba(255,255,255,0.25);
 }
 
+/* Respect system dark mode preference before JavaScript loads */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --border: #333333;
+    --card: #111111;
+    --accent: #aa96da;
+    --muted: #aaaaaa;
+    --highlight: #2dd4bf;
+    --shadow-weak: rgba(255,255,255,0.15);
+    --shadow-strong: rgba(255,255,255,0.25);
+  }
+}
+
 /* Noir - Fallback only, uses specific accent */
 [data-theme="noir"] {
   --bg: #0b0e14;

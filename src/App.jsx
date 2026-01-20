@@ -31,17 +31,12 @@ const ExternalRedirect = ({ to, label }) => {
 // Main home page component
 function Home() {
     const [isLoading, setIsLoading] = useState(true);
-    const { applyTheme } = useTheme();
 
     useEffect(() => {
-        // Initialize theme colors from colors.js on mount
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        applyTheme(savedTheme);
-        
         // Simulate loading time for critical resources
         const timer = setTimeout(() => setIsLoading(false), 1000);
         return () => clearTimeout(timer);
-    }, [applyTheme]);
+    }, []);
 
     if (isLoading) {
         return <PageLoader />;
