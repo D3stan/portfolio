@@ -3,8 +3,7 @@
 // ============================================
 // Projects, jobs, schools, and skills data
 //
-// 💡 TIP: Highlight keywords using {{keyword}} syntax
-// Example: parseHighlight("Built with {{React}} and {{Node.js}}")
+// Highlight keywords using {{keyword}} syntax
 
 import {
   FaHtml5,
@@ -103,7 +102,7 @@ export const JOBS = [
     badge: "EN",
     logo: "/logos/enaip.png",
     role: "System Administrator Intern",
-    period: "Sept. 2025 - present",
+    period: "Sept. 2025 - Dec. 2025",
     sub: "Cesena, Italy",
     bullets: [
       parseHighlight("Assisted in configuring and maintaining {{Windows Domain Controller}}, ensuring reliable system performance and uptime."),
