@@ -60,7 +60,7 @@ export default function Experience() {
                   onClick={() => toggle(i)}
                   aria-expanded={isOpen}
                   aria-controls={bodyId}
-                  className="w-full text-left p-4 md:p-5 border-b-2 border-border focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  className="w-full text-left p-4 md:p-5 border-b-2 border-border"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-4">
                     {/* Left group */}
