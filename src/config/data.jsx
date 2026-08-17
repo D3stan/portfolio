@@ -91,7 +91,7 @@ export const JOBS = [
     badge: "MS",
     logo: "/logos/unibo-motorsport.png",
     role: "E-Powertrain and Electronics Department Member",
-    period: "Oct. 2025 - Present",
+    period: "Oct. 2025 - Sept. 2026",
     sub: "University of Bologna, Italy",
     bullets: [
       parseHighlight("Member of the {{E-Powertrain and Electronics}} Department of the university's motorsport team, contributing to the development of an electric motorcycle."),
@@ -140,9 +140,23 @@ export const JOBS = [
 // ========== SCHOOLS / EDUCATION ==========
 export const SCHOOLS = [
   {
+    school: "Technical University of Denmark",
+    degree: "M.Sc. in Computer Science and Engineering",
+    period: "Sept. 2026 - Present",
+    badge: "DTU",
+    address: "Copenhagen, Denmark",
+    url: "https://www.dtu.dk/English/",
+    logo: "/logos/dtu.png",
+    details: [
+      parseHighlight("Relevant Coursework: Design of Digital Systems, Networked Embedded Systems, IoT Hardware and PCB Design, Hardware/Software Codesign"),
+      // parseHighlight("Extracurricular Activities: Member of the {{E-Powertrain and Electronics}} Department of the university's motorsport team ({{MotoStudent Project}}), contributing to the development of an electric motorcycle."),
+    ],
+    hasDropdownPhoto: false,
+  },
+  {
     school: "University of Bologna",
     degree: "B.Sc. in Computer Science and Engineering",
-    period: "Sept. 2023 - Present",
+    period: "Sept. 2023 - Sept. 2026",
     badge: "UNIBO",
     address: "Cesena, Italy",
     url: "https://www.unibo.it",
