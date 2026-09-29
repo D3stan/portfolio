@@ -42,6 +42,7 @@ export default function AccordionCard({
   const period = item.period;
   const meta = item.sub || item.address;
   const details = item.bullets || item.details;
+  const hasDetails = details?.length > 0;
   const url = item.url;
 
   return (
@@ -107,7 +108,7 @@ export default function AccordionCard({
             <div className="font-mono text-xs sm:text-sm">
               {period}
             </div>
-            {details && (
+            {hasDetails && (
               <span
                 className="border-2 border-border bg-card p-1 shadow-[4px_4px_0_var(--shadow-strong)]"
                 aria-hidden="true"
@@ -122,7 +123,7 @@ export default function AccordionCard({
       </button>
 
       {/* Collapsible body */}
-      {details && (
+      {hasDetails && (
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div

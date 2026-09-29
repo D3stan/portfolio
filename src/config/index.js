@@ -3,17 +3,21 @@
 // ============================================
 // Personal information, metadata, navigation, and site settings
 
+import resume from "./resume.generated.json";
+
 // ========== PERSONAL INFO ==========
-export const SITE_NAME = "Alessandro Porcheddu";
+// Name, email, phone and GitHub come from the resume header (resume/resume.tex).
+// SITE_PHONE is not shown anywhere on the site at the moment.
+export const SITE_NAME = resume.profile.name;
 export const SITE_TITLE = "Software Developer";
 export const SITE_SHORT_NAME = "ALESSANDRO"; // Used in navbar
-export const SITE_EMAIL = "alessandroporcheddu000@gmail.com";
-export const SITE_PHONE = "(+39) 3703371317";
+export const SITE_EMAIL = resume.profile.email;
+export const SITE_PHONE = resume.profile.mobile;
 export const SITE_LOCATION = "Italy";
 export const SITE_LOCATION_FULL = "Cesena, Italy";
 
 // ========== SOCIAL LINKS ==========
-export const SOCIAL_GITHUB = "https://github.com/D3stan";
+export const SOCIAL_GITHUB = `https://github.com/${resume.profile.github}`;
 export const SOCIAL_LINKEDIN = "https://www.linkedin.com/in/0xalessandro-porcheddu";
 export const SOCIAL_PORTFOLIO = "https://0xpuddu.it/";
 export const SOCIAL_TWITTER = ""; // Optional
