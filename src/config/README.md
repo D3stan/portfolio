@@ -23,6 +23,12 @@ Contains arrays of content:
 - **SCHOOLS** - Education entries
 - **SKILLS** - Skills with icons and descriptions
 
+PROJECTS_FEATURED, PROJECTS_SMALL, JOBS and SCHOOLS, plus SITE_NAME,
+SITE_EMAIL, SITE_PHONE and SOCIAL_GITHUB in `index.js`, are read from the LaTeX
+resume in `/resume` through `resume.generated.json`. Edit the resume, not this
+folder, to change them: see [resume/README.md](../../resume/README.md).
+There, `\textbf{...}` produces the `{{...}}` highlight.
+
 **Text Highlighting**: You can highlight specific keywords in job/education descriptions using the `<Highlight>` component. See "How to Highlight Text" section below.
 
 ### `theme.js` - Theme Configuration
@@ -70,7 +76,7 @@ export const JOBS = [
 ### Other Customization
 
 1. **Update Personal Info**: Edit values in `index.js`
-2. **Add/Edit Projects**: Modify arrays in `data.jsx`
+2. **Add/Edit Projects, Experience, Education**: Edit `resume/sections/*.tex` (see `resume/README.md`)
 3. **Change Colors**: Update color values in `theme.js`
 4. **Adjust Highlighting**: Edit the `highlight` color in `theme.js` to change the color of role/degree text throughout the site
 

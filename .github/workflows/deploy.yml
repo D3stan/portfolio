@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -12,8 +13,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -21,6 +22,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended latexmk
+
+      - name: Build resume PDF
+        run: |
+          latexmk -xelatex -interaction=nonstopmode -halt-on-error -cd -outdir=build resume/resume.tex
+          mkdir -p public/documents
+          cp resume/build/resume.pdf public/documents/Resume.pdf
+
+      - name: Upload resume PDF for review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: public/documents/Resume.pdf
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -31,22 +51,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test resume parser
+        run: npm test
+
       - name: Build
         run: npm run build
-        # Note: The prebuild script automatically injects meta tags from src/config/index.js into index.html
+        # Note: The prebuild script automatically injects meta tags from src/config/index.js into index.html,
+        # and the Vite build reads education, experience and projects from resume/*.tex
 
       - name: Copy index.html to 404.html (Fix for Routes)
         run: cp dist/index.html dist/404.html
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

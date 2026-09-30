@@ -9,3 +9,8 @@ dist
 .vscode/
 
 CNAME
+
+# Generated from the LaTeX resume (see resume/README.md)
+src/config/resume.generated.json
+public/documents/Resume.pdf
+resume/build/

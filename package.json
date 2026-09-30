@@ -9,7 +9,10 @@
     "build": "vite build",
     "postbuild": "node scripts/restore-index.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test scripts/*.test.js",
+    "resume:data": "node scripts/resume-to-site.js",
+    "resume:pdf": "latexmk -xelatex -interaction=nonstopmode -halt-on-error -cd -outdir=build resume/resume.tex && mkdir -p public/documents && cp resume/build/resume.pdf public/documents/Resume.pdf"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",

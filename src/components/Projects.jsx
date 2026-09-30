@@ -54,6 +54,15 @@ function ActionButton({ href, children, variant = "primary", icon: Icon }) {
   );
 }
 
+const PREVIEW_PLACEHOLDER =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>" +
+    "<rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>" +
+    "<text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>" +
+    "</svg>"
+  );
+
 function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
   const videoRef = useRef(null);
   const [hasVideoError, setHasVideoError] = useState(false);
@@ -73,19 +82,12 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
     return (
       <div className={`relative ${className}`}>
         <img
-          src={poster}
+          src={poster || PREVIEW_PLACEHOLDER}
           alt="Project preview"
           loading="lazy"
           className="w-full h-full object-cover"
           onError={(e) => {
-            e.currentTarget.src =
-              "data:image/svg+xml;utf8," +
-              encodeURIComponent(
-                "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>" +
-                "<rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>" +
-                "<text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>" +
-                "</svg>"
-              );
+            e.currentTarget.src = PREVIEW_PLACEHOLDER;
           }}
         />
       </div>
