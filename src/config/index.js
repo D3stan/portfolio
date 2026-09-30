@@ -13,8 +13,8 @@ export const SITE_TITLE = "Software Developer";
 export const SITE_SHORT_NAME = "ALESSANDRO"; // Used in navbar
 export const SITE_EMAIL = resume.profile.email;
 export const SITE_PHONE = resume.profile.mobile;
-export const SITE_LOCATION = "Italy";
-export const SITE_LOCATION_FULL = "Cesena, Italy";
+export const SITE_LOCATION = "Denmark";
+export const SITE_LOCATION_FULL = "Copenhagen, Denmark";
 
 // ========== SOCIAL LINKS ==========
 export const SOCIAL_GITHUB = `https://github.com/${resume.profile.github}`;
@@ -31,8 +31,8 @@ export const ABOUT_ROLES = [
   "Embedded Systems Enthusiast",
 ];
 export const ABOUT_STATUS = "Available";
-export const ABOUT_STATUS_LOCATION = "Italy · Remote/Hybrid";
-export const ABOUT_DESCRIPTION = `Computer Science and Engineering student at the University of Bologna with hands-on experience in software development, system administration, and embedded systems. Skilled in Java, C / C++, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`;
+export const ABOUT_STATUS_LOCATION = "Denmark · Remote/Hybrid";
+export const ABOUT_DESCRIPTION = `Computer Science and Engineering student at Technical University of Denmark with hands-on experience in software development, system administration, and embedded systems. Skilled in Java, C / C++, JavaScript, React, Node.js, and Laravel. Experienced in PLC and HMI programming, domain controller management, and building full-stack web applications for e-commerce and IoT projects.`;
 
 // ========== META / SEO ==========
 export const META_TITLE = "Alessandro Porcheddu | Software Developer";
