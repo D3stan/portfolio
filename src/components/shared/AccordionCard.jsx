@@ -1,5 +1,6 @@
+import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, CheckCircle2 } from "lucide-react";
 import { Bullet, ImpactBullet } from "./Bullet";
 
 /**
@@ -46,29 +47,29 @@ export default function AccordionCard({
   const url = item.url;
 
   return (
-    <div className="border-2 border-border bg-card shadow-[8px_8px_0_var(--shadow-weak)]">
-      {/* Card header */}
+    <div className={index > 0 ? "groove" : ""}>
+      {/* Row header */}
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
         {...(useAriaControls && { "aria-controls": bodyId })}
-        className="w-full text-left p-4 md:p-5 border-b-2 border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        className="w-full text-left px-3 py-4 md:px-5 md:py-5 hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)] focus:outline-none focus-visible:outline-1 focus-visible:outline-dotted focus-visible:outline-[var(--fg)] focus-visible:-outline-offset-4"
       >
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-4">
           {/* Left group */}
           <div className="flex items-start gap-3 md:gap-4 flex-1 min-w-0">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-border overflow-hidden flex items-center justify-center bg-card shrink-0">
+            <div className="win-body !m-0 !p-0.5 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 !bg-white">
               {logo ? (
                 <img
                   src={logo}
                   alt={`${title} logo`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                   {...(logoClickable && { onClick: (e) => e.stopPropagation() })}
                 />
               ) : (
-                <span className="font-extrabold uppercase text-xs">
+                <span className="font-bold uppercase text-xs text-black">
                   {badge}
                 </span>
               )}
@@ -80,21 +81,21 @@ export default function AccordionCard({
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-lg sm:text-xl font-extrabold leading-tight underline decoration-2 decoration-accent underline-offset-2 hover:opacity-90 break-words"
+                  className="block font-display text-xl sm:text-2xl leading-tight underline decoration-1 decoration-accent underline-offset-4 hover:text-accent break-words"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {title}
                 </a>
               ) : (
-                <div className="text-lg sm:text-xl font-extrabold leading-tight break-words">
+                <div className="font-display text-xl sm:text-2xl leading-tight break-words">
                   {title}
                 </div>
               )}
-              
-              <div className="font-mono font-semibold mt-0.5" style={{ color: 'var(--highlight)' }}>
+
+              <div className="font-mono font-semibold text-sm mt-1 text-highlight">
                 {subtitle}
               </div>
-              
+
               {meta && (
                 <div className="text-xs mt-1 text-muted">
                   {meta}
@@ -104,18 +105,16 @@ export default function AccordionCard({
           </div>
 
           {/* Right group */}
-          <div className="flex items-center justify-between md:justify-end gap-2 md:gap-3">
-            <div className="font-mono text-xs sm:text-sm">
+          <div className="flex items-center justify-between md:justify-end gap-3 pl-14 md:pl-0">
+            <div className="font-mono text-xs sm:text-sm text-muted tabular-nums">
               {period}
             </div>
             {hasDetails && (
               <span
-                className="border-2 border-border bg-card p-1 shadow-[4px_4px_0_var(--shadow-strong)]"
+                className="btn95 !p-0 w-5 h-5 text-sm font-bold leading-none"
                 aria-hidden="true"
               >
-                <ChevronDown className={`h-4 w-4 transition-transform ${
-                  isOpen ? "rotate-180" : ""
-                }`} />
+                {isOpen ? "−" : "+"}
               </span>
             )}
           </div>
@@ -134,10 +133,10 @@ export default function AccordionCard({
               transition={{ duration: 0.25 }}
               className="overflow-hidden"
             >
-              <div className="p-4 md:p-5">
+              <div className="px-3 pb-5 md:px-5 md:pl-[5.25rem]">
                 {/* Main bullets */}
-                <div className="pl-3 md:pl-4 border-l-4" style={{ borderColor: 'var(--accent)' }}>
-                  <ul className="list-none mt-2 space-y-2">
+                <div className="pl-3 md:pl-4 border-l border-dashed" style={{ borderColor: 'var(--accent)' }}>
+                  <ul className="list-none space-y-2">
                     {details.map((detail, idx) => (
                       <Bullet key={idx}>{detail}</Bullet>
                     ))}
@@ -147,11 +146,8 @@ export default function AccordionCard({
                 {/* Optional Impact section */}
                 {showImpact && item.impactBullets?.length ? (
                   <div className="mt-5">
-                    <div className="inline-flex items-center gap-2 rounded-md border-2 border-border bg-card px-3 py-1 shadow-[4px_4px_0_var(--shadow-strong)]">
-                      <CheckCircle2 className="h-4 w-4" style={{ color: 'var(--accent)' }} />
-                      <span className="text-sm font-extrabold">
-                        {item.impactTitle || "Impact"}
-                      </span>
+                    <div className="caption !tracking-[0.2em] text-sm !text-highlight" style={{ textShadow: 'none' }}>
+                      {item.impactTitle || "Impact"}
                     </div>
                     <ul className="list-none mt-3 space-y-2">
                       {item.impactBullets.map((b, idx) => (
@@ -189,7 +185,7 @@ function DropdownPhoto() {
     setSrcIdx((i) => (i < cand.length - 1 ? i + 1 : i));
 
   return (
-    <div className="mt-4 border-2 border-border bg-card p-3 shadow-[6px_6px_0_var(--shadow-strong)]">
+    <div className="mt-4 win-body !p-1 !bg-black">
       <img
         src={cand[srcIdx]}
         onError={handleImgError}
@@ -201,5 +197,3 @@ function DropdownPhoto() {
   );
 }
 
-// Import useState for DropdownPhoto
-import { useState } from "react";
