@@ -1,12 +1,12 @@
-import { Diamond, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Check } from "lucide-react";
 
 /**
- * Standard bullet point with diamond icon
+ * Standard bullet point
  */
 export function Bullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
-      <Diamond className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
+      <ChevronRight className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
       <span>{children}</span>
     </li>
   );
@@ -18,7 +18,7 @@ export function Bullet({ children }) {
 export function ImpactBullet({ children }) {
   return (
     <li className="flex gap-2 leading-relaxed text-[15px]">
-      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--accent)' }} />
+      <Check className="mt-1 h-4 w-4 shrink-0" style={{ color: 'var(--highlight)' }} />
       <span>{children}</span>
     </li>
   );

@@ -7,10 +7,9 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import CoolBackground from "./components/CoolBackground"; // New background
+import SignalBackground from "./components/SignalBackground";
 import PageLoader from "./components/PageLoader";
 import MetaTags from "./components/MetaTags";
-import { useTheme } from "./hooks/useTheme";
 import {
   ACCESSIBILITY_SKIP_TO_MAIN,
   SOCIAL_LINKEDIN,
@@ -50,14 +49,14 @@ function Home() {
             {/* Skip to main content for screen readers */}
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-accent focus:text-fg focus:border-2 focus:border-border focus:font-extrabold focus:uppercase focus:shadow-[6px_6px_0_var(--shadow-strong)] focus:outline-none"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-chrome focus:text-black focus:font-bold focus:outline focus:outline-1 focus:outline-black"
             >
               {ACCESSIBILITY_SKIP_TO_MAIN}
             </a>
 
             <div className="relative z-10 min-h-screen font-mono text-fg">
-              {/* New single cool background */}
-              <CoolBackground />
+              {/* Broadcast void / Gradient Plaza backdrop + CRT layer */}
+              <SignalBackground />
 
               <Navbar />
               

@@ -131,12 +131,11 @@ export default function HelloRotator({
   const current = items[i];
 
   return (
-    <div className={`mb-4 ${className}`}>
-      {/* MATCHES ABOUT BOX: single border, offset shadow, square corners */}
-      <div className="inline-flex max-w-full items-center gap-3 border-2 border-border bg-card px-3 py-2 shadow-[6px_6px_0_var(--shadow-strong)] rounded-none h-[4.5rem] sm:h-[3.5rem] md:h-[4rem]">
-        {/* Flag chip – same visual language (single border + small shadow), square */}
+    <div className={`mb-5 ${className}`}>
+      {/* Broadcast lower-third: OSD tag + caption line */}
+      <div className="flex max-w-full items-center gap-3 h-[3.5rem] sm:h-[3rem]">
         <span
-          className="inline-flex h-6 min-w-8 items-center justify-center border-2 border-border bg-accent px-1 leading-none shadow-[4px_4px_0_var(--shadow-strong)] rounded-none flex-shrink-0"
+          className="osd text-xl leading-none border border-[#4dff7a]/60 px-1.5 py-0.5 flex-shrink-0"
           role="img"
           aria-label="language flag"
         >
@@ -146,13 +145,13 @@ export default function HelloRotator({
         <AnimatePresence mode="wait">
           <motion.div
             key={i}
-            initial={{ y: 8, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -8, opacity: 0 }}
+            initial={{ opacity: 0, filter: "blur(3px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(3px)" }}
             transition={{ duration: 0.25 }}
             dir={current.dir || "ltr"}
             style={current.style}
-            className="text-sm sm:text-base md:text-lg leading-relaxed flex-1"
+            className="text-sm sm:text-base md:text-lg leading-snug flex-1 text-void-fg glow-text"
           >
             {current.text}
           </motion.div>
