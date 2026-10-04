@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import About from "./components/About";
@@ -7,7 +7,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import SignalBackground from "./components/SignalBackground";
+import CoolBackground from "./components/CoolBackground"; // New background
 import PageLoader from "./components/PageLoader";
 import MetaTags from "./components/MetaTags";
 import {
@@ -17,6 +17,9 @@ import {
   RESUME_FILE,
   SITE_EMAIL,
 } from "@/config";
+
+// The hidden signal wave version, loaded only when someone finds it
+const SignalApp = lazy(() => import("./signal/SignalApp"));
 
 // Component to handle external redirects
 const ExternalRedirect = ({ to, label }) => {
@@ -49,14 +52,14 @@ function Home() {
             {/* Skip to main content for screen readers */}
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-chrome focus:text-black focus:font-bold focus:outline focus:outline-1 focus:outline-black"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-accent focus:text-fg focus:border-2 focus:border-border focus:font-extrabold focus:uppercase focus:shadow-[6px_6px_0_var(--shadow-strong)] focus:outline-none"
             >
               {ACCESSIBILITY_SKIP_TO_MAIN}
             </a>
 
             <div className="relative z-10 min-h-screen font-mono text-fg">
-              {/* Broadcast void / Gradient Plaza backdrop + CRT layer */}
-              <SignalBackground />
+              {/* New single cool background */}
+              <CoolBackground />
 
               <Navbar />
               
@@ -81,6 +84,16 @@ export default function App() {
             <Routes>
                 {/* Main portfolio page */}
                 <Route path="/" element={<Home />} />
+
+                {/* Hidden signal wave version (double-click the navbar BatCat) */}
+                <Route
+                  path="/signal"
+                  element={
+                    <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+                      <SignalApp />
+                    </Suspense>
+                  }
+                />
 
                 {/* External redirect routes */}
                 <Route 

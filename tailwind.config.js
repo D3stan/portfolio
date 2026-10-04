@@ -16,6 +16,7 @@ export default {
         card: "var(--card)",
         accent: "var(--accent)",
         muted: "var(--muted)",
+        // Signal wave page (src/signal), set on .signal-root
         "accent-fg": "var(--accent-fg)",
         "void-fg": "var(--void-fg)",
         highlight: "var(--highlight)",
@@ -28,6 +29,10 @@ export default {
         mono: ["var(--font-mono)"],
         display: ["var(--font-display)"],
         osd: ["var(--font-osd)"],
+      },
+      boxShadow: {
+        brutalWeak: "6px 6px 0 var(--shadow-weak)",
+        brutalStrong: "8px 8px 0 var(--shadow-strong)",
       },
     },
   },

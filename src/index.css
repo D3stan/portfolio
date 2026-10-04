@@ -1,69 +1,94 @@
 /* ========= FONTS ========= */
-/* Tinos ≈ Times New Roman (echoed serif), Arimo ≈ Arial (Win95 chrome and
-   broadcast captions), VT323 for on-screen-display text. */
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Tinos:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@600;700&family=Bebas+Neue&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ========= THEME TOKENS (CSS Variables) ========= */
-/*
-  FALLBACK VALUES ONLY: the live values come from src/config/theme.js and are
-  applied when the app loads. Edit theme.js, not this block.
-
-  Signal wave: dark = broadcast void, light = "Gradient Plaza" desktop.
+/* 
+  IMPORTANT: These are FALLBACK VALUES ONLY!
+  The actual theme colors are dynamically applied from src/constants/colors.js
+  when the app loads. To change colors, edit colors.js - NOT this file!
+  
+  The values below are only used during initial page load before JavaScript runs.
 */
+/* Default: Swiss/Neutral - Fallback values */
 :root {
-  --bg: #2a17c9;
-  --fg: #14102e;
-  --border: #14102e;
+  --bg: #ffffff;
+  --fg: #111111;
+  --border: #111111;
   --card: #ffffff;
-  --accent: #2414c9;
-  --accent-fg: #ffffff;
-  --muted: #4d4870;
-  --highlight: #a1128e;
-  --void-fg: #f6e6ff;
-  --glow: rgba(255, 120, 245, 0.75);
-  --chip: #efeaff;
+  --accent: #4ecdc4; /* Fallback - will be replaced by mainAccent from colors.js */
+  --muted: #757575;
+  --highlight: #0d9488; /* teal-700 - for degree/role text */
 
-  --shadow-weak: rgba(10, 4, 60, 0.35);
-  --shadow-strong: rgba(10, 4, 60, 0.55);
+  --shadow-weak: rgba(0,0,0,0.12);
+  --shadow-strong: rgba(0,0,0,0.18);
 
-  /* Win95 chrome is the same in both modes */
-  --chrome: #c0c0c0;
-  --chrome-light: #dfdfdf;
-  --chrome-hi: #ffffff;
-  --chrome-shadow: #808080;
-  --chrome-dark: #0a0a0a;
-  --title-from: #000080;
-  --title-to: #1084d0;
-
-  --font-sans: "Arimo", Arial, system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-display: "Tinos", "Times New Roman", Times, serif;
-  --font-osd: "VT323", "IBM Plex Mono", monospace;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
+/* Dark Mode - Fallback only, dynamically overridden */
 [data-theme="dark"] {
-  --bg: #030308;
-  --fg: #ece6ff;
-  --border: #36f1cd;
-  --card: #07061a;
-  --accent: #36f1cd;
-  --accent-fg: #03030a;
-  --muted: #9d97c9;
-  --highlight: #4dff7a;
-  --void-fg: #f3dcff;
-  --glow: rgba(54, 241, 205, 0.7);
-  --chip: #0d0c26;
+  --bg: #0a0a0a;
+  --fg: #f5f5f5;
+  --border: #333333;
+  --card: #111111;
+  --accent: #aa96da; /* Fallback - will be replaced by mainAccent from theme.js */
+  --muted: #aaaaaa;
+  --highlight: #2dd4bf; /* teal-400 - for degree/role text */
 
-  --shadow-weak: rgba(0, 0, 0, 0.6);
-  --shadow-strong: rgba(0, 0, 0, 0.85);
+  --shadow-weak: rgba(255,255,255,0.15);
+  --shadow-strong: rgba(255,255,255,0.25);
+}
+
+/* Respect system dark mode preference before JavaScript loads */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --border: #333333;
+    --card: #111111;
+    --accent: #aa96da;
+    --muted: #aaaaaa;
+    --highlight: #2dd4bf;
+    --shadow-weak: rgba(255,255,255,0.15);
+    --shadow-strong: rgba(255,255,255,0.25);
+  }
+}
+
+/* Noir - Fallback only, uses specific accent */
+[data-theme="noir"] {
+  --bg: #0b0e14;
+  --fg: #e6edf3;
+  --border: #1f2328;
+  --card: #111826;
+  --accent: #8b5cf6; /* Noir theme has its own accent */
+  --muted: #9aa6b2;
+
+  --shadow-weak: rgba(16,20,27,0.45);
+  --shadow-strong: rgba(16,20,27,0.6);
+}
+
+/* Ghibli Pastel - Fallback only, uses specific accent */
+[data-theme="ghibli"] {
+  --bg: #fbf6ee;
+  --fg: #2b2b2b;
+  --border: #2b2b2b;
+  --card: #fffaf1;
+  --accent: #5aa382; /* Ghibli theme has its own accent */
+  --muted: #6b7280;
+
+  --shadow-weak: rgba(43,43,43,0.12);
+  --shadow-strong: rgba(43,43,43,0.18);
 }
 
 /* ========= BASE ========= */
 html, body, #root {
+  /* Use CSS variables for backgrounds to enable theme switching */
   @apply min-h-screen m-0 p-0 text-fg;
   background: var(--bg);
   color: var(--fg);
@@ -74,14 +99,15 @@ html, body, #root {
   max-width: 100vw;
 }
 
-/* Scroll offset for all sections to account for the fixed taskbar */
+/* Scroll offset for all sections to account for fixed navbar */
+/* ADJUST THESE VALUES to control spacing between navbar and section titles */
 section[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;  /* Mobile: Adjust this value (higher = more space, lower = less space) */
 }
 
 @media (min-width: 768px) {
   section[id] {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 100px;  /* Desktop: Adjust this value (higher = more space, lower = less space) */
   }
 }
 
@@ -90,274 +116,83 @@ section[id] {
   max-width: 100%;
 }
 
-::selection {
-  background: var(--accent);
-  color: var(--accent-fg);
+.section-title {
+  @apply text-3xl md:text-4xl font-extrabold uppercase tracking-tight;
 }
 
-/* Component classes live in the components layer so utilities can override them */
-@layer components {
-
-/* ========= WIN95 WINDOW ========= */
-.win {
-  background: var(--chrome);
-  color: #000;
-  padding: 3px;
-  box-shadow:
-    inset -1px -1px var(--chrome-dark),
-    inset 1px 1px var(--chrome-light),
-    inset -2px -2px var(--chrome-shadow),
-    inset 2px 2px var(--chrome-hi),
-    0 28px 60px -28px var(--glow),
-    0 10px 24px -8px var(--shadow-strong);
+/* ========= BRUTALIST ELEMENTS (theme-aware) ========= */
+.box-brutal {
+  @apply border-2 border-border bg-card transition;
+  box-shadow: 6px 6px 0 var(--shadow-weak);
+}
+.box-brutal:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--shadow-strong);
 }
 
-.win-title {
+/* Skill card */
+.skill-card {
+  @apply border-2 border-border bg-card px-6 py-8 min-w-[210px] md:min-w-[240px]
+         flex flex-col items-center justify-center text-center transition;
+  box-shadow: 6px 6px 0 var(--shadow-weak);
+}
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--shadow-strong);
+}
+
+/* Buttons (utility helpers) */
+.btn-brutal {
+  @apply inline-flex items-center gap-2 border-2 border-border px-4 py-2 bg-card transition;
+  box-shadow: 4px 4px 0 var(--shadow-weak);
+}
+.btn-brutal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--shadow-strong);
+}
+.btn-accent { @apply bg-accent text-fg; }
+
+/* ========= MARQUEE ========= */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-box {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 3px 3px 3px 6px;
-  background: linear-gradient(90deg, var(--title-from), var(--title-to));
-  color: #fff;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  user-select: none;
+  gap: 20px;
+  width: max-content;
+  animation: marquee-x 36s linear infinite;
 }
 
-.win-ctrl {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 14px;
-  background: var(--chrome);
-  color: #000;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
-  box-shadow:
-    inset -1px -1px var(--chrome-dark),
-    inset 1px 1px var(--chrome-hi),
-    inset -2px -2px var(--chrome-shadow),
-    inset 2px 2px var(--chrome-light);
+/* ========= ACCESSIBILITY ========= */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation-duration: 0.01ms; animation-iteration-count: 1; }
+  .box-brutal, .box-brutal:hover,
+  .skill-card, .skill-card:hover {
+    transform: none;
+    box-shadow: 6px 6px 0 var(--shadow-weak);
+  }
 }
 
-.win-menu {
-  display: flex;
-  gap: 14px;
-  padding: 3px 6px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  color: #000;
-  user-select: none;
-}
-.win-menu span::first-letter { text-decoration: underline; }
-
-.win-body {
-  margin: 2px;
-  background: var(--card);
-  color: var(--fg);
-  box-shadow:
-    inset 1px 1px var(--chrome-shadow),
-    inset -1px -1px var(--chrome-hi),
-    inset 2px 2px var(--chrome-dark),
-    inset -2px -2px var(--chrome-light);
-  padding: 2px;
+/* Display font if you want to use it for the name */
+.name-display {
+  font-family: "Bebas Neue", var(--font-display);
+  letter-spacing: 0.5px;
 }
 
-.win-status {
-  display: flex;
-  gap: 2px;
-  margin-top: 2px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  color: #000;
+/* Blinking caret for role line (if you use it anywhere) */
+@keyframes caretBlink {
+  0%, 45% { box-shadow: inset -2px 0 0 var(--fg); }
+  50%,100% { box-shadow: inset -2px 0 0 transparent; }
 }
-.win-status > * {
-  padding: 2px 6px;
-  box-shadow:
-    inset 1px 1px var(--chrome-shadow),
-    inset -1px -1px var(--chrome-hi);
-}
+.animate-caret { padding-right: 6px; animation: caretBlink 1s steps(1) infinite; }
 
-/* Etched separator, as between Win95 group boxes */
-.groove {
-  border-top: 1px solid var(--chrome-shadow);
-  border-bottom: 1px solid var(--chrome-hi);
-}
-[data-theme="dark"] .win-body .groove {
-  border-top-color: color-mix(in srgb, var(--accent) 22%, transparent);
-  border-bottom-color: transparent;
-}
-
-/* ========= WIN95 CONTROLS ========= */
-.btn95 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: var(--chrome);
-  color: #000;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.2;
-  cursor: pointer;
-  box-shadow:
-    inset -1px -1px var(--chrome-dark),
-    inset 1px 1px var(--chrome-hi),
-    inset -2px -2px var(--chrome-shadow),
-    inset 2px 2px var(--chrome-light);
-}
-.btn95:active,
-.btn95[aria-pressed="true"] {
-  box-shadow:
-    inset -1px -1px var(--chrome-hi),
-    inset 1px 1px var(--chrome-dark),
-    inset -2px -2px var(--chrome-light),
-    inset 2px 2px var(--chrome-shadow);
-}
-.btn95:active > * { transform: translate(1px, 1px); }
-.btn95:disabled { color: var(--chrome-shadow); text-shadow: 1px 1px var(--chrome-hi); cursor: not-allowed; }
-
-/* The "default" button gets the extra black frame, as in Win95 dialogs */
-.btn95-default {
-  font-weight: 700;
-  box-shadow:
-    0 0 0 1px #000,
-    inset -1px -1px var(--chrome-dark),
-    inset 1px 1px var(--chrome-hi),
-    inset -2px -2px var(--chrome-shadow),
-    inset 2px 2px var(--chrome-light);
-}
-
-.btn95:focus-visible {
-  outline: 1px dotted #000;
-  outline-offset: -5px;
-}
-
-.field95 {
-  width: 100%;
-  padding: 6px 8px;
-  background: var(--card);
-  color: var(--fg);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  border: 0;
-  border-radius: 0;
-  box-shadow:
-    inset 1px 1px var(--chrome-shadow),
-    inset -1px -1px var(--chrome-hi),
-    inset 2px 2px var(--chrome-dark),
-    inset -2px -2px var(--chrome-light);
-}
-.field95::placeholder { color: var(--muted); opacity: 0.85; }
-.field95:focus { outline: 2px solid var(--accent); outline-offset: 0; }
-.field95[aria-invalid="true"] { outline: 2px solid #e0245e; }
-
-/* Small tag for tech stacks */
-.chip {
-  display: inline-block;
-  padding: 1px 7px;
-  background: var(--chip);
-  color: var(--accent);
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-/* ========= BROADCAST TYPE ========= */
-/* Wide-tracked TV caption ("We are here") with colour bleed and glow */
-.caption {
-  font-family: var(--font-sans);
-  color: var(--void-fg);
-  letter-spacing: 0.32em;
-  text-transform: lowercase;
-  text-shadow:
-    -1.5px 0 rgba(255, 40, 110, 0.55),
-    1.5px 0 rgba(40, 220, 255, 0.55),
-    0 0 18px var(--glow);
-}
-
-/* Airy serif with an echoed reflection below ("time is a social construct") */
-.echo {
-  font-family: var(--font-display);
-  font-weight: 400;
-  color: var(--void-fg);
-  letter-spacing: 0.06em;
-  text-shadow:
-    0 0.12em 0 rgba(243, 220, 255, 0.42),
-    0 0.24em 0 rgba(243, 220, 255, 0.26),
-    0 0.36em 0 rgba(243, 220, 255, 0.15),
-    0 0.48em 0 rgba(243, 220, 255, 0.07),
-    0 0 28px var(--glow);
-}
-
-/* On-screen display text (channel numbers, timestamps) */
-.osd {
-  font-family: var(--font-osd);
-  color: #4dff7a;
-  letter-spacing: 0.06em;
-  text-shadow: 0 0 6px rgba(77, 255, 122, 0.7);
-}
-
-.glow-text { text-shadow: 0 0 10px var(--glow); }
-
-} /* end @layer components */
-
-/* ========= CRT / VHS OVERLAY ========= */
-.crt-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 70;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.16) 0px,
-      rgba(0, 0, 0, 0.16) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
-}
-.crt-overlay::after {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  opacity: 0.09;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation: vhs-grain 0.6s steps(4) infinite;
-}
-
-@keyframes vhs-grain {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-3%, 2%); }
-  50%  { transform: translate(2%, -3%); }
-  75%  { transform: translate(-2%, -1%); }
-  100% { transform: translate(0, 0); }
-}
-
-/* Lens-flare spark twinkle */
-@keyframes flare-twinkle {
-  0%, 100% { opacity: 0.85; transform: scale(1) rotate(0deg); }
-  50%      { opacity: 1;    transform: scale(1.12) rotate(8deg); }
-}
-.flare { animation: flare-twinkle 3.4s ease-in-out infinite; }
-
-/* Slow drift of the orbit ring */
-@keyframes orbit-drift {
-  0%, 100% { transform: rotate(-14deg) translateY(0); }
-  50%      { transform: rotate(-11deg) translateY(-10px); }
-}
-.orbit-drift { animation: orbit-drift 18s ease-in-out infinite; transform-origin: 60% 50%; }
-
-/* ========= SMALL ANIMATIONS ========= */
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
@@ -366,20 +201,6 @@ section[id] {
 
 @keyframes bc-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 .batcat-bob { animation: bc-bob 2.6s ease-in-out infinite; }
-
-/* ========= ACCESSIBILITY ========= */
-@media (prefers-reduced-motion: reduce) {
-  .crt-overlay::after,
-  .flare,
-  .orbit-drift,
-  .animate-blink,
-  .batcat-bob { animation: none; }
-}
-
-@media (prefers-contrast: more) {
-  .crt-overlay { display: none; }
-  .caption, .echo { text-shadow: none; }
-}
 
 /* Subtle accessible focus */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -477,45 +298,4 @@ textarea:focus-visible {
     -moz-user-select: none;
     user-select: none;
   }
-}
-
-/* ========= SIGNAL BACKDROP ========= */
-.dark-only { display: none; }
-[data-theme="dark"] .dark-only { display: block; }
-[data-theme="dark"] .light-only { display: none; }
-
-.signal-plaza {
-  background:
-    radial-gradient(ellipse 60% 35% at 45% 55%, rgba(110, 230, 255, 0.38), transparent 70%),
-    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(255, 40, 245, 0.85), transparent 70%),
-    linear-gradient(160deg, #1d0fb8 0%, #2f1bd2 40%, #5a21dc 72%, #b51eef 100%);
-}
-
-.signal-stars {
-  background-color: #030308;
-  background-image:
-    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.55), transparent 60%),
-    radial-gradient(1px 1px at 72% 14%, rgba(255, 255, 255, 0.4), transparent 60%),
-    radial-gradient(1.5px 1.5px at 38% 68%, rgba(200, 220, 255, 0.45), transparent 60%),
-    radial-gradient(1px 1px at 86% 58%, rgba(255, 255, 255, 0.35), transparent 60%),
-    radial-gradient(1px 1px at 22% 84%, rgba(255, 255, 255, 0.3), transparent 60%),
-    radial-gradient(1px 1px at 58% 38%, rgba(255, 255, 255, 0.3), transparent 60%);
-  background-size: 420px 420px;
-}
-
-.signal-floor {
-  position: absolute;
-  left: -50%;
-  right: -50%;
-  bottom: -10vh;
-  height: 55vh;
-  background-image:
-    linear-gradient(rgba(77, 255, 122, 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(77, 255, 122, 0.55) 1px, transparent 1px);
-  background-size: 56px 56px;
-  transform: perspective(420px) rotateX(68deg);
-  transform-origin: center bottom;
-  mask-image: linear-gradient(to top, #000 0%, transparent 85%);
-  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 85%);
-  opacity: 0.22;
 }

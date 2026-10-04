@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { generateCSSVariables } from '@/config/theme';
+import { THEME } from '@/config/theme';
 
 /**
  * Custom hook for theme management
@@ -46,6 +46,7 @@ export function useTheme() {
   }, [theme]);
 
   const applyTheme = (themeName) => {
+    const colors = THEME[themeName] || THEME.light;
     const root = document.documentElement;
 
     // Apply theme attribute for CSS
@@ -56,9 +57,15 @@ export function useTheme() {
     }
 
     // Apply CSS custom properties dynamically
-    Object.entries(generateCSSVariables(themeName)).forEach(([key, value]) => {
-      root.style.setProperty(key, value);
-    });
+    root.style.setProperty('--bg', colors.bg);
+    root.style.setProperty('--fg', colors.fg);
+    root.style.setProperty('--border', colors.border);
+    root.style.setProperty('--card', colors.card);
+    root.style.setProperty('--accent', THEME.accent);
+    root.style.setProperty('--muted', colors.muted);
+    root.style.setProperty('--highlight', colors.highlight);
+    root.style.setProperty('--shadow-weak', colors.shadowWeak);
+    root.style.setProperty('--shadow-strong', colors.shadowStrong);
   };
 
   const changeTheme = (newTheme) => {

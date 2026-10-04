@@ -1,3 +1,26 @@
+import { useState } from "react";
+
+/**
+ * Title-bar button (minimise / maximise / close). It presses and jolts like
+ * the real thing but does nothing, so it stays out of the tab order and
+ * away from screen readers.
+ */
+function WinCtrl({ glyph, className = "" }) {
+  const [hits, setHits] = useState(0);
+  return (
+    <button
+      type="button"
+      tabIndex={-1}
+      aria-hidden="true"
+      onClick={() => setHits((n) => n + 1)}
+      className={`win-ctrl exclude-touch-target ${className}`}
+    >
+      {/* re-keyed on every click so the jolt animation replays */}
+      <span key={hits} className={hits ? "win-ctrl-jolt" : undefined}>{glyph}</span>
+    </button>
+  );
+}
+
 /**
  * Windows 95 style window: bevelled grey frame, navy title bar,
  * optional menu bar and status bar. Decorative controls are hidden from
@@ -23,9 +46,9 @@ export default function Win95Window({
           <span className="truncate">{title}</span>
         </TitleTag>
         <span className="flex gap-0.5 shrink-0" aria-hidden="true">
-          <span className="win-ctrl">_</span>
-          <span className="win-ctrl">□</span>
-          <span className="win-ctrl ml-0.5">✕</span>
+          <WinCtrl glyph="_" />
+          <WinCtrl glyph="□" />
+          <WinCtrl glyph="✕" className="ml-0.5" />
         </span>
       </div>
 

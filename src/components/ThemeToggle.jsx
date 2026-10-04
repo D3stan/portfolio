@@ -10,16 +10,15 @@ export default function ThemeToggle() {
   };
 
   const isDark = theme === 'dark';
-  const label = isDark ? 'Switch to Gradient Plaza (light)' : 'Switch to broadcast void (dark)';
 
   return (
     <button
       onClick={toggleTheme}
-      className="btn95 !p-1.5"
-      aria-label={label}
-      title={label}
+      className="inline-flex items-center justify-center border-2 border-border bg-card p-2 min-h-[44px] min-w-[44px] shadow-[3px_3px_0_var(--shadow-strong)] active:translate-y-[2px] transition-transform focus:outline-none focus:ring-2 focus:ring-accent"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDark ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
+      {isDark ? <Sun className="w-7 h-7" /> : <Moon className="w-7 h-7" />}
     </button>
   );
 }

@@ -18,15 +18,18 @@ import {
   PROJECTS_BUTTON_LIVE_DEMO,
   SOCIAL_GITHUB,
 } from "@/config";
+import Win95Window from "./Win95Window";
+import SectionCaption from "./SectionCaption";
+
+// "JavaDyno" -> "javadyno.exe", for window title bars
+const toFileName = (title) =>
+  `${title.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}.exe`;
 
 function TechStack({ tech }) {
   return (
     <div className="flex flex-wrap gap-1">
       {tech.map((t, idx) => (
-        <span
-          key={idx}
-          className="inline-block border border-border px-2 py-0.5 text-xs font-mono bg-accent bg-opacity-40 shadow-[2px_2px_0_var(--shadow-weak)]"
-        >
+        <span key={idx} className="chip">
           {t}
         </span>
       ))}
@@ -35,11 +38,10 @@ function TechStack({ tech }) {
 }
 
 function ActionButton({ href, children, variant = "primary", icon: Icon }) {
-  const base =
-    "inline-flex items-center gap-1 border-2 border-border font-semibold px-3 py-1.5 text-sm transition-all shadow-[3px_3px_0_var(--shadow-strong)] hover:shadow-[4px_4px_0_var(--shadow-strong)] hover:-translate-x-0.5 hover:-translate-y-0.5";
+  const base = "btn95 !px-3 !py-1.5 text-[13px]";
   const variants = {
-    primary: "bg-accent hover:opacity-90",
-    secondary: "bg-card hover:opacity-90",
+    primary: "btn95-default",
+    secondary: "",
   };
   return (
     <a
@@ -58,8 +60,8 @@ const PREVIEW_PLACEHOLDER =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
     "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'>" +
-    "<rect width='400' height='300' fill='white' stroke='black' stroke-width='4'/>" +
-    "<text x='50%' y='50%' font-family='monospace' font-size='16' text-anchor='middle' fill='black'>Preview Coming Soon</text>" +
+    "<rect width='400' height='300' fill='#030308'/>" +
+    "<text x='50%' y='50%' font-family='monospace' font-size='18' letter-spacing='6' text-anchor='middle' fill='#36f1cd'>NO SIGNAL</text>" +
     "</svg>"
   );
 
@@ -117,7 +119,7 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
         <button
           aria-label={isPlaying ? "Pause video" : "Play video"}
           onClick={onPlayPause}
-          className="bg-white/20 backdrop-blur-sm border-2 border-white/30 rounded-full p-3 text-white hover:bg-white/30 transition-colors"
+          className="btn95 !p-3"
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />
@@ -133,8 +135,8 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
 // Small Project Card
 function SmallProjectCard({ project, isPlaying, onPlayPause }) {
   return (
-    <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0">
-      <div className="relative aspect-video border-b-2 border-border">
+    <div className="win-body !m-0 w-72 flex-shrink-0">
+      <div className="relative aspect-video bg-black">
         <VideoPlayer
           src={project.video}
           poster={project.image}
@@ -145,7 +147,7 @@ function SmallProjectCard({ project, isPlaying, onPlayPause }) {
       </div>
 
       <div className="p-4">
-        <h4 className="font-extrabold mb-1 text-base">{project.title}</h4>
+        <h4 className="font-display text-lg leading-tight mb-1">{project.title}</h4>
         <p className="text-xs text-muted mb-3">{project.blurb}</p>
 
         <div className="mb-3">
@@ -193,14 +195,13 @@ function SmallProjectsSlider({ projects }) {
   };
 
   return (
-    <div className="border-2 border-border bg-card backdrop-blur-sm p-4 shadow-[4px_4px_0_var(--shadow-strong)]">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="font-bold">{PROJECTS_SMALL_LABEL}</h3>
-        <span className="font-mono text-xs text-muted">
-          {currentIndex + 1} of {projects.length}
-        </span>
-      </div>
-
+    <Win95Window
+      title={PROJECTS_SMALL_LABEL}
+      icon="📁"
+      as="h3"
+      status={[`${projects.length} object(s)`, `${currentIndex + 1} of ${projects.length}`]}
+    >
+      <div className="p-3 sm:p-4">
       <div className="overflow-hidden mb-4">
         <div
           className="flex gap-4 transition-transform duration-500 ease-in-out"
@@ -220,7 +221,7 @@ function SmallProjectsSlider({ projects }) {
       <div className="flex justify-between items-center">
         <button
           onClick={prevSlide}
-          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
+          className="btn95 !px-3 !py-1 text-[13px]"
           aria-label="Previous"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -236,8 +237,8 @@ function SmallProjectsSlider({ projects }) {
                 setPlayingVideo(null);
               }}
               aria-label={`Go to slide ${index + 1}`}
-              className={`w-2 h-2 border border-border ${
-                index === currentIndex ? "bg-accent" : "bg-card"
+              className={`exclude-touch-target w-2.5 h-2.5 border border-accent ${
+                index === currentIndex ? "bg-accent shadow-[0_0_6px_var(--glow)]" : "bg-transparent"
               }`}
             />
           ))}
@@ -245,14 +246,15 @@ function SmallProjectsSlider({ projects }) {
 
         <button
           onClick={nextSlide}
-          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
+          className="btn95 !px-3 !py-1 text-[13px]"
           aria-label="Next"
         >
           Next
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
-    </div>
+      </div>
+    </Win95Window>
   );
 }
 
@@ -266,22 +268,20 @@ export default function Projects() {
   return (
     <section id="projects" className="py-16">
       <div className="mx-auto w-[min(1100px,94vw)]">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block border-2 border-border bg-card px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)]">
-            <h2 className="text-2xl font-extrabold tracking-wide">{SECTION_TITLE_PROJECTS}</h2>
-          </div>
-        </div>
+        <SectionCaption channel={4}>{SECTION_TITLE_PROJECTS}</SectionCaption>
 
         {/* Featured Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {PROJECTS_FEATURED.map((project) => (
-            <div
+            <Win95Window
               key={project.id}
-              className="border-2 border-border bg-card shadow-[6px_6px_0_var(--shadow-strong)]"
+              title={toFileName(project.title)}
+              icon="💾"
+              className="flex flex-col"
+              bodyClassName="flex-1"
             >
               {/* Video */}
-              <div className="relative aspect-video border-b-2 border-border">
+              <div className="relative aspect-video bg-black">
                 <VideoPlayer
                   src={project.video}
                   poster={project.image}
@@ -293,8 +293,8 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="text-lg font-extrabold mb-1">{project.title}</h3>
-                <p className="font-semibold mb-3 text-sm" style={{ color: 'var(--highlight)' }}>
+                <h3 className="font-display text-2xl leading-tight mb-1">{project.title}</h3>
+                <p className="font-semibold mb-3 text-sm text-highlight">
                   {project.subtitle}
                 </p>
                 <p className="text-muted text-sm leading-relaxed mb-4">{project.blurb}</p>
@@ -324,7 +324,7 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-            </div>
+            </Win95Window>
           ))}
         </div>
 
@@ -334,19 +334,21 @@ export default function Projects() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <div className="inline-block border-2 border-border bg-accent px-6 py-3 shadow-[4px_4px_0_var(--shadow-strong)]">
-            <p className="font-semibold mb-2">{PROJECTS_CTA_TEXT}</p>
-            <a
-              href={SOCIAL_GITHUB}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-fg text-bg px-4 py-2 font-bold hover:opacity-90 transition-colors text-sm"
-            >
-              <Github className="w-4 h-4" />
-              {PROJECTS_CTA_BUTTON}
-            </a>
-          </div>
+        <div className="flex justify-center">
+          <Win95Window title="GitHub" icon="🌐" className="w-[min(360px,100%)]" bodyClassName="!bg-chrome !text-black !shadow-none">
+            <div className="p-4 flex flex-col items-center gap-4 font-sans">
+              <p className="text-[14px] text-center">{PROJECTS_CTA_TEXT}</p>
+              <a
+                href={SOCIAL_GITHUB}
+                target="_blank"
+                rel="noreferrer"
+                className="btn95 btn95-default min-w-[110px]"
+              >
+                <Github className="w-4 h-4" />
+                {PROJECTS_CTA_BUTTON}
+              </a>
+            </div>
+          </Win95Window>
         </div>
       </div>
     </section>

@@ -2,13 +2,6 @@ import { useEffect, useState } from "react";
 import BatCatMark from "./BatCatMark";
 import { FOOTER_COPYRIGHT, FOOTER_ATTRIBUTION } from "@/config";
 
-// Camcorder-style date stamp: "OCT 03 2026  12:17:35"
-const vhsStamp = (d) => {
-  const mon = d.toLocaleString("en-US", { month: "short" }).toUpperCase();
-  const pad = (n) => String(n).padStart(2, "0");
-  return `${mon} ${pad(d.getDate())} ${d.getFullYear()}  ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-};
-
 export default function Footer() {
   const [now, setNow] = useState(new Date());
   useEffect(() => {
@@ -16,25 +9,38 @@ export default function Footer() {
     return () => clearInterval(t);
   }, []);
 
+  const ts = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(now);
+
   return (
-    <footer className="relative mt-8" role="contentinfo">
-      {/* VHS on-screen display */}
-      <div className="mx-auto w-[min(1000px,92vw)] flex items-end justify-between gap-4 pb-3 osd text-xl sm:text-2xl">
-        <span aria-hidden="true">▶ PLAY</span>
-        <span className="tabular-nums whitespace-pre">{vhsStamp(now)}</span>
+   
+    <footer className="relative mt-16" role="contentinfo">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-2 h-1 bg-border" />
       </div>
 
-      {/* Status bar */}
-      <div className="win !p-1">
-        <div className="win-status !mt-0 mx-auto w-[min(1200px,100%)] flex-wrap">
-          <div className="flex-1 min-w-0 flex items-center gap-2">
-            <BatCatMark size={16} />
-            <span className="truncate">
-              © {now.getFullYear()} {FOOTER_COPYRIGHT}
-            </span>
-          </div>
-          <div className="truncate">{FOOTER_ATTRIBUTION}</div>
+      <div className="mx-auto max-w-6xl my-3 px-4 sm:px-6 lg:px-8">
+        <div className="px-4 py-2 border-2 border-border bg-accent shadow-[6px_6px_0_var(--shadow-weak)] flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 font-mono text-sm font-bold">
+          <BatCatMark size={22} />
+          <span>
+            © {new Date().getFullYear()} {FOOTER_COPYRIGHT}
+          </span>
         </div>
+        <div className="font-mono text-sm">{ts}</div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-6">
+        <p className="text-[12px] font-mono text-muted">
+          {FOOTER_ATTRIBUTION}
+        </p>
       </div>
     </footer>
   );

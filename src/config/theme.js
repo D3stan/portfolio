@@ -1,49 +1,35 @@
 // ============================================
 // THEME CONFIGURATION
 // ============================================
-// "Signal wave" palette: lost late-night broadcasts, Win95 windows
-// floating in a void, phosphor glow and VHS grain.
-//
-//   dark  = broadcast void (black, phosphor cyan / green, lavender text)
-//   light = "Gradient Plaza" desktop (blue → magenta, white windows)
+// Color scheme for light and dark modes
 
 // ========== MAIN ACCENT COLOR ==========
-export const ACCENT_COLOR = "#36f1cd"; // Phosphor cyan (the orbit ring)
+export const ACCENT_COLOR = "#aa96da"; // Purple
 
 // ========== THEME COLORS ==========
 export const THEME = {
   accent: ACCENT_COLOR,
 
   light: {
-    bg: "#2a17c9", // desktop base, painted over by the gradient backdrop
-    fg: "#14102e", // text inside windows
-    border: "#14102e",
-    card: "#ffffff", // window client area
-    accent: "#2414c9", // deep broadcast blue
-    accentFg: "#ffffff",
-    muted: "#4d4870",
-    highlight: "#a1128e", // magenta, for degree/role text
-    voidFg: "#f6e6ff", // text floating directly on the desktop
-    glow: "rgba(255, 120, 245, 0.75)",
-    chip: "#efeaff",
-    shadowWeak: "rgba(10, 4, 60, 0.35)",
-    shadowStrong: "rgba(10, 4, 60, 0.55)",
+    bg: "#ffffff",
+    fg: "#111111",
+    border: "#111111",
+    card: "#ffffff",
+    muted: "#757575",
+    highlight: "#0d9488", // teal-700 - for degree/role text
+    shadowWeak: "rgba(0,0,0,0.12)",
+    shadowStrong: "rgba(0,0,0,0.18)",
   },
 
   dark: {
-    bg: "#030308",
-    fg: "#ece6ff",
-    border: "#36f1cd",
-    card: "#07061a",
-    accent: ACCENT_COLOR,
-    accentFg: "#03030a",
-    muted: "#9d97c9",
-    highlight: "#4dff7a", // phosphor green, for degree/role text
-    voidFg: "#f3dcff",
-    glow: "rgba(54, 241, 205, 0.7)",
-    chip: "#0d0c26",
-    shadowWeak: "rgba(0, 0, 0, 0.6)",
-    shadowStrong: "rgba(0, 0, 0, 0.85)",
+    bg: "#0a0a0a",
+    fg: "#f5f5f5",
+    border: "#333333",
+    card: "#111111",
+    muted: "#aaaaaa",
+    highlight: "#2dd4bf", // teal-400 - for degree/role text
+    shadowWeak: "rgba(255,255,255,0.15)",
+    shadowStrong: "rgba(255,255,255,0.25)",
   },
 };
 
@@ -60,13 +46,9 @@ export function generateCSSVariables(mode = "light") {
     "--fg": colors.fg,
     "--border": colors.border,
     "--card": colors.card,
-    "--accent": colors.accent,
-    "--accent-fg": colors.accentFg,
+    "--accent": THEME.accent,
     "--muted": colors.muted,
     "--highlight": colors.highlight,
-    "--void-fg": colors.voidFg,
-    "--glow": colors.glow,
-    "--chip": colors.chip,
     "--shadow-weak": colors.shadowWeak,
     "--shadow-strong": colors.shadowStrong,
   };

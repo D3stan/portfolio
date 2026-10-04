@@ -11,8 +11,6 @@ import {
   SOCIAL_GITHUB,
   SOCIAL_LINKEDIN,
 } from "@/config";
-import Win95Window from "./shared/Win95Window";
-import SectionCaption from "./shared/SectionCaption";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -94,51 +92,55 @@ export default function Contact() {
     }
   };
 
-  const fieldProps = (name) => ({
-    name,
-    value: formState[name],
-    onChange: handleChange,
-    "aria-invalid": errors[name] ? "true" : undefined,
-    "aria-describedby": errors[name] ? `contact-${name}-error` : undefined,
-    className: "field95",
-  });
-
-  const fieldError = (name) =>
-    errors[name] ? (
-      <p id={`contact-${name}-error`} className="text-xs text-[#e0245e] mt-1 font-sans">
-        {errors[name]}
-      </p>
-    ) : null;
-
-  const label = "block text-[13px] font-sans mb-1";
-
   return (
-    <section id="contact" className="relative py-16 sm:py-20 md:py-24">
-      <div className="mx-auto w-[min(900px,92vw)]">
-        <SectionCaption channel={5}>{CONTACT_TITLE}</SectionCaption>
+    <section id="contact" className="relative py-16 sm:py-20 md:py-24 grid-bg text-white">
+      <div className="mx-auto w-[min(900px,94vw)]">
+        {/* Heading in a box */}
+        <div className="flex justify-center mb-8 sm:mb-10 md:mb-12">
+          <h2
+            className="uppercase font-extrabold tracking-tight
+                       border-2 border-border bg-card text-fg
+                       px-6 py-2 shadow-[8px_8px_0_var(--shadow-strong)] text-2xl"
+          >
+            {CONTACT_TITLE}
+          </h2>
+        </div>
 
-        <Win95Window title="New Message" icon="✉" menu status={[isSubmitting ? "Sending…" : "Ready", SITE_EMAIL]}>
-          <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Card */}
+        <div className="border-2 border-border bg-card text-fg shadow-[8px_8px_0_var(--shadow-weak)] p-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Left: quick info / socials */}
             <div className="md:col-span-1 space-y-4">
-              <p className="text-sm leading-relaxed">
+              <p className="text-sm">
                 {CONTACT_DESCRIPTION}
               </p>
 
               <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2 break-all">
-                  <FiMail className="shrink-0 text-accent" /> <span>{SITE_EMAIL}</span>
+                <div className="flex items-center gap-2">
+                  <FiMail /> <span>{SITE_EMAIL}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FiMapPin className="shrink-0 text-accent" /> <span>{SITE_LOCATION}</span>
+                  <FiMapPin /> <span>{SITE_LOCATION}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 pt-2">
-                <a href={SOCIAL_GITHUB} target="_blank" rel="noreferrer" className="btn95 !p-2" aria-label="GitHub">
+              <div className="flex items-center gap-4 pt-2">
+                <a
+                  href={SOCIAL_GITHUB}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
+                  aria-label="GitHub"
+                >
                   <FiGithub />
                 </a>
-                <a href={SOCIAL_LINKEDIN} target="_blank" rel="noreferrer" className="btn95 !p-2" aria-label="LinkedIn">
+                <a
+                  href={SOCIAL_LINKEDIN}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-2 border-border bg-card p-2 shadow-[4px_4px_0_var(--shadow-weak)]"
+                  aria-label="LinkedIn"
+                >
                   <FiLinkedin />
                 </a>
               </div>
@@ -146,65 +148,103 @@ export default function Contact() {
 
             {/* Right: form (Formspree) */}
             <div className="md:col-span-2">
-              {submitStatus && (
-                <div className="win mb-4" role="status">
-                  <div className="win-title">
-                    <span>{submitStatus === 'success' ? 'Message sent' : 'Error'}</span>
-                  </div>
-                  <div className="flex items-start gap-3 p-3 font-sans text-[13px] text-black">
-                    <span className="text-2xl leading-none" aria-hidden="true">
-                      {submitStatus === 'success' ? 'ℹ️' : '⛔'}
-                    </span>
-                    {submitStatus === 'success' ? (
-                      <p><strong>Message sent successfully!</strong><br />Thank you for reaching out. I'll get back to you soon.</p>
-                    ) : (
-                      <p><strong>Something went wrong.</strong><br />Please try again or email me directly.</p>
-                    )}
-                  </div>
+              {/* Success Message */}
+              {submitStatus === 'success' && (
+                <div className="mb-4 p-4 border-2 border-green-600 bg-green-50">
+                  <p className="font-bold text-green-800">✓ Message sent successfully!</p>
+                  <p className="text-sm text-green-700">Thank you for reaching out. I'll get back to you soon.</p>
+                </div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === 'error' && (
+                <div className="mb-4 p-4 border-2 border-red-600 bg-red-50">
+                  <p className="font-bold text-red-800">✗ Something went wrong</p>
+                  <p className="text-sm text-red-700">Please try again or email me directly.</p>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-1">
-                  <label htmlFor="contact-name" className={label}>
-                    <u>N</u>ame <span className="text-highlight">*</span>
+                  <label htmlFor="contact-name" className="block text-xs font-bold mb-1">
+                    Name <span className="text-red-600">*</span>
                   </label>
-                  <input required id="contact-name" type="text" placeholder="Your name" {...fieldProps('name')} />
-                  {fieldError('name')}
+                  <input
+                    required
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    value={formState.name}
+                    onChange={handleChange}
+                    className={`w-full border-2 ${errors.name ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
+                    placeholder="Your name"
+                  />
+                  {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
                 </div>
 
                 <div className="md:col-span-1">
-                  <label htmlFor="contact-email" className={label}>
-                    <u>E</u>mail <span className="text-highlight">*</span>
+                  <label htmlFor="contact-email" className="block text-xs font-bold mb-1">
+                    Email <span className="text-red-600">*</span>
                   </label>
-                  <input required id="contact-email" type="email" placeholder="you@example.com" {...fieldProps('email')} />
-                  {fieldError('email')}
+                  <input
+                    required
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    className={`w-full border-2 ${errors.email ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
+                    placeholder="you@example.com"
+                  />
+                  {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
                 </div>
 
                 <div className="md:col-span-2">
-                  <label htmlFor="contact-subject" className={label}>
-                    <u>S</u>ubject <span className="text-highlight">*</span>
+                  <label htmlFor="contact-subject" className="block text-xs font-bold mb-1">
+                    Subject <span className="text-red-600">*</span>
                   </label>
-                  <input required id="contact-subject" type="text" placeholder="What's this about?" {...fieldProps('subject')} />
-                  {fieldError('subject')}
+                  <input
+                    required
+                    id="contact-subject"
+                    name="subject"
+                    type="text"
+                    value={formState.subject}
+                    onChange={handleChange}
+                    className={`w-full border-2 ${errors.subject ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
+                    placeholder="What's this about?"
+                  />
+                  {errors.subject && <p className="text-xs text-red-600 mt-1">{errors.subject}</p>}
                 </div>
 
                 <div className="md:col-span-2">
-                  <label htmlFor="contact-message" className={label}>
-                    <u>M</u>essage <span className="text-highlight">*</span>
+                  <label htmlFor="contact-message" className="block text-xs font-bold mb-1">
+                    Message <span className="text-red-600">*</span>
                   </label>
-                  <textarea required id="contact-message" rows="6" placeholder="Tell me a bit more…" {...fieldProps('message')} />
-                  {fieldError('message')}
+                  <textarea
+                    required
+                    id="contact-message"
+                    name="message"
+                    rows="6"
+                    value={formState.message}
+                    onChange={handleChange}
+                    className={`w-full border-2 ${errors.message ? 'border-red-600' : 'border-border'} px-3 py-2 bg-card focus:outline-none focus:border-accent`}
+                    placeholder="Tell me a bit more…"
+                  />
+                  {errors.message && <p className="text-xs text-red-600 mt-1">{errors.message}</p>}
                 </div>
 
-                <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-3">
-                  <button type="submit" disabled={isSubmitting} className="btn95 btn95-default min-w-[130px]">
+                <div className="md:col-span-2 flex items-center justify-between">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="border-2 border-border bg-accent px-6 py-3 font-extrabold uppercase shadow-[6px_6px_0_var(--shadow-weak)] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
 
                   <a
                     href={`mailto:${SITE_EMAIL}?subject=${CONTACT_EMAIL_SUBJECT}`}
-                    className="text-xs underline decoration-accent underline-offset-4 hover:text-accent"
+                    className="text-xs underline"
                   >
                     {CONTACT_DIRECT_EMAIL_PROMPT}
                   </a>
@@ -212,7 +252,7 @@ export default function Contact() {
               </form>
             </div>
           </div>
-        </Win95Window>
+        </div>
       </div>
     </section>
   );

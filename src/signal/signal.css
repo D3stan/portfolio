@@ -1,0 +1,389 @@
+/* ========= FONTS ========= */
+/* Tinos ≈ Times New Roman (echoed serif), Arimo ≈ Arial (Win95 chrome and
+   broadcast captions), VT323 for on-screen-display text. */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Tinos:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+
+/*
+  Signal wave theme. Everything here is scoped to .signal-root (the /signal
+  page) so it never touches the standard site, even after it has loaded.
+  Live colour values come from src/signal/theme.js and are set inline on the
+  wrapper; the tokens below are fallbacks.
+*/
+
+.signal-root {
+  --bg: #2a17c9;
+  --fg: #14102e;
+  --border: #14102e;
+  --card: #ffffff;
+  --accent: #2414c9;
+  --accent-fg: #ffffff;
+  --muted: #4d4870;
+  --highlight: #a1128e;
+  --void-fg: #f6e6ff;
+  --glow: rgba(255, 120, 245, 0.75);
+  --chip: #efeaff;
+
+  --shadow-weak: rgba(10, 4, 60, 0.35);
+  --shadow-strong: rgba(10, 4, 60, 0.55);
+
+  /* Win95 chrome is the same in both modes */
+  --chrome: #c0c0c0;
+  --chrome-light: #dfdfdf;
+  --chrome-hi: #ffffff;
+  --chrome-shadow: #808080;
+  --chrome-dark: #0a0a0a;
+  --title-from: #000080;
+  --title-to: #1084d0;
+
+  --font-sans: "Arimo", Arial, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: "Tinos", "Times New Roman", Times, serif;
+  --font-osd: "VT323", "IBM Plex Mono", monospace;
+}
+
+.signal-root[data-mode="dark"] {
+  --bg: #030308;
+  --fg: #ece6ff;
+  --border: #36f1cd;
+  --card: #07061a;
+  --accent: #36f1cd;
+  --accent-fg: #03030a;
+  --muted: #9d97c9;
+  --highlight: #4dff7a;
+  --void-fg: #f3dcff;
+  --glow: rgba(54, 241, 205, 0.7);
+  --chip: #0d0c26;
+
+  --shadow-weak: rgba(0, 0, 0, 0.6);
+  --shadow-strong: rgba(0, 0, 0, 0.85);
+}
+
+
+.signal-root {
+  min-height: 100vh;
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+
+.signal-root ::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.signal-root :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ========= WIN95 WINDOW ========= */
+.signal-root .win {
+  background: var(--chrome);
+  color: #000;
+  padding: 3px;
+  box-shadow:
+    inset -1px -1px var(--chrome-dark),
+    inset 1px 1px var(--chrome-light),
+    inset -2px -2px var(--chrome-shadow),
+    inset 2px 2px var(--chrome-hi),
+    0 28px 60px -28px var(--glow),
+    0 10px 24px -8px var(--shadow-strong);
+}
+
+.signal-root .win-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 3px 3px 6px;
+  background: linear-gradient(90deg, var(--title-from), var(--title-to));
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  user-select: none;
+}
+
+.signal-root .win-ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 14px;
+  background: var(--chrome);
+  color: #000;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow:
+    inset -1px -1px var(--chrome-dark),
+    inset 1px 1px var(--chrome-hi),
+    inset -2px -2px var(--chrome-shadow),
+    inset 2px 2px var(--chrome-light);
+}
+
+.signal-root .win-ctrl {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+.signal-root .win-ctrl:active {
+  box-shadow:
+    inset -1px -1px var(--chrome-hi),
+    inset 1px 1px var(--chrome-dark),
+    inset -2px -2px var(--chrome-light),
+    inset 2px 2px var(--chrome-shadow);
+}
+.signal-root .win-ctrl:active > span { transform: translate(1px, 1px); }
+.signal-root .win-ctrl-jolt { display: inline-block; animation: win-ctrl-jolt 0.32s ease-out; }
+
+@keyframes win-ctrl-jolt {
+  0%   { transform: scale(1); filter: none; }
+  30%  { transform: scale(0.6) rotate(-12deg); color: #000080; }
+  60%  { transform: scale(1.35) rotate(6deg); color: #e81cff; }
+  100% { transform: scale(1); }
+}
+
+.signal-root .win-menu {
+  display: flex;
+  gap: 14px;
+  padding: 3px 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #000;
+  user-select: none;
+}
+.signal-root .win-menu span::first-letter { text-decoration: underline; }
+
+.signal-root .win-body {
+  margin: 2px;
+  background: var(--card);
+  color: var(--fg);
+  box-shadow:
+    inset 1px 1px var(--chrome-shadow),
+    inset -1px -1px var(--chrome-hi),
+    inset 2px 2px var(--chrome-dark),
+    inset -2px -2px var(--chrome-light);
+  padding: 2px;
+}
+
+.signal-root .win-status {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #000;
+}
+.signal-root .win-status > * {
+  padding: 2px 6px;
+  box-shadow:
+    inset 1px 1px var(--chrome-shadow),
+    inset -1px -1px var(--chrome-hi);
+}
+
+/* Etched separator, as between Win95 group boxes */
+.signal-root .groove {
+  border-top: 1px solid var(--chrome-shadow);
+  border-bottom: 1px solid var(--chrome-hi);
+}
+.signal-root[data-mode="dark"] .win-body .groove {
+  border-top-color: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-bottom-color: transparent;
+}
+
+/* ========= WIN95 CONTROLS ========= */
+.signal-root .btn95 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--chrome);
+  color: #000;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px var(--chrome-dark),
+    inset 1px 1px var(--chrome-hi),
+    inset -2px -2px var(--chrome-shadow),
+    inset 2px 2px var(--chrome-light);
+}
+.signal-root .btn95:active,
+.signal-root .btn95[aria-pressed="true"] {
+  box-shadow:
+    inset -1px -1px var(--chrome-hi),
+    inset 1px 1px var(--chrome-dark),
+    inset -2px -2px var(--chrome-light),
+    inset 2px 2px var(--chrome-shadow);
+}
+.signal-root .btn95:active > * { transform: translate(1px, 1px); }
+.signal-root .btn95:disabled { color: var(--chrome-shadow); text-shadow: 1px 1px var(--chrome-hi); cursor: not-allowed; }
+
+/* The "default" button gets the extra black frame, as in Win95 dialogs */
+.signal-root .btn95-default {
+  font-weight: 700;
+  box-shadow:
+    0 0 0 1px #000,
+    inset -1px -1px var(--chrome-dark),
+    inset 1px 1px var(--chrome-hi),
+    inset -2px -2px var(--chrome-shadow),
+    inset 2px 2px var(--chrome-light);
+}
+
+.signal-root .btn95:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -5px;
+}
+
+.signal-root .field95 {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--card);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  border: 0;
+  border-radius: 0;
+  box-shadow:
+    inset 1px 1px var(--chrome-shadow),
+    inset -1px -1px var(--chrome-hi),
+    inset 2px 2px var(--chrome-dark),
+    inset -2px -2px var(--chrome-light);
+}
+.signal-root .field95::placeholder { color: var(--muted); opacity: 0.85; }
+.signal-root .field95:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.signal-root .field95[aria-invalid="true"] { outline: 2px solid #e0245e; }
+
+/* Small tag for tech stacks */
+.signal-root .chip {
+  display: inline-block;
+  padding: 1px 7px;
+  background: var(--chip);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ========= BROADCAST TYPE ========= */
+/* Wide-tracked TV caption ("We are here") with colour bleed and glow */
+.signal-root .caption {
+  font-family: var(--font-sans);
+  color: var(--void-fg);
+  letter-spacing: 0.32em;
+  text-transform: lowercase;
+  text-shadow:
+    -1.5px 0 rgba(255, 40, 110, 0.55),
+    1.5px 0 rgba(40, 220, 255, 0.55),
+    0 0 18px var(--glow);
+}
+
+/* Airy serif with an echoed reflection below ("time is a social construct") */
+.signal-root .echo {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--void-fg);
+  letter-spacing: 0.06em;
+  text-shadow:
+    0 0.12em 0 rgba(243, 220, 255, 0.42),
+    0 0.24em 0 rgba(243, 220, 255, 0.26),
+    0 0.36em 0 rgba(243, 220, 255, 0.15),
+    0 0.48em 0 rgba(243, 220, 255, 0.07),
+    0 0 28px var(--glow);
+}
+
+/* On-screen display text (channel numbers, timestamps) */
+.signal-root .osd {
+  font-family: var(--font-osd);
+  color: #4dff7a;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 6px rgba(77, 255, 122, 0.7);
+}
+
+.signal-root .glow-text { text-shadow: 0 0 10px var(--glow); }
+
+
+/* ========= CRT / VHS OVERLAY ========= */
+.signal-root .crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.16) 0px,
+      rgba(0, 0, 0, 0.16) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+}
+.signal-root .crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: vhs-grain 0.6s steps(4) infinite;
+}
+
+@keyframes vhs-grain {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-3%, 2%); }
+  50%  { transform: translate(2%, -3%); }
+  75%  { transform: translate(-2%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Lens-flare spark twinkle */
+@keyframes flare-twinkle {
+  0%, 100% { opacity: 0.85; transform: scale(1) rotate(0deg); }
+  50%      { opacity: 1;    transform: scale(1.12) rotate(8deg); }
+}
+.signal-root .flare { animation: flare-twinkle 3.4s ease-in-out infinite; }
+
+
+
+/* ========= ACCESSIBILITY ========= */
+@media (prefers-reduced-motion: reduce) {
+  .signal-root .crt-overlay::after,
+.signal-root .flare,
+.signal-root .win-ctrl-jolt,
+.signal-root .animate-blink { animation: none; }
+}
+
+@media (prefers-contrast: more) {
+  .signal-root .crt-overlay { display: none; }
+  .signal-root .caption,
+.signal-root .echo { text-shadow: none; }
+}
+
+
+
+/* ========= SIGNAL BACKDROP ========= */
+.signal-root[data-mode="dark"] .light-only { display: none; }
+
+.signal-root .signal-plaza {
+  background:
+    radial-gradient(ellipse 60% 35% at 45% 55%, rgba(110, 230, 255, 0.38), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(255, 40, 245, 0.85), transparent 70%),
+    linear-gradient(160deg, #1d0fb8 0%, #2f1bd2 40%, #5a21dc 72%, #b51eef 100%);
+}
+
+.signal-root .signal-image {
+  background-color: #030308;
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  /* soften the upscaled still a touch, like a worn tape */
+  filter: blur(0.6px) saturate(1.1);
+  opacity: 0.85;
+}
+.signal-root:not([data-mode="dark"]) .signal-image {
+  background-color: transparent;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}

@@ -100,7 +100,7 @@ export const FOOTER_LINKS_LEGAL = [
 
 // ========== FOOTER ==========
 export const FOOTER_COPYRIGHT =
-  "Made by Alessandro Porcheddu - Signal wave UI.";
+  "Made by Alessandro Porcheddu - Brutalist / Swiss UI.";
 export const FOOTER_ATTRIBUTION = "BatCat mark inspired by Mark Horn.";
 
 // ========== SECTION TITLES ==========
