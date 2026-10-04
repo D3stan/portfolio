@@ -27,13 +27,13 @@ export default function HelloRotator({
         flag: "🇳🇵",
         dir: "ltr",
         style: { fontFamily: '"Noto Sans Devanagari", Mangal, serif' },
-        text: "नमस्ते, मेरो नाम मनोज हो। 🙂",
+        text: "नमस्ते, मेरो नाम अलेस्सांद्रो हो। 🙂",
       },
       {
         flag: "🇮🇳",
         dir: "ltr",
         style: { fontFamily: '"Noto Sans Devanagari", Mangal, serif' },
-        text: "नमस्ते, मेरा नाम मनोज है। 🙂",
+        text: "नमस्ते, मेरा नाम अलेस्सांद्रो है। 🙂",
       },
       {
         flag: "🇯🇵",
@@ -42,7 +42,7 @@ export default function HelloRotator({
           fontFamily:
             '"Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif',
         },
-        text: "こんにちは、私の名前はマノジです。🙂",
+        text: "こんにちは、私の名前はアレッサンドロです。🙂",
       },
       {
         flag: "🇰🇷",
@@ -51,7 +51,7 @@ export default function HelloRotator({
           fontFamily:
             '"Noto Sans KR", Apple SD Gothic Neo, Malgun Gothic, sans-serif',
         },
-        text: "안녕하세요, 제 이름은 마노지입니다. 🙂",
+        text: "안녕하세요, 제 이름은 알레산드로입니다. 🙂",
       },
       {
         flag: "🇨🇳",
@@ -68,13 +68,13 @@ export default function HelloRotator({
         style: {
           fontFamily: 'Amiri, "Noto Naskh Arabic", "Scheherazade New", serif',
         },
-        text: "مرحبًا، اسمي مانوج. 🙂",
+        text: "مرحبًا، اسمي أليساندرو. 🙂",
       },
       {
         flag: "🇷🇺",
         dir: "ltr",
         style: { fontFamily: '"PT Sans", "Noto Sans", Arial, sans-serif' },
-        text: "Привет, меня зовут Манодж. 🙂",
+        text: "Привет, меня зовут Алессандро. 🙂",
       },
       {
         flag: "🇪🇸",

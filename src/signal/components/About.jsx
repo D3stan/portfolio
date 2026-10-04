@@ -47,9 +47,13 @@ function Typewriter({
   }, [txt, dir, i, list, typingSpeed, pause]);
 
   return (
-    <span className={className} aria-live="polite" aria-atomic>
-      {txt}
-      <span className="animate-blink ml-0.5" aria-hidden="true">_</span>
+    <span className={className}>
+      {/* Screen readers get the whole phrase, not every typed letter */}
+      <span className="sr-only">{list[i % list.length]}</span>
+      <span aria-hidden="true">
+        {txt}
+        <span className="animate-blink ml-0.5">_</span>
+      </span>
     </span>
   );
 }

@@ -115,7 +115,7 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
       </video>
 
       {/* Hover controls */}
-      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity flex items-center justify-center">
         <button
           aria-label={isPlaying ? "Pause video" : "Play video"}
           onClick={onPlayPause}
