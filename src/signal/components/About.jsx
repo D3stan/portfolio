@@ -63,7 +63,7 @@ export default function About() {
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
           {/* LEFT: portrait window */}
-          <aside className="md:col-span-5 order-2 md:order-1">
+          <aside className="md:col-span-5">
             <Win95Window
               title="portrait.bmp"
               icon="🖼"
@@ -81,7 +81,7 @@ export default function About() {
           </aside>
 
           {/* RIGHT: broadcast title card + about window */}
-          <div className="md:col-span-7 order-1 md:order-2">
+          <div className="md:col-span-7">
             <HelloRotator name={SITE_NAME} />
 
             <div className="relative">
