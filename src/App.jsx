@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import About from "./components/About";
@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import CoolBackground from "./components/CoolBackground"; // New background
 import PageLoader from "./components/PageLoader";
 import MetaTags from "./components/MetaTags";
-import { useTheme } from "./hooks/useTheme";
 import {
   ACCESSIBILITY_SKIP_TO_MAIN,
   SOCIAL_LINKEDIN,
@@ -18,6 +17,9 @@ import {
   RESUME_FILE,
   SITE_EMAIL,
 } from "@/config";
+
+// The hidden signal wave version, loaded only when someone finds it
+const SignalApp = lazy(() => import("./signal/SignalApp"));
 
 // Component to handle external redirects
 const ExternalRedirect = ({ to, label }) => {
@@ -82,6 +84,16 @@ export default function App() {
             <Routes>
                 {/* Main portfolio page */}
                 <Route path="/" element={<Home />} />
+
+                {/* Hidden signal wave version (double-click the navbar BatCat) */}
+                <Route
+                  path="/signal"
+                  element={
+                    <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+                      <SignalApp />
+                    </Suspense>
+                  }
+                />
 
                 {/* External redirect routes */}
                 <Route 

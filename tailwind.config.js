@@ -16,12 +16,19 @@ export default {
         card: "var(--card)",
         accent: "var(--accent)",
         muted: "var(--muted)",
+        // Signal wave page (src/signal), set on .signal-root
+        "accent-fg": "var(--accent-fg)",
+        "void-fg": "var(--void-fg)",
+        highlight: "var(--highlight)",
+        chip: "var(--chip)",
+        chrome: "var(--chrome)",
       },
       fontFamily: {
         // Use CSS vars so themes can swap fonts without code changes
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
         display: ["var(--font-display)"],
+        osd: ["var(--font-osd)"],
       },
       boxShadow: {
         brutalWeak: "6px 6px 0 var(--shadow-weak)",

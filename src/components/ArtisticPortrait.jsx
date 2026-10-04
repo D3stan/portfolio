@@ -507,6 +507,7 @@ export default function ArtisticPortrait({
   className = "",
   enableGlitch = true,
   enableCodeRain = true,
+  backdrop = null, // optional node drawn behind the portrait instead of the code rain
   enablePixelTrail = true,
   enableScanlines = true,
 }) {
@@ -542,7 +543,7 @@ export default function ArtisticPortrait({
       }}
     >
       {/* Matrix Code Rain Effect */}
-      {enableCodeRain && <MatrixCodeRain containerRef={containerRef} />}
+      {backdrop ?? (enableCodeRain && <MatrixCodeRain containerRef={containerRef} />)}
 
       {/* Floating Name with Glitch */}
       <FloatingName isActive={isGlitching || isHovered} />

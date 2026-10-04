@@ -4,6 +4,7 @@ import SocialButtons from "./SocialButtons";
 import BatCatLogo from "./BatCatLogo";
 import ThemeToggle from "./ThemeToggle";
 import { NAV_LINKS, SITE_SHORT_NAME } from "@/config";
+import { useSecretClick } from "../hooks/useSecretClick";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,8 @@ export default function Navbar() {
   }, [open]);
 
   const closeMenu = () => setOpen(false);
+  // Clicking the logo twice switches between the standard and signal wave sites
+  const secretClick = useSecretClick("/signal");
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50" aria-label="Main navigation">
@@ -26,7 +29,10 @@ export default function Navbar() {
           <a
             href="#top"
             className="flex items-center gap-2 select-none"
-            onClick={closeMenu}
+            onClick={(e) => {
+              closeMenu();
+              secretClick(e);
+            }}
           >
             <div className="border-2 border-border bg-card rounded-full p-1 shadow-[3px_3px_0_var(--shadow-strong)] hover:-translate-y-[2px] transition">
               <BatCatLogo size={32} />
