@@ -1,6 +1,6 @@
-# 0xpuddu.it
+# 0xpuddu.com
 
-Personal website of Alessandro Porcheddu, live at [0xpuddu.it](https://0xpuddu.it).
+Personal website of Alessandro Porcheddu, live at [0xpuddu.com](https://0xpuddu.com).
 React 19, Vite 7 and Tailwind, deployed to GitHub Pages.
 
 ## Features
