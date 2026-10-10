@@ -74,7 +74,10 @@ export const CONTACT_DIRECT_EMAIL_PROMPT = "or email me directly";
 export const CONTACT_EMAIL_SUBJECT = "Hello%20Alessandro";
 
 // ========== RESUME ==========
-export const RESUME_FILE = "/documents/Resume.pdf";
+// The ?v= hash changes with the PDF, so a new deploy is never served from cache.
+export const RESUME_FILE = import.meta.env.RESUME_VERSION
+  ? `/documents/Resume.pdf?v=${import.meta.env.RESUME_VERSION}`
+  : "/documents/Resume.pdf";
 export const RESUME_DOWNLOAD_NAME = "AlessandroPorcheddu-Resume.pdf";
 
 // ========== NAVIGATION ==========
