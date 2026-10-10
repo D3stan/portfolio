@@ -14,3 +14,14 @@ CNAME
 src/config/resume.generated.json
 public/documents/Resume.pdf
 resume/build/
+
+# LaTeX build output
+resume/*.aux
+resume/*.log
+resume/*.out
+resume/*.pdf
+resume/*.synctex.gz
+resume/*.fdb_latexmk
+resume/*.fls
+resume/*.xdv
+resume/build/
