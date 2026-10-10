@@ -9,6 +9,7 @@ import {
   ABOUT_STATUS,
   ABOUT_STATUS_LOCATION,
   ABOUT_DESCRIPTION,
+  RESUME_FILE,
 } from "@/config";
 
 function Typewriter({
@@ -108,7 +109,7 @@ export default function About() {
               {/* CTAs (already square) */}
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
-                  href="/documents/Resume.pdf"
+                  href={RESUME_FILE}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border-2 border-border bg-accent px-4 py-2 font-semibold shadow-[6px_6px_0_var(--shadow-strong)] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"

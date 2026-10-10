@@ -11,6 +11,7 @@ import {
   ABOUT_STATUS,
   ABOUT_STATUS_LOCATION,
   ABOUT_DESCRIPTION,
+  RESUME_FILE,
 } from "@/config";
 
 function Typewriter({
@@ -103,7 +104,7 @@ export default function About() {
 
                 <div className="mt-6 flex flex-wrap items-center gap-3 font-sans">
                   <a
-                    href="/documents/Resume.pdf"
+                    href={RESUME_FILE}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn95 btn95-default"
