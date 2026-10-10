@@ -19,7 +19,7 @@ export const SITE_LOCATION_FULL = "Copenhagen, Denmark";
 // ========== SOCIAL LINKS ==========
 export const SOCIAL_GITHUB = `https://github.com/${resume.profile.github}`;
 export const SOCIAL_LINKEDIN = "https://www.linkedin.com/in/0xalessandro-porcheddu";
-export const SOCIAL_PORTFOLIO = "https://0xpuddu.it/";
+export const SOCIAL_PORTFOLIO = "https://0xpuddu.com/";
 export const SOCIAL_TWITTER = ""; // Optional
 
 // ========== ABOUT SECTION ==========
@@ -54,7 +54,7 @@ export const META_KEYWORDS = [
 ];
 export const META_AUTHOR = "Alessandro Porcheddu";
 export const META_OG_IMAGE = "/images/profile/portfolio-preview.png";
-export const META_SITE_URL = "https://0xpuddu.it";
+export const META_SITE_URL = "https://0xpuddu.com";
 export const META_LANGUAGE = "en";
 export const FAVICON = "/logos/batcat.svg";
 
