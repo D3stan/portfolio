@@ -1,7 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import {
-  Play,
-  Pause,
   ExternalLink,
   Github,
   ChevronLeft,
@@ -63,19 +61,8 @@ const PREVIEW_PLACEHOLDER =
     "</svg>"
   );
 
-function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
-  const videoRef = useRef(null);
+function VideoPlayer({ src, poster, className = "" }) {
   const [hasVideoError, setHasVideoError] = useState(false);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (isPlaying) {
-      v.play().catch(() => {});
-    } else {
-      v.pause();
-    }
-  }, [isPlaying]);
 
   // If no video or video failed, show image only
   if (!src || hasVideoError) {
@@ -95,14 +82,13 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
   }
 
   return (
-    <div className={`relative group ${className}`}>
+    <div className={`relative ${className}`}>
       <video
-        ref={videoRef}
         poster={poster}
+        autoPlay
         muted
         loop
         playsInline
-        preload="none"
         className="w-full h-full object-cover"
         onError={() => {
           console.warn('Video failed to load:', src);
@@ -112,34 +98,18 @@ function VideoPlayer({ src, poster, isPlaying, onPlayPause, className = "" }) {
         <source src={src} type="video/mp4" />
       </video>
 
-      {/* Hover controls */}
-      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-        <button
-          aria-label={isPlaying ? "Pause video" : "Play video"}
-          onClick={onPlayPause}
-          className="bg-white/20 backdrop-blur-sm border-2 border-white/30 rounded-full p-3 text-white hover:bg-white/30 transition-colors"
-        >
-          {isPlaying ? (
-            <Pause className="w-5 h-5" />
-          ) : (
-            <Play className="w-5 h-5 ml-0.5" />
-          )}
-        </button>
-      </div>
     </div>
   );
 }
 
 // Small Project Card
-function SmallProjectCard({ project, isPlaying, onPlayPause }) {
+function SmallProjectCard({ project }) {
   return (
     <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0">
       <div className="relative aspect-video border-b-2 border-border">
         <VideoPlayer
           src={project.video}
           poster={project.image}
-          isPlaying={isPlaying}
-          onPlayPause={onPlayPause}
           className="h-full"
         />
       </div>
@@ -175,21 +145,15 @@ function SmallProjectCard({ project, isPlaying, onPlayPause }) {
 
 function SmallProjectsSlider({ projects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [playingVideo, setPlayingVideo] = useState(null);
 
   // Card width math: w-72 (288) + gap-4 (16) = 304px per slide
   const SLIDE_PX = 304;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-    setPlayingVideo(null);
   };
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-    setPlayingVideo(null);
-  };
-  const handleVideoToggle = (projectId) => {
-    setPlayingVideo(playingVideo === projectId ? null : projectId);
   };
 
   return (
@@ -210,8 +174,6 @@ function SmallProjectsSlider({ projects }) {
             <SmallProjectCard
               key={project.id}
               project={project}
-              isPlaying={playingVideo === project.id}
-              onPlayPause={() => handleVideoToggle(project.id)}
             />
           ))}
         </div>
@@ -231,10 +193,7 @@ function SmallProjectsSlider({ projects }) {
           {projects.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setCurrentIndex(index);
-                setPlayingVideo(null);
-              }}
+              onClick={() => setCurrentIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
               className={`w-2 h-2 border border-border ${
                 index === currentIndex ? "bg-accent" : "bg-card"
@@ -257,12 +216,6 @@ function SmallProjectsSlider({ projects }) {
 }
 
 export default function Projects() {
-  const [playingVideo, setPlayingVideo] = useState(null);
-
-  const handleVideoToggle = (projectId) => {
-    setPlayingVideo(playingVideo === projectId ? null : projectId);
-  };
-
   return (
     <section id="projects" className="py-16">
       <div className="mx-auto w-[min(1100px,94vw)]">
@@ -285,8 +238,6 @@ export default function Projects() {
                 <VideoPlayer
                   src={project.video}
                   poster={project.image}
-                  isPlaying={playingVideo === project.id}
-                  onPlayPause={() => handleVideoToggle(project.id)}
                   className="h-full"
                 />
               </div>

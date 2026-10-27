@@ -7,7 +7,7 @@ dist
 
 # Editor directories and files
 .vscode/
-
+.DS_Store
 CNAME
 
 # Generated from the LaTeX resume (see resume/README.md)
