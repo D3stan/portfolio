@@ -83,8 +83,8 @@ export const RESUME_DOWNLOAD_NAME = "AlessandroPorcheddu-Resume.pdf";
 // ========== NAVIGATION ==========
 export const NAV_LINKS = [
   { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
