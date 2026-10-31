@@ -23,6 +23,10 @@
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
+% No line-end word splits ("Learn-ing"): parsers keep the broken halves as two words
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
 % Specify the location of the included fonts
 \fontdir[fonts/]
 
