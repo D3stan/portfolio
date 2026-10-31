@@ -23,15 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended latexmk
-
+      # Same TeX Live year as local MacTeX; Ubuntu apt only ships 2023, which lays out differently
       - name: Build resume PDF
         run: |
-          latexmk -xelatex -interaction=nonstopmode -halt-on-error -cd -outdir=build resume/resume.tex
+          docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/w" -w /w texlive/texlive:latest \
+            latexmk -xelatex -interaction=nonstopmode -halt-on-error -cd -outdir=build resume/resume.tex
           mkdir -p public/documents
           cp resume/build/resume.pdf public/documents/Resume.pdf
 
