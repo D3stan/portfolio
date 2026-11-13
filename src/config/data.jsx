@@ -68,6 +68,20 @@ const EXTRA_FEATURED = [
 ];
 const EXTRA_SMALL = [
   {
+    id: 106,
+    title: "Rotax Reed Valve Intake",
+    subtitle: "Mechanical Design",
+    blurb:
+      "Reed valve block and intake manifold for a Rotax engine with a PWK carburettor. Parametric Fusion 360 design, 178 timeline features across 33 versions.",
+    tech: ["Fusion360", "Parametric CAD", "3D Printing"],
+    image: "/images/projects/small/reed-valve-intake.jpg",
+    video: null,
+    model: "/models/pacco.glb",
+    flow: "/models/pacco-flow.glb",
+    repo: null,
+    demo: null,
+  },
+  {
     id: 103,
     title: "AlmaStreet",
     subtitle: "University Meme Stock Market",
@@ -107,7 +121,8 @@ const EXTRA_SMALL = [
 ];
 
 export const PROJECTS_FEATURED = [
-  byId(resume.projectsFeatured, 3),
+  // 3D model of the exhaust valve, shown as a tab on the project's photo
+  byId(resume.projectsFeatured, 3) && { ...byId(resume.projectsFeatured, 3), model: "/models/rave.glb" },
   ...EXTRA_FEATURED,
   byId(resume.projectsFeatured, 1),
 ].filter(Boolean);
