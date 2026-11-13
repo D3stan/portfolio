@@ -233,11 +233,11 @@ export default function Contact() {
                   {errors.message && <p className="text-xs text-red-600 mt-1">{errors.message}</p>}
                 </div>
 
-                <div className="md:col-span-2 flex items-center justify-between">
+                <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="border-2 border-border bg-accent px-6 py-3 font-extrabold uppercase shadow-[6px_6px_0_var(--shadow-weak)] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                    className="whitespace-nowrap border-2 border-border bg-accent px-6 py-3 font-extrabold uppercase shadow-[6px_6px_0_var(--shadow-weak)] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
