@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import ProjectMedia from "./ProjectMedia";
 import { PROJECTS_FEATURED, PROJECTS_SMALL } from "@/config/data";
 import {
   SECTION_TITLE_PROJECTS,
@@ -107,7 +108,9 @@ function SmallProjectCard({ project }) {
   return (
     <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0 snap-start">
       <div className="relative aspect-video border-b-2 border-border">
-        <VideoPlayer src={project.video} poster={project.image} className="h-full" />
+        <ProjectMedia model={project.model} flow={project.flow} title={project.title}>
+          <VideoPlayer src={project.video} poster={project.image} className="h-full" />
+        </ProjectMedia>
       </div>
 
       <div className="p-4">
@@ -247,7 +250,9 @@ export default function Projects() {
             >
               {/* Video */}
               <div className="relative aspect-video border-b-2 border-border">
-                <VideoPlayer src={project.video} poster={project.image} className="h-full" />
+                <ProjectMedia model={project.model} flow={project.flow} title={project.title}>
+                  <VideoPlayer src={project.video} poster={project.image} className="h-full" />
+                </ProjectMedia>
               </div>
 
               {/* Content */}
