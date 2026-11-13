@@ -414,6 +414,10 @@
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
+% Photo diameter (circle) or side (rectangle); empty keeps the template's size
+\newcommand{\acvHeaderPhotoSize}{}
+% Width of the header column holding the photo; the name and contacts get the rest
+\newcommand{\acvHeaderPhotoWidth}{0.24\textwidth}
 
 % Others
 \newcommand{\acvSectionTopSkip}{3mm}
@@ -447,11 +451,15 @@
       \ifthenelse{\equal{\@photoshape}{circle}}%
         {\setlength{\photodim}{1.3cm}}%
         {\setlength{\photodim}{1.8cm}}%
+      % A set size replaces the padding: the node is then exactly that wide
+      \ifthenelse{\equal{\acvHeaderPhotoSize}{}}%
+        {\def\@photosize{0pt}}%
+        {\setlength{\photodim}{0pt}\def\@photosize{\acvHeaderPhotoSize}}%
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{darkgray}}%
         {\def\@photoborder{none}}%
       \begin{tikzpicture}%
-        \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+        \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, minimum size=\@photosize, fill overzoom image=\@photo] () {};
       \end{tikzpicture}
     }%
   }
@@ -461,12 +469,13 @@
     \setlength{\headertextwidth}{\textwidth}
     \setlength{\headerphotowidth}{0cm}
   }{%
-    \setlength{\headertextwidth}{0.76\textwidth}
-    \setlength{\headerphotowidth}{0.24\textwidth}
+    \setlength{\headerphotowidth}{\acvHeaderPhotoWidth}
+    \setlength{\headertextwidth}{\dimexpr\textwidth-\headerphotowidth\relax}
   }%
-  \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
-  \end{minipage}
+  % Photo box only on its own side, or the header overflows the page by 0.24\textwidth
+  \ifthenelse{\equal{\@photoalign}{left}}{%
+    \begin{minipage}[c]{\headerphotowidth}\raggedright\drawphoto\end{minipage}%
+  }{}%
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
@@ -565,9 +574,9 @@
       {}%
       {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
   \end{minipage}%
-  \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
-  \end{minipage}
+  \ifthenelse{\equal{\@photoalign}{right}}{%
+    \begin{minipage}[c]{\headerphotowidth}\raggedleft\drawphoto\end{minipage}%
+  }{}%
 }
 
 % Define a footer for CV

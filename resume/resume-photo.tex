@@ -1,0 +1,17 @@
+%!TEX TS-program = xelatex
+% Resume variant with a photo on the right of the header.
+% Same content as resume.tex (it is \input below), so only the header differs.
+% Not built by CI: compile locally with
+%   latexmk -xelatex -cd -outdir=build resume/resume-photo.tex
+
+\AddToHook{begindocument/end}{%
+  \photo[circle,noedge,right]{../public/images/profile/portrait-realistic.jpg}%
+  % Photo dimensions
+  \renewcommand{\acvHeaderPhotoSize}{2.5cm}%          diameter (side length for rectangle)
+  \renewcommand{\acvHeaderPhotoWidth}{0.24\textwidth}% column reserved for it; the text gets the rest
+  % Left-align the name and contacts so they sit opposite the photo
+  \NewCommandCopy\acvBaseHeader\makecvheader
+  \RenewDocumentCommand\makecvheader{O{}}{\acvBaseHeader[L]}%
+}
+
+\input{resume.tex}
