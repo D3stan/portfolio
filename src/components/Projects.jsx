@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ExternalLink,
   Github,
@@ -105,13 +105,9 @@ function VideoPlayer({ src, poster, className = "" }) {
 // Small Project Card
 function SmallProjectCard({ project }) {
   return (
-    <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0">
+    <div className="border-2 border-border bg-card shadow-[4px_4px_0_var(--shadow-strong)] w-72 flex-shrink-0 snap-start">
       <div className="relative aspect-video border-b-2 border-border">
-        <VideoPlayer
-          src={project.video}
-          poster={project.image}
-          className="h-full"
-        />
+        <VideoPlayer src={project.video} poster={project.image} className="h-full" />
       </div>
 
       <div className="p-4">
@@ -144,69 +140,85 @@ function SmallProjectCard({ project }) {
 }
 
 function SmallProjectsSlider({ projects }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef(null);
+  // index = current scroll stop; count = number of stops (fewer than projects when several cards fit)
+  const [{ index, count }, setPos] = useState({ index: 0, count: projects.length });
 
-  // Card width math: w-72 (288) + gap-4 (16) = 304px per slide
-  const SLIDE_PX = 304;
+  const measure = () => {
+    const el = trackRef.current;
+    const [first, second] = el.children;
+    const step = second ? second.offsetLeft - first.offsetLeft : el.clientWidth;
+    const max = el.scrollWidth - el.clientWidth;
+    return { step, max, count: Math.ceil((max - 1) / step) + 1 };
+  };
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  const sync = () => {
+    const { step, max, count } = measure();
+    const left = trackRef.current.scrollLeft;
+    const index = left >= max - 1 ? count - 1 : Math.round(left / step);
+    setPos((p) => (p.index === index && p.count === count ? p : { index, count }));
   };
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(sync);
+    ro.observe(trackRef.current);
+    return () => ro.disconnect();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps -- sync only reads the ref
+
+  const goTo = (i) => {
+    const { step, count } = measure();
+    trackRef.current.scrollTo({ left: ((i + count) % count) * step });
   };
+
+  const navButton =
+    "flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all";
 
   return (
     <div className="border-2 border-border bg-card backdrop-blur-sm p-4 shadow-[4px_4px_0_var(--shadow-strong)]">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-bold">{PROJECTS_SMALL_LABEL}</h3>
         <span className="font-mono text-xs text-muted">
-          {currentIndex + 1} of {projects.length}
+          {index + 1} of {count}
         </span>
       </div>
 
-      <div className="overflow-hidden mb-4">
-        <div
-          className="flex gap-4 transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * SLIDE_PX}px)` }}
-        >
-          {projects.map((project) => (
-            <SmallProjectCard
-              key={project.id}
-              project={project}
-            />
-          ))}
-        </div>
+      {/* Native scroll-snap: swipe, trackpad and keyboard scrolling come for free */}
+      <div
+        ref={trackRef}
+        onScroll={sync}
+        className="flex gap-4 mb-3 pb-1 overflow-x-auto snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {projects.map((project) => (
+          <SmallProjectCard key={project.id} project={project} />
+        ))}
       </div>
 
-      <div className="flex justify-between items-center">
-        <button
-          onClick={prevSlide}
-          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
-          aria-label="Previous"
-        >
+      <div className="flex justify-between items-center gap-2">
+        <button onClick={() => goTo(index - 1)} className={navButton} aria-label="Previous">
           <ChevronLeft className="w-4 h-4" />
           Previous
         </button>
 
-        <div className="flex gap-1">
-          {projects.map((_, index) => (
+        <div className="flex">
+          {Array.from({ length: count }, (_, i) => (
+            // exclude-touch-target: the global 44px min size turned each dot into a big square
             <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`w-2 h-2 border border-border ${
-                index === currentIndex ? "bg-accent" : "bg-card"
-              }`}
-            />
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={i === index || undefined}
+              className="exclude-touch-target p-1"
+            >
+              <span
+                className={`block w-2 h-2 border border-border ${
+                  i === index ? "bg-accent" : "bg-card"
+                }`}
+              />
+            </button>
           ))}
         </div>
 
-        <button
-          onClick={nextSlide}
-          className="flex items-center gap-1 border-2 border-border bg-card px-3 py-1 text-sm font-semibold shadow-[2px_2px_0_var(--shadow-strong)] hover:-translate-y-0.5 transition-all"
-          aria-label="Next"
-        >
+        <button onClick={() => goTo(index + 1)} className={navButton} aria-label="Next">
           Next
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -235,11 +247,7 @@ export default function Projects() {
             >
               {/* Video */}
               <div className="relative aspect-video border-b-2 border-border">
-                <VideoPlayer
-                  src={project.video}
-                  poster={project.image}
-                  className="h-full"
-                />
+                <VideoPlayer src={project.video} poster={project.image} className="h-full" />
               </div>
 
               {/* Content */}
